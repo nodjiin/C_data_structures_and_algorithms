@@ -18,17 +18,27 @@ extern "C" {
 		struct doubly_linked_list_t* next;
 	} doubly_linked_list_t;
 
-	singly_linked_list_t* sllist_construct();
-	void sllist_insert(singly_linked_list_t** list, data_type value);
-	void sllist_delete(singly_linked_list_t** list, singly_linked_list_t** node_to_delete);
-	singly_linked_list_t* sllist_search(singly_linked_list_t* list, data_type value);
-	void sllist_clear(singly_linked_list_t* list);
+	__declspec(dllexport)
+		singly_linked_list_t* sllist_construct();
+	__declspec(dllexport)
+		void sllist_insert(singly_linked_list_t** list, data_type value);
+	__declspec(dllexport)
+		void sllist_delete(singly_linked_list_t** list, singly_linked_list_t* node_to_delete);
+	__declspec(dllexport)
+		singly_linked_list_t* sllist_search(singly_linked_list_t* list, data_type value, data_type_compare_fn compare);
+	__declspec(dllexport)
+		void sllist_clear(singly_linked_list_t** list);
 
-	doubly_linked_list_t* dllist_construct();
-	void dllist_insert(doubly_linked_list_t** list, data_type value);
-	void dllist_delete(doubly_linked_list_t** list, doubly_linked_list_t** node_to_delete);
-	doubly_linked_list_t* dllist_search(doubly_linked_list_t* list, data_type value);
-	void dllist_clear(doubly_linked_list_t* list);
+	__declspec(dllexport)
+		doubly_linked_list_t* dllist_construct();
+	__declspec(dllexport)
+		void dllist_insert(doubly_linked_list_t** list, data_type value);
+	__declspec(dllexport)
+		void dllist_delete(doubly_linked_list_t** list, doubly_linked_list_t* node_to_delete);
+	__declspec(dllexport)
+		doubly_linked_list_t* dllist_search(doubly_linked_list_t* list, data_type value, data_type_compare_fn compare);
+	__declspec(dllexport)
+		void dllist_clear(doubly_linked_list_t** list);
 
 #ifdef __cplusplus
 }
