@@ -1,3 +1,8 @@
+/**
+ * \file            linkedlist.h
+ * \brief           header file containing the declaration of singly & double linked list data structures, and connected functions.
+ */
+
 #ifndef LINKEDLIST
 #define LINKEDLIST
 
@@ -7,15 +12,23 @@
 extern "C" {
 #endif /* __cplusplus */
 
+	/**
+	 * \brief           singly linked list structure.
+	 * \note            this implementation joins list and node in a single structure. It is up to the user to maintain a reference to the head.
+	 */
 	typedef struct singly_linked_list_t {
-		data_type value;
-		struct singly_linked_list_t* next;
+		data_type value;									/*!< value of the node */
+		struct singly_linked_list_t* next;					/*!< pointer to the next node of the list */
 	} singly_linked_list_t;
 
+	/**
+	 * \brief           doubly linked list structure.
+	 * \note            this implementation joins list and node in a single structure. It is up to the user to maintain a reference to the head.
+	 */
 	typedef struct doubly_linked_list_t {
-		data_type value;
-		struct doubly_linked_list_t* previous;
-		struct doubly_linked_list_t* next;
+		data_type value;									/*!< value of the node */
+		struct doubly_linked_list_t* previous;				/*!< pointer to the previous node of the list */
+		struct doubly_linked_list_t* next;					/*!< pointer to the next node of the list */
 	} doubly_linked_list_t;
 
 	__declspec(dllexport)
