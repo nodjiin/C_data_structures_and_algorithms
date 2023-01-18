@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="datatype.h" />
+    <ClInclude Include="exitcodes.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="memalloc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="linkedlist.c" />
+    <ClCompile Include="memalloc.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
