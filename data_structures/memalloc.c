@@ -59,3 +59,8 @@ void* realloc_s(void* block, size_t size) {
 
 	return new_memory;
 }
+
+void free_s(void* block) {
+	free(block);
+	block = NULL;
+}
