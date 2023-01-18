@@ -1,3 +1,8 @@
+/**
+ * \file            memalloc.h
+ * \brief           header file containing the declaration of the memory management wrapper functions used in this library.
+ */
+
 #ifndef MEMALLOC
 #define MEMALLOC
 
