@@ -1,3 +1,8 @@
+/**
+ * \file            exitcodes.h
+ * \brief           header file containing object-like exit codes macros.
+ */
+
 #ifndef EXITCODES
 #define EXITCODES
 

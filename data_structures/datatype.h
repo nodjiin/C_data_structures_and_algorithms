@@ -1,3 +1,8 @@
+/**
+ * \file			datatype.h
+ * \brief           header file containing the definition of the generic data type used in all the structures of this library.
+ */
+
 #ifndef DATATYPE
 #define DATATYPE
 
