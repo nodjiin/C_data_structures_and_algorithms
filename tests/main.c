@@ -1,7 +1,8 @@
 #include "linkedlist_test.h"
 
-int main(void) {
-	linkedlist_testall();
+int
+main(void) {
+    linkedlist_testall();
 
-	exit(0);
+    exit(0);
 }
