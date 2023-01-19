@@ -75,7 +75,7 @@ sllist_delete(singly_linked_list_t** list, singly_linked_list_t* node_to_delete)
  * \brief           search a value in the given list.
  * \param[in]       list: a pointer to the list head.
  * \param[in]       value: value to search.
- * \param[in]       compare: function to use to compare the input value and the content of the list nodes.
+ * \param[in]       compare: function to use to compare 2 data_type.
  * \param[in]       node_to_delete: a pointer to the node of the list containing the value. If none is found `NULL` will be returned instead.
  */
 singly_linked_list_t*
