@@ -27,12 +27,18 @@
     <ClInclude Include="exitcodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dynamicarray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="linkedlist.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="memalloc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamicarray.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
