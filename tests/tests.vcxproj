@@ -131,11 +131,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dynamicarray_test.c" />
     <ClCompile Include="linkedlist_test.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dynamicarray_test.h" />
     <ClInclude Include="linkedlist_test.h" />
+    <ClInclude Include="testvalues.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\data_structures\data_structures.vcxproj">

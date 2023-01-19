@@ -2,10 +2,7 @@
 #define LINKEDLIST_TEST
 
 #include "data_structures/linkedlist.h"
-
-#define TESTVAL1 1
-#define TESTVAL2 2
-#define TESTVAL3 3
+#include "testvalues.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,6 +16,11 @@ void sllist_clear_test(void);
 
 void dllist_construct_test(void);
 void dllist_insert_test(void);
+void dllist_delete_test(void);
+void dllist_search_test(void);
+void dllist_clear_test(void);
+
+void linkedlist_testall(void);
 
 #ifdef __cplusplus
 }

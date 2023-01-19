@@ -21,9 +21,18 @@
     <ClCompile Include="linkedlist_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dynamicarray_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedlist_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamicarray_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testvalues.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
