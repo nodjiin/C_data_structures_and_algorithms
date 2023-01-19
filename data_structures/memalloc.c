@@ -1,8 +1,8 @@
 /**
  * \file            memalloc.c
  * \brief           header file containing the definition of the memory management wrapper functions used in this library.
- * \note			this library is built targetting code exercises / small test applications, and so it will follow a crash early approach
- *					rather than try to implement a true fault tolerance policy.
+ * \note            this library is built targetting code exercises / small test applications, and so it will follow a crash early approach
+ *                  rather than try to implement a true fault tolerance policy.
  */
 
 #include <stdio.h>
@@ -10,8 +10,8 @@
 #include "exitcodes.h"
 
 /**
-  * \brief			allocate a new memory block of requested size.
-  * \note			failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code.
+  * \brief          allocate a new memory block of requested size.
+  * \note           failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code.
   * \param[in]      size: bytes of memory to allocate. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
   * \return         a pointer to the newly allocated memory.
   */
@@ -34,11 +34,11 @@ malloc_s(size_t size) {
 }
 
 /**
- * \brief			allocate a new memory block of requested size and then initialize it to `0`.
- * \note			failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code.
- * \param[in]		count: number of objects to allocate. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
- * \param[in]		size: bytes necessary to contain one of the allocated objects. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
- * \return			a pointer to the newly allocated memory.
+ * \brief           allocate a new memory block of requested size and then initialize it to `0`.
+ * \note            failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code.
+ * \param[in]       count: number of objects to allocate. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
+ * \param[in]       size: bytes necessary to contain one of the allocated objects. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
+ * \return          a pointer to the newly allocated memory.
  */
 void*
 calloc_s(size_t count, size_t size) {
@@ -64,11 +64,11 @@ calloc_s(size_t count, size_t size) {
 }
 
 /**
- * \brief			resize an existing memory block to the given value.
- * \note			failing to resize the memory block will result in the program to exit with a MEMORY_EXHAUSTED code.
- * \param[in]		block: memory block to resize. in case `NULL` is provided as input the function will act as a malloc_s would.
- * \param[in]		size: bytes of memory to allocate. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
- * \return			a pointer to the newly allocated memory.
+ * \brief           resize an existing memory block to the given value.
+ * \note            failing to resize the memory block will result in the program to exit with a MEMORY_EXHAUSTED code.
+ * \param[in]       block: memory block to resize. in case `NULL` is provided as input the function will act as a malloc_s would.
+ * \param[in]       size: bytes of memory to allocate. `0` is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code.
+ * \return          a pointer to the newly allocated memory.
  */
 void*
 realloc_s(void* block, size_t size) {
@@ -89,8 +89,8 @@ realloc_s(void* block, size_t size) {
 }
 
 /**
- * \brief			free the given memory block, setting the input parameter to `NULL`.
- * \param[in]		block: memory block to free.
+ * \brief           free the given memory block, setting the input parameter to `NULL`.
+ * \param[in]       block: memory block to free.
  */
 void
 free_s(void* block) {
