@@ -1,6 +1,6 @@
 /**
  * \file            linkedlist.c
- * \brief           header file containing the declaration of singly & double linked list data structures, and connected functions.
+ * \brief           source file containing the definition of singly & doubly linked list connected functions.
  */
 
 #include <stdlib.h>
