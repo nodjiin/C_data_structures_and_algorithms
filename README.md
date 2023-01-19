@@ -1,6 +1,6 @@
 # C data structures and algorithms
 
-c is a great language both for learning to develop software and for becoming familiar with the world of algorithms. Unfortunately, the c standard library doesn't provide any implementation for many of the most common data structures offered by modern languages. The purpose of this repository is therefore to fill this gap, providing anyone who wants to approach modern algorithms in c with some working tools.
+C is a great language for learning both basic development concepts and complex algorithms. Unfortunately, the C standard library doesn't provide any implementation for many of the most common data structures offered by modern languages. The purpose of this repository is therefore to fill this gap, giving anyone who wants to approach the world of algorithms in C some working tools.
 
 ## Table of Contents
 
