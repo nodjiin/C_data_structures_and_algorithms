@@ -1,5 +1,7 @@
-#include "linkedlist_test.h"
 #include <assert.h>
+#include "data_structures/linkedlist.h"
+#include "linkedlist_test.h"
+#include "testvalues.h"
 
 void
 sllist_construct_test(void) {

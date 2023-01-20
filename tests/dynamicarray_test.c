@@ -1,5 +1,7 @@
 #include <assert.h>
+#include "data_structures/dynamicarray.h"
 #include "dynamicarray_test.h"
+#include "testvalues.h"
 
 void
 darray_construct_test(void) {

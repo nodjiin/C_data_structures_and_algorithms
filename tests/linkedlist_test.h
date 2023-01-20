@@ -1,9 +1,6 @@
 #ifndef LINKEDLIST_TEST
 #define LINKEDLIST_TEST
 
-#include "data_structures/linkedlist.h"
-#include "testvalues.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
