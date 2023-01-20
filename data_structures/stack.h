@@ -17,7 +17,7 @@ extern "C" {
  * \brief           stack data structure.
  * \note            this implementation uses a dynamic array to store the stack content.
  */
-typedef struct stack_t {
+typedef struct {
     dynamic_array_t* array; /*!< internal data storage */
 } stack_t;
 
