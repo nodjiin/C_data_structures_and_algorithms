@@ -15,10 +15,12 @@ extern "C" {
 
 /**
  * \brief           queue data structure.
- * \note            this implementation uses a singly linked list to store the queue content.
+ * \note            this implementation uses a doubly linked list to store the queue content.
  */
 typedef struct {
-    singly_linked_list_t* list; /*!< internal data storage */
+    doubly_linked_list_t* list;  /*!< internal data storage */
+    doubly_linked_list_t* first; /*!< first value of the queue */
+    size_t queue_count;          /*!< number of values currently inside the queue */
 } queue_t;
 
 __declspec(dllexport) queue_t* queue_construct();

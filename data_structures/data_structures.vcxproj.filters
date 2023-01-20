@@ -50,5 +50,8 @@
     <ClCompile Include="stack.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -139,6 +139,7 @@
     <ClCompile Include="dynamicarray.c" />
     <ClCompile Include="linkedlist.c" />
     <ClCompile Include="memalloc.c" />
+    <ClCompile Include="queue.c" />
     <ClCompile Include="stack.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
