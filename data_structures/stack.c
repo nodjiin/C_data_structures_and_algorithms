@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "exitcodes.h"
 #include "memalloc.h"
 #include "stack.h"

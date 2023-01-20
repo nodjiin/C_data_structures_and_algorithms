@@ -5,6 +5,7 @@
 
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "dynamicarray.h"
 #include "memalloc.h"
 #include "exitcodes.h"
