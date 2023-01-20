@@ -132,6 +132,7 @@
     <ClInclude Include="exitcodes.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="memalloc.h" />
+    <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <ItemGroup>
