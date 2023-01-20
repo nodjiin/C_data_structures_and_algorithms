@@ -7,9 +7,12 @@ void
 stack_construct_test(void) {
     stack_t* stack;
 
-    stack = stack_construct(1);
+    stack = stack_construct(2);
 
     assert(stack != NULL);
+    assert(stack->array != NULL);
+    assert(stack->array->count == 0);
+    assert(stack->array->length == 2);
 }
 
 void
