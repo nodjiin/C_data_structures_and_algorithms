@@ -132,11 +132,13 @@
     <ClInclude Include="exitcodes.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="memalloc.h" />
+    <ClInclude Include="stack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dynamicarray.c" />
     <ClCompile Include="linkedlist.c" />
     <ClCompile Include="memalloc.c" />
+    <ClCompile Include="stack.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
