@@ -1,11 +1,6 @@
 #include "linkedlist_test.h"
 #include <assert.h>
 
-int
-compare(const int a, const int b) {
-    return a - b;
-}
-
 void
 sllist_construct_test(void) {
     assert(sllist_construct() == NULL);

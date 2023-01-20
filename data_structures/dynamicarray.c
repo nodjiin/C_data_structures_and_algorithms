@@ -251,11 +251,11 @@ darray_search(dynamic_array_t* darray, data_type value, data_type_compare_fn com
  * \note            this function will free the memory used by the dynamic array. The input pointer itself will be set to `NULL`.
  */
 void
-darray_clear(dynamic_array_t* darray) {
-    if (darray == NULL) {
+darray_clear(dynamic_array_t** darray) {
+    if (darray == NULL || *darray == NULL) {
         return;
     }
 
-    free_s(darray->array);
-    free_s(darray);
+    free_s((*darray)->array);
+    free_s(*darray);
 }

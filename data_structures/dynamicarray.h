@@ -32,7 +32,7 @@ __declspec(dllexport) void darray_put(dynamic_array_t* darray, data_type value, 
 __declspec(dllexport) data_type darray_get(dynamic_array_t* darray, size_t index);
 __declspec(dllexport) data_type darray_remove(dynamic_array_t* darray, size_t index);
 __declspec(dllexport) size_t darray_search(dynamic_array_t* darray, data_type value, data_type_compare_fn compare);
-__declspec(dllexport) void darray_clear(dynamic_array_t* darray);
+__declspec(dllexport) void darray_clear(dynamic_array_t** darray);
 
 #ifdef __cplusplus
 }
