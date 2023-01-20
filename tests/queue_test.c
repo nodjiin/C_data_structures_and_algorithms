@@ -12,7 +12,7 @@ queue_construct_test(void) {
     assert(queue != NULL);
     assert(queue->first == NULL);
     assert(queue->list == NULL);
-    assert(queue->queue_count == 0);
+    assert(queue->count == 0);
 }
 
 void
@@ -23,7 +23,7 @@ queue_enqueue_test(void) {
     queue_enqueue(queue, TESTVAL1);
     queue_enqueue(queue, TESTVAL2);
 
-    assert(queue->queue_count == 2);
+    assert(queue->count == 2);
     assert(queue->first->value == TESTVAL1);
     assert(queue->list->value == TESTVAL2);
 }
@@ -40,7 +40,7 @@ queue_dequeue_test(void) {
     deq1 = queue_dequeue(queue);
     deq2 = queue_dequeue(queue);
 
-    assert(queue->queue_count == 0);
+    assert(queue->count == 0);
     assert(deq1 == TESTVAL1);
     assert(deq2 == TESTVAL2);
 }

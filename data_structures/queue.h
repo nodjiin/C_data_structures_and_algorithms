@@ -20,7 +20,7 @@ extern "C" {
 typedef struct {
     doubly_linked_list_t* list;  /*!< internal data storage */
     doubly_linked_list_t* first; /*!< first value of the queue */
-    size_t queue_count;          /*!< number of values currently inside the queue */
+    size_t count;                /*!< number of values currently inside the queue */
 } queue_t;
 
 __declspec(dllexport) queue_t* queue_construct(void);
