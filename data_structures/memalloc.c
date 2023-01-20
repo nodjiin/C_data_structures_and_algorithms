@@ -87,13 +87,3 @@ realloc_s(void* block, size_t size) {
 
     return new_memory;
 }
-
-/**
- * \brief           free the given memory block, setting the input parameter to `NULL`.
- * \param[in]       block: memory block to free.
- */
-void
-free_s(void* block) {
-    free(block);
-    block = NULL;
-}
