@@ -6,8 +6,9 @@
 #ifndef EXITCODES
 #define EXITCODES
 
-#define MEMORY_EXHAUSTED 100
-#define INVALID_INPUT    101
+#define MEMORY_EXHAUSTED  100
+#define INVALID_INPUT     101
+#define INVALID_OPERATION 102
 
 #endif // !EXITCODES
 #pragma once
