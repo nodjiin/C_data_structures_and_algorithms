@@ -105,6 +105,6 @@ stack_clear(stack_t** stack) {
         return;
     }
 
-    darray_clear((*stack)->array);
+    darray_clear(&((*stack)->array));
     free_s(*stack)
 }
