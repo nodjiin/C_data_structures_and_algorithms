@@ -11,12 +11,17 @@
 
 /**
  * \brief           construct a new dynamic array.
- * \param[in]       initial_size: number of items that the array will be able to contain after initialization
+ * \param[in]       initial_size: number of items that the array will be able to contain after initialization. 0 is not considered a valid input, 
+ *                  and will result a program early exit with INVALID_INPUT code.
  * \return          a pointer the newly constructed array.
  */
 dynamic_array_t*
 darray_construct(size_t initial_size) {
     dynamic_array_t* new_array;
+
+    if (initial_size == 0) {
+        fprintf(stderr, "[darray_construct] Invalid input. Faulty construct request with size 0.\n");
+    }
 
     new_array = malloc_s(sizeof(dynamic_array_t));
     new_array->array = malloc_s(sizeof(data_type) * initial_size);
