@@ -128,7 +128,6 @@ darray_search_test(void) {
 void
 darray_clear_test(void) {
     dynamic_array_t* array;
-    size_t index;
 
     array = darray_construct(1);
     darray_insert(array, TESTVAL1);
