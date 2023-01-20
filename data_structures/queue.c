@@ -19,6 +19,8 @@ queue_construct() {
 
     new_queue = malloc_s(sizeof(queue_t));
     new_queue->list = dllist_construct();
+    new_queue->first = NULL;
+    new_queue->queue_count = 0;
 
     return new_queue;
 }
@@ -67,6 +69,7 @@ queue_dequeue(queue_t* queue) {
     value = first->value;                 /* save its value in a local variable */
     queue->first = first->previous;       /* set as new first the second node on the queue */
     dllist_delete(&(queue->list), first); /* delete the old first from the internal list */
+    queue->queue_count--;
 
     return value;
 }

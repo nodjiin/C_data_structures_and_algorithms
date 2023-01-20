@@ -134,11 +134,13 @@
     <ClCompile Include="dynamicarray_test.c" />
     <ClCompile Include="linkedlist_test.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="queue_test.c" />
     <ClCompile Include="stack_test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dynamicarray_test.h" />
     <ClInclude Include="linkedlist_test.h" />
+    <ClInclude Include="queue_test.h" />
     <ClInclude Include="stack_test.h" />
     <ClInclude Include="testvalues.h" />
   </ItemGroup>

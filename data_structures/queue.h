@@ -23,7 +23,7 @@ typedef struct {
     size_t queue_count;          /*!< number of values currently inside the queue */
 } queue_t;
 
-__declspec(dllexport) queue_t* queue_construct();
+__declspec(dllexport) queue_t* queue_construct(void);
 __declspec(dllexport) void queue_enqueue(queue_t* queue, data_type value);
 __declspec(dllexport) data_type queue_dequeue(queue_t* queue);
 __declspec(dllexport) size_t queue_count(queue_t* queue);
