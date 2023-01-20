@@ -24,6 +24,9 @@
     <ClCompile Include="dynamicarray_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stack_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedlist_test.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testvalues.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stack_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
