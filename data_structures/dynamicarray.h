@@ -1,6 +1,6 @@
 /**
  * \file            dynamicarray.h
- * \brief           header file containing the declaration of the dynamic array data structure, and connected functions.
+ * \brief           header file containing the declaration of the dynamic array data structure and operations.
  */
 
 #ifndef DYNAMICARRAY

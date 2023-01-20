@@ -1,6 +1,6 @@
 /**
  * \file            stack.c
- * \brief           source file containing the definition stack connected functions.
+ * \brief           source file containing the definition of stack operations.
  */
 
 #include <stdio.h>

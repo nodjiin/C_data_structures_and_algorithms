@@ -1,6 +1,6 @@
 /**
  * \file            stack.h
- * \brief           header file containing the declaration of stack data structure, and connected functions.
+ * \brief           header file containing the declaration of the stack data structure and operations.
  */
 
 #ifndef STACK

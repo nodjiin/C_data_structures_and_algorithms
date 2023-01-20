@@ -1,6 +1,6 @@
 /**
  * \file            linkedlist.c
- * \brief           source file containing the definition of singly & doubly linked list connected functions.
+ * \brief           source file containing the definition of singly & doubly linked list operations.
  */
 
 #include <stdlib.h>

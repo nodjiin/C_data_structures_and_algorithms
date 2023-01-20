@@ -1,6 +1,6 @@
 /**
  * \file            dynamicarray.c
- * \brief           source file containing the definition dynamic array connected functions.
+ * \brief           source file containing the definition of dynamic array operations.
  */
 
 #include <limits.h>
