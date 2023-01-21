@@ -184,6 +184,10 @@ heap_extract(heap_t* heap) {
         exit(INVALID_OPERATION);
     }
 
+    if (darray->count == 2) { /* if we currently have only 1 item in the heap we can remove it directly */
+        return darray_remove(darray, FIRST_POSITION);
+    }
+
     first = darray_get(darray, FIRST_POSITION);      /* get the first (highest priority) value in the heap */
     last = darray_remove(darray, darray->count - 1); /* extract the last value in the queue */
     darray_put(darray, last, FIRST_POSITION);        /* override the first value with the last */
