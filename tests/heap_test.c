@@ -15,6 +15,18 @@ heap_construct_test(void) {
 }
 
 void
+heap_construct_from_array_test(void) {
+    heap_t* heap;
+    data_type array[3] = {TESTVAL2, TESTVAL3, TESTVAL1};
+
+    heap = heap_construct_from_array(array, 3, compare);
+
+    assert(darray_get(heap->array, 1) == TESTVAL1);
+    assert(darray_get(heap->array, 2) == TESTVAL3);
+    assert(darray_get(heap->array, 3) == TESTVAL2);
+}
+
+void
 heap_insert_test(void) {
     heap_t* heap;
 
@@ -86,6 +98,7 @@ heap_clear_test(void) {
 void
 heap_testall() {
     heap_construct_test();
+    heap_construct_from_array_test();
     heap_insert_test();
     heap_extract_test();
     heap_count_test();

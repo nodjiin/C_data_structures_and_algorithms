@@ -192,6 +192,45 @@ heap_extract(heap_t* heap) {
 }
 
 /**
+ * \brief           construct a new heap filled with a copy of the elements of an existing array.
+ * \param[in]       array: array containing the values to insert in the heap. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       array_size: number of items contained in the input array. 0 is not considered a valid input, and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       compare: comparison function used to evaluate the priority of each item in the heap. An output > 0 will be considered as a sign that the first value
+ *                  passed to the function has lower priority than the second value, conversely with a value < 0 the first value will be considered having greater priority. 
+ *                  If the output is 0 the 2 values will be considered of equal priority. `NULL` is not considered a valid input and will cause the program to exit early 
+ *                  with an INVALID_INPUT status code.
+ * \note            this operation is efficient and should be preferred to insert elements in the heap one by one for a fast initialization.
+ * \return          a pointer the newly constructed heap.
+ */
+heap_t*
+heap_construct_from_array(data_type array[], size_t array_size, data_type_compare_fn compare) {
+    heap_t* heap;
+
+    if (array == NULL) {
+        fprintf(stderr, "[heap_construct_from_array] Invalid input. Faulty construct request with null array.\n");
+        exit(INVALID_INPUT);
+    }
+
+    if (array_size == 0) {
+        fprintf(stderr, "[heap_construct_from_array] Invalid input. Faulty construct request with empty array.\n");
+        exit(INVALID_INPUT);
+    }
+
+    /* construct the heap and fill its internal array with the input values */
+    heap = heap_construct(array_size, compare);
+    for (size_t i = 0; i < array_size; i++) {
+        darray_insert(heap->array, array[i]);
+    }
+
+    /* now bubble down its first half. this operation is extremely efficient as we are making n/2 calls to bubble down, which by itself cost only O(logn)*/
+    for (size_t i = (heap->array->count - 1) / 2; i >= FIRST_POSITION; i--) {
+        bubble_down(heap, i);
+    }
+
+    return heap;
+}
+
+/**
  * \brief           check how many values are contained in the heap.
  * \param[in]       heap: heap pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of values currently in the heap.

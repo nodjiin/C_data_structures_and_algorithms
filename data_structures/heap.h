@@ -24,6 +24,8 @@ typedef struct {
 } heap_t;
 
 __declspec(dllexport) heap_t* heap_construct(size_t initial_size, data_type_compare_fn compare);
+__declspec(dllexport) heap_t* heap_construct_from_array(data_type array[], size_t array_size,
+                                                        data_type_compare_fn compare);
 __declspec(dllexport) void heap_insert(heap_t* heap, data_type value);
 __declspec(dllexport) data_type heap_extract(heap_t* heap);
 __declspec(dllexport) size_t heap_count(heap_t* heap);

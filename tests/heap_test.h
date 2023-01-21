@@ -6,6 +6,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 void heap_construct_test(void);
+void heap_construct_from_array_test(void);
 void heap_insert_test(void);
 void heap_extract_test(void);
 void heap_count_test(void);
