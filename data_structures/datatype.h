@@ -11,6 +11,12 @@ extern "C" {
 #endif /* __cplusplus */
 
 /**
+ * \brief           macro representing a NULL definition for the choosen data type.
+ * \hideinitializer
+ */
+#define NULL_DATA 0
+
+/**
  * \brief           data type of the values contained in all the data structures of this library.
  */
 typedef int data_type;

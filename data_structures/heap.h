@@ -15,7 +15,7 @@ extern "C" {
 
 /**
  * \brief           heap data structure.
- * \note            this data structure has been implemented as a max heap. However, since the priority comparison operation is passed as a function pointer,
+ * \note            this data structure has been implemented as a min heap. However, since the priority comparison operation is passed as a function pointer,
  *                  it is possible to convert it into a min heap by inverting the value returned by the custom implemented comparison.
  */
 typedef struct {
