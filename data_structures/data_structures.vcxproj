@@ -130,6 +130,7 @@
     <ClInclude Include="datatype.h" />
     <ClInclude Include="dynamicarray.h" />
     <ClInclude Include="exitcodes.h" />
+    <ClInclude Include="heap.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="memalloc.h" />
     <ClInclude Include="queue.h" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dynamicarray.c" />
+    <ClCompile Include="heap.c" />
     <ClCompile Include="linkedlist.c" />
     <ClCompile Include="memalloc.c" />
     <ClCompile Include="queue.c" />
