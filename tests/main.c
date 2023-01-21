@@ -3,6 +3,7 @@
 #include "dynamicarray_test.h"
 #include "stack_test.h"
 #include "queue_test.h"
+#include "heap_test.h"
 
 int
 main(void) {
@@ -10,6 +11,7 @@ main(void) {
     dynamicarray_testall();
     stack_testall();
     queue_testall();
+    heap_testall();
 
     exit(0);
 }
