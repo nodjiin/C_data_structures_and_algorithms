@@ -135,7 +135,7 @@ heap_insert(heap_t* heap, data_type value) {
 }
 
 /**
- * \brief           recursively swap the value at the given index with one of it's childre, until no children with higher priority is found.
+ * \brief           recursively swap the value at the given index with one of its children, until no children with higher priority is found.
  * \param[in]       heap: pointer to heap.
  * \param[in]       index: index of the element to bubble down.
  */
