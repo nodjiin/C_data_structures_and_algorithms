@@ -18,19 +18,24 @@ extern "C" {
 typedef void (*process_node_value_fn)(data_type value);
 
 /**
+ * \brief           type used to define the color of a binary search tree node.
+ */
+typedef enum bstnode_color_t { BLACK, RED };
+
+/**
  * \brief           data structure representing a single node of the binary search tree.
- * \note            TODO choose between red/black and AVL to keep the tree balanced.
  */
 typedef struct binary_search_tree_node_t {
     data_type value;                          /*!< node value */
     struct binary_search_tree_node_t* parent; /*!< pointer to the parent node */
     struct binary_search_tree_node_t* left;   /*!< pointer to the left child node */
     struct binary_search_tree_node_t* right;  /*!< pointer to the right child node */
+    bstnode_color_t color;                    /*!< color of the node */
 } binary_search_tree_node_t;
 
 /**
  * \brief           binary search tree data structure.
- * \note            
+ * \note            this structure is implemented as a self-balancing red/black tree.
  */
 typedef struct {
     binary_search_tree_node_t* root; /*!< pointer to the tree root */
