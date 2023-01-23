@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="binarysearchtree.h" />
     <ClInclude Include="datatype.h" />
     <ClInclude Include="dynamicarray.h" />
     <ClInclude Include="exitcodes.h" />
@@ -143,6 +144,9 @@
     <ClCompile Include="memalloc.c" />
     <ClCompile Include="queue.c" />
     <ClCompile Include="stack.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="binarysearchtree.h.vsspell" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

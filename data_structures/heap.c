@@ -130,7 +130,7 @@ heap_insert(heap_t* heap, data_type value) {
     }
 
     darray_insert(heap->array, value); /* insert the element at the end of the array */
-    /* bubble it up untill there's no other value with higher priority on top of it*/
+    /* bubble it up until there's no other value with higher priority on top of it*/
     bubble_up(heap, heap->array->count - 1); /* -1 to address the initial offset */
 }
 

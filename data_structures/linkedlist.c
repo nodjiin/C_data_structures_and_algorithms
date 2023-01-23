@@ -10,7 +10,7 @@
 
 /**
   * \brief          construct a new singly linked list.
-  * \note           since the curent implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
+  * \note           since the current implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
   * \return         a pointer to head of the newly constructed linked list.
   */
 singly_linked_list_t*
@@ -46,7 +46,7 @@ sllist_delete(singly_linked_list_t** list, singly_linked_list_t* node_to_delete)
     singly_linked_list_t* node;
 
     node = *list;
-    while (node != node_to_delete) { /* iterate on the list untill we find the node to delete */
+    while (node != node_to_delete) { /* iterate on the list until we find the node to delete */
         if (node == NULL) {          /* we reached the end of the list */
             free_s(node_to_delete);
             return;
@@ -110,7 +110,7 @@ sllist_clear(singly_linked_list_t** list) {
 
 /**
  * \brief           construct a new doubly linked list.
- * \note            since the curent implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
+ * \note            since the current implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
  * \return          a pointer to head of the newly constructed linked list.
  */
 doubly_linked_list_t*
@@ -150,7 +150,7 @@ dllist_delete(doubly_linked_list_t** list, doubly_linked_list_t* node_to_delete)
     doubly_linked_list_t* node;
 
     node = *list;
-    while (node != node_to_delete) { /* iterate on the list untill we find the node to delete */
+    while (node != node_to_delete) { /* iterate on the list until we find the node to delete */
         if (node == NULL) {          /* we reached the end of the list */
             free_s(node_to_delete);
             return;

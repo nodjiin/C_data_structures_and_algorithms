@@ -1,7 +1,7 @@
 /**
  * \file            memalloc.c
  * \brief           header file containing the definition of the memory management wrapper functions used in this library.
- * \note            this library is built targetting code exercises / small test applications, and so it will follow a crash early approach
+ * \note            this library is built targeting code exercises / small test applications, and so it will follow a crash early approach
  *                  rather than try to implement a true fault tolerance policy.
  */
 

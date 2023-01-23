@@ -14,7 +14,7 @@
  * \return          a pointer the newly constructed queue.
  */
 queue_t*
-queue_construct() {
+queue_construct(void) {
     queue_t* new_queue;
 
     new_queue = malloc_s(sizeof(queue_t));

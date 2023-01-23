@@ -11,7 +11,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 /**
- * \brief           macro representing a NULL definition for the choosen data type.
+ * \brief           macro representing a NULL definition for the chosen data type.
  * \hideinitializer
  */
 #define NULL_DATA 0
