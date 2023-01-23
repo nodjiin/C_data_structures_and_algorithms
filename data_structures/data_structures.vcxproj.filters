@@ -62,5 +62,8 @@
     <ClCompile Include="heap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="binarysearchtree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

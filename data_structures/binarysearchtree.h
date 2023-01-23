@@ -20,7 +20,7 @@ typedef void (*process_node_value_fn)(data_type value);
 /**
  * \brief           type used to define the color of a binary search tree node.
  */
-typedef enum bstnode_color_t { BLACK, RED };
+typedef enum { BLACK, RED } bstnode_color_t;
 
 /**
  * \brief           data structure representing a single node of the binary search tree.
@@ -50,7 +50,7 @@ __declspec(dllexport) binary_search_tree_node_t* bstree_search(binary_search_tre
 __declspec(dllexport) binary_search_tree_node_t* bstree_find_min(binary_search_tree_t* tree);
 __declspec(dllexport) binary_search_tree_node_t* bstree_find_max(binary_search_tree_t* tree);
 __declspec(dllexport) void bstree_traverse(binary_search_tree_t* tree, process_node_value_fn process);
-__declspec(dllexport) void bstree_clear(binary_search_tree_t* tree);
+__declspec(dllexport) void bstree_clear(binary_search_tree_t** tree);
 
 #ifdef __cplusplus
 }

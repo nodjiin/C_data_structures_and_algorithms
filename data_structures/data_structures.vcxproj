@@ -138,6 +138,7 @@
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="binarysearchtree.c" />
     <ClCompile Include="dynamicarray.c" />
     <ClCompile Include="heap.c" />
     <ClCompile Include="linkedlist.c" />
