@@ -145,9 +145,6 @@
     <ClCompile Include="queue.c" />
     <ClCompile Include="stack.c" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="binarysearchtree.h.vsspell" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
