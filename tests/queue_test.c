@@ -50,7 +50,7 @@ queue_count_test(void) {
     queue_t* queue;
     size_t count;
 
-    queue = queue_construct(1);
+    queue = queue_construct();
     queue_enqueue(queue, TESTVAL1);
     queue_enqueue(queue, TESTVAL2);
 
