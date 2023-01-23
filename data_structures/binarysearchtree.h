@@ -6,6 +6,7 @@
 #ifndef BINARYSEARCHTREE
 #define BINARYSEARCHTREE
 
+#include <stdbool.h>
 #include "datatype.h"
 
 #ifdef __cplusplus
@@ -49,6 +50,8 @@ __declspec(dllexport) void bstree_delete(binary_search_tree_t* tree, binary_sear
 __declspec(dllexport) binary_search_tree_node_t* bstree_search(binary_search_tree_t* tree, data_type value);
 __declspec(dllexport) binary_search_tree_node_t* bstree_find_min(binary_search_tree_t* tree);
 __declspec(dllexport) binary_search_tree_node_t* bstree_find_max(binary_search_tree_t* tree);
+__declspec(dllexport) size_t tree_count(binary_search_tree_t* tree);
+__declspec(dllexport) bool tree_is_empty(binary_search_tree_t* tree);
 __declspec(dllexport) void bstree_traverse(binary_search_tree_t* tree, process_node_value_fn process);
 __declspec(dllexport) void bstree_clear(binary_search_tree_t** tree);
 
