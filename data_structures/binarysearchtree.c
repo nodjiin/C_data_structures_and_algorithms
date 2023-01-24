@@ -252,7 +252,7 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
         }
     }
 
-    root->color = BLACK;
+    tree->root->color = BLACK;
 }
 
 /**
