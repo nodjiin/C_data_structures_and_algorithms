@@ -14,7 +14,14 @@ extern "C" {
  * \brief           macro representing a NULL definition for the chosen data type.
  * \hideinitializer
  */
-#define NULL_DATA 0
+#define NULL_DATA         0
+
+/**
+ * \brief           macro representing the format to use while printing a data type.
+ *                  TODO this won't work on complex data types like structures, probably a print macro would be better
+ * \hideinitializer
+ */
+#define DATA_PRINT_FORMAT "%d"
 
 /**
  * \brief           data type of the values contained in all the data structures of this library.
