@@ -180,32 +180,34 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
         parent = node->parent;
         grand_parent = parent->parent;
 
-        if (parent == grand_parent->left) { /* the parent of our node is the left child of its grandparent... */
-            uncle = grand_parent->right;    /* ...so the uncle is the right child */
+        /* get the uncle as the child of grandparent opposite to parent */
+        uncle = parent == grand_parent->left ? grand_parent->right : grand_parent->left;
+        if (uncle != NULL && uncle->color == RED) { /* uncle and parent are both red, we can recolor and continue */
+            grand_parent->color = RED;
+            parent->color = BLACK;
+            uncle->color = BLACK;
+            node = grand_parent; /* move the focus to the grand_parent and keep iterating */
+            continue;
+        }
 
-            if (uncle != NULL && uncle->color == RED) { /* uncle and parent are both red, we can recolor */
-                grand_parent->color = RED;
-                parent->color = BLACK;
-                uncle->color = BLACK;
-                node = grand_parent; /* move the focus to the grand_parent and keep iterating */
-            } else { /* parent is red and uncle is black (NULL leafs are considered black), we need to rotate*/
-
-                if (node == parent->right) { /* "rectify" the edge if we are in a complex state */
-                    /*
+        /* parent is red and uncle is black (NULL leafs are considered black), we need to rotate*/
+        if (parent == grand_parent->left) {
+            if (node == parent->right) { /* "rectify" the edge if we are in a complex state */
+                /*
                     *           gp                  gp
                     *          /  \                /   \
                     *         p    u      =>      n     u
                     *          \                 /
                     *           n               p
                     */
-                    rotate_left(tree, parent);
+                rotate_left(tree, parent);
 
-                    /* "rename" node and parent to keep coherence */
-                    node = parent;
-                    parent = node->parent;
-                }
+                /* "rename" node and parent to keep coherence */
+                node = parent;
+                parent = node->parent;
+            }
 
-                /* fix the balance by performing a right rotation on the grandparent, update colors 
+            /* fix the balance by performing a right rotation on the grandparent, update colors 
                 * 
                 *          gp                 p
                 *         /   \             /   \
@@ -213,54 +215,44 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
                 *       /                          \
                 *      n                            u
                 */
-                rotate_right(tree, grand_parent);
-                bstnode_color_t color = parent->color;
-                parent->color = grand_parent->color;
-                grand_parent->color = color;
-                node = parent;
-            }
-        } else {                        /* the parent of our node is the right child of its grandparent... */
-            uncle = grand_parent->left; /* ...so the uncle is the left child */
-
-            if ((uncle != NULL) && (uncle->color == RED)) { /* uncle and parent are both red, we can recolor */
-                grand_parent->color = RED;
-                parent->color = BLACK;
-                uncle->color = BLACK;
-                node = grand_parent; /* move the focus to the grand_parent and keep iterating */
-            } else {
-                if (node == parent->left) { /* "rectify" the edge if we are in a complex state */
-                    /* 
-                    *          gp                gp
-                    *         /   \             /   \
-                    *        u     p     =>    u     n
-                    *             /                    \
-                    *            n                      p
-                    */
-                    rotate_right(tree, parent);
-
-                    /* "rename" node and parent to keep coherence */
-                    node = parent;
-                    parent = node->parent;
-                }
-
-                /* fix the balance by performing a right rotation on the grandparent, update colors 
-                * 
-                *          gp                 p
+            rotate_right(tree, grand_parent);
+            bstnode_color_t color = parent->color;
+            parent->color = grand_parent->color;
+            grand_parent->color = color;
+            node = parent;
+        } else {
+            if (node == parent->left) { /* "rectify" the edge if we are in a complex state */
+                /* 
+                *          gp                gp
                 *         /   \             /   \
-                *        u     p     =>    gp    n
-                *               \         /         
-                *                n       u         
+                *        u     p     =>    u     n
+                *             /                    \
+                *            n                      p
                 */
-                rotate_left(tree, grand_parent);
-                bstnode_color_t color = parent->color;
-                parent->color = grand_parent->color;
-                grand_parent->color = color;
+                rotate_right(tree, parent);
+
+                /* "rename" node and parent to keep coherence */
                 node = parent;
+                parent = node->parent;
             }
+
+            /* fix the balance by performing a right rotation on the grandparent, update colors 
+            * 
+            *          gp                 p
+            *         /   \             /   \
+            *        u     p     =>    gp    n
+            *               \         /         
+            *                n       u         
+            */
+            rotate_left(tree, grand_parent);
+            bstnode_color_t color = parent->color;
+            parent->color = grand_parent->color;
+            grand_parent->color = color;
+            node = parent;
         }
     }
 
-    tree->root->color = BLACK;
+    root->color = BLACK;
 }
 
 /**
