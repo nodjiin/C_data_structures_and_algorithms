@@ -4,6 +4,7 @@
 #include "stack_test.h"
 #include "queue_test.h"
 #include "heap_test.h"
+#include "binarysearchtree_test.h"
 
 int
 main(void) {
@@ -12,6 +13,7 @@ main(void) {
     stack_testall();
     queue_testall();
     heap_testall();
+    bstree_testall();
 
     exit(0);
 }

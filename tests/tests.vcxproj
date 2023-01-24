@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="binarysearchtree_test.c" />
     <ClCompile Include="dynamicarray_test.c" />
     <ClCompile Include="heap_test.c" />
     <ClCompile Include="linkedlist_test.c" />
@@ -143,6 +144,7 @@
     <ClCompile Include="stack_test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binarysearchtree_test.h" />
     <ClInclude Include="dynamicarray_test.h" />
     <ClInclude Include="heap_test.h" />
     <ClInclude Include="linkedlist_test.h" />
