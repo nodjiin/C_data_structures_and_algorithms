@@ -420,7 +420,7 @@ bstree_traverse(binary_search_tree_t* tree, process_node_value_fn process) {
  * \return          the number of nodes currently in the tree.
  */
 size_t
-tree_count(binary_search_tree_t* tree) {
+bstree_count(binary_search_tree_t* tree) {
     if (tree == NULL) {
         fprintf(stderr, "[tree_count] Invalid input. Faulty count request on NULL tree.\n");
         exit(INVALID_INPUT);
@@ -435,7 +435,7 @@ tree_count(binary_search_tree_t* tree) {
  * \return          true if the tree is empty, false otherwise.
  */
 bool
-tree_is_empty(binary_search_tree_t* tree) {
+bstree_is_empty(binary_search_tree_t* tree) {
     if (tree == NULL) {
         fprintf(stderr, "[tree_is_empty] Invalid input. Faulty empty check request on NULL tree.\n");
         exit(INVALID_INPUT);
