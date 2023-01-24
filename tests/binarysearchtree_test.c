@@ -9,6 +9,18 @@ bstree_construct_test(void) {
 
     tree = bstree_construct(compare);
 
+    assert(tree != NULL);
+    assert(tree->root == NULL);
+    assert(tree->compare == compare);
+    assert(tree->count == 0);
+}
+
+void
+bstree_insert_test(void) {
+    binary_search_tree_t* tree;
+
+    tree = bstree_construct(compare);
+
     /* insert 1,4,6,3,5,7,8,2,9 */
     bstree_insert(tree, TESTVAL1);
     bstree_insert(tree, TESTVAL4);
@@ -52,48 +64,120 @@ bstree_construct_test(void) {
 }
 
 void
-bstree_insert_test(void) {
-    assert(0);
-}
-
-void
 bstree_delete_test(void) {
     assert(0);
 }
 
 void
 bstree_search_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+    binary_search_tree_node_t* found_node;
+    binary_search_tree_node_t* not_found_node;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    not_found_node = bstree_search(tree, TESTVAL4);
+    found_node = bstree_search(tree, TESTVAL3);
+
+    assert(not_found_node == NULL);
+    assert(found_node != NULL);
+    assert(found_node->value == TESTVAL3);
 }
 
 void
 bstree_find_min_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+    binary_search_tree_node_t* min;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    min = bstree_find_min(tree);
+
+    assert(min->value == TESTVAL1);
 }
 
 void
 bstree_find_max_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+    binary_search_tree_node_t* max;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    max = bstree_find_min(tree);
+
+    assert(max->value == TESTVAL1);
 }
 
 void
-tree_count_test(void) {
-    assert(0);
+bstree_count_test(void) {
+    binary_search_tree_t* tree;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    assert(bstree_count(tree) == 3);
 }
 
 void
-tree_is_empty_test(void) {
-    assert(0);
+bstree_is_empty_test(void) {
+    binary_search_tree_t* tree;
+    bool is_empty, is_not_empty;
+
+    tree = bstree_construct(compare);
+    is_empty = bstree_is_empty(tree);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+    is_not_empty = !bstree_is_empty(tree);
+
+    assert(is_empty);
+    assert(is_not_empty);
+}
+
+int sum;
+
+void
+process(data_type value) {
+    sum += value;
 }
 
 void
 bstree_traverse_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    bstree_traverse(tree, process);
+
+    assert(sum == (TESTVAL1 + TESTVAL2 + TESTVAL3));
 }
 
 void
 bstree_clear_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+
+    tree = bstree_construct(compare);
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL3);
+
+    bstree_clear(&tree);
+
+    assert(tree == NULL);
 }
 
 void
@@ -104,8 +188,8 @@ bstree_testall(void) {
     bstree_search_test();
     bstree_find_min_test();
     bstree_find_max_test();
-    tree_count_test();
-    tree_is_empty_test();
+    bstree_count_test();
+    bstree_is_empty_test();
     bstree_traverse_test();
     bstree_clear_test();
 }

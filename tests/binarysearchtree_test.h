@@ -11,8 +11,8 @@ void bstree_delete_test(void);
 void bstree_search_test(void);
 void bstree_find_min_test(void);
 void bstree_find_max_test(void);
-void tree_count_test(void);
-void tree_is_empty_test(void);
+void bstree_count_test(void);
+void bstree_is_empty_test(void);
 void bstree_traverse_test(void);
 void bstree_clear_test(void);
 
