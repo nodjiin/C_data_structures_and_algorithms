@@ -299,7 +299,7 @@ search_tree(binary_search_tree_node_t* node, data_type value, data_type_compare_
     if (compare_value == 0) {
         return node;
     }
-    if (compare_value < 0) {
+    if (compare_value > 0) {
         return (search_tree(node->left, value, compare));
     } else {
         return (search_tree(node->right, value, compare));
