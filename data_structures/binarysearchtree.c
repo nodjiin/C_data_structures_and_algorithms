@@ -188,7 +188,16 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
            && (node->parent->color == RED) /* ...because its parent has its same color (red-red conflict) */
     ) {
         parent = node->parent;
+        if (parent == NULL) {
+            fprintf(stderr, "[balance_tree] Internal error. The balancing operation resulted in a malformed tree.");
+            exit(INTERNAL_ERROR);
+        }
+
         grand_parent = parent->parent;
+        if (grand_parent == NULL) {
+            fprintf(stderr, "[balance_tree] Internal error. The balancing operation resulted in a malformed tree.");
+            exit(INTERNAL_ERROR);
+        }
 
         /* get the uncle as the child of grandparent opposite to parent */
         uncle = parent == grand_parent->left ? grand_parent->right : grand_parent->left;
@@ -259,9 +268,8 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
     }
 
     if (tree->root == NULL) {
-        fprintf(stderr, "[] Internal error. The balancing operation resulted in a empty tree.");
+        fprintf(stderr, "[balance_tree] Internal error. The balancing operation resulted in a empty tree.");
         exit(INTERNAL_ERROR);
-        return;
     }
 
     tree->root->color = BLACK;
