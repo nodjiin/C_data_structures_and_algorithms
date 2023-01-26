@@ -302,6 +302,24 @@ bstree_insert(binary_search_tree_t* tree, data_type value) {
 }
 
 /**
+ * \brief           delete the given node from the tree.
+ * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       node: node to delete. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ */
+void
+bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
+    if (tree == NULL) {
+        fprintf(stderr, "[bstree_delete] Invalid input. Faulty delete request on NULL tree.\n");
+        exit(INVALID_INPUT);
+    }
+
+    if (node == NULL) {
+        fprintf(stderr, "[bstree_delete] Invalid input. Faulty delete request of NULL node.\n");
+        exit(INVALID_INPUT);
+    }
+}
+
+/**
  * \brief           recursively search a value in all the nodes of the subtree having the given node as root.
  * \param[in]       node: root node of the subtree to search into.
  * \param[in]       compare: compare function pointer.
