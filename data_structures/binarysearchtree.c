@@ -92,8 +92,6 @@ rotate_right(binary_search_tree_t* tree, binary_search_tree_node_t* root) {
     if (new_left != NULL) { /* update the parent of this new right side, if necessary */
         new_left->parent = root;
     }
-
-    return pivot; /* return the new root */
 }
 
 /**
@@ -160,6 +158,18 @@ insert_node(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
 }
 
 /**
+ * \brief           swap colors of 2 existing tree nodes.
+ * \param[in]       a: first node.
+ * \param[in]       b: second node.
+ */
+static void
+swap_colors(binary_search_tree_node_t* a, binary_search_tree_node_t* b) {
+    bstnode_color_t temp = a->color;
+    a->color = b->color;
+    b->color = temp;
+}
+
+/**
  * \brief           balance an existing tree.
  * \param[in]       tree: pointer to the tree.
  * \param[in]       node: node from which start balancing.
@@ -202,7 +212,7 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
                     */
                 rotate_left(tree, parent);
 
-                /* "rename" node and parent to keep coherence */
+                /* swap node and parent variables to adapt to the new configuration */
                 node = parent;
                 parent = node->parent;
             }
@@ -216,9 +226,7 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
                 *      n                            u
                 */
             rotate_right(tree, grand_parent);
-            bstnode_color_t color = parent->color;
-            parent->color = grand_parent->color;
-            grand_parent->color = color;
+            swap_colors(parent, grand_parent);
             node = parent;
         } else {
             if (node == parent->left) { /* "rectify" the edge if we are in a complex state */
@@ -231,7 +239,7 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
                 */
                 rotate_right(tree, parent);
 
-                /* "rename" node and parent to keep coherence */
+                /* swap node and parent variables to adapt to the new configuration */
                 node = parent;
                 parent = node->parent;
             }
@@ -245,11 +253,15 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
             *                n       u         
             */
             rotate_left(tree, grand_parent);
-            bstnode_color_t color = parent->color;
-            parent->color = grand_parent->color;
-            grand_parent->color = color;
+            swap_colors(parent, grand_parent);
             node = parent;
         }
+    }
+
+    if (tree->root == NULL) {
+        fprintf(stderr, "[] Internal error. The balancing operation resulted in a empty tree.");
+        exit(INTERNAL_ERROR);
+        return;
     }
 
     tree->root->color = BLACK;
