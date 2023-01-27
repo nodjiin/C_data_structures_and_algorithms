@@ -170,12 +170,12 @@ swap_colors(binary_search_tree_node_t* a, binary_search_tree_node_t* b) {
 }
 
 /**
- * \brief           balance an existing tree.
+ * \brief           balance an existing tree after the insertion of a new node.
  * \param[in]       tree: pointer to the tree.
  * \param[in]       node: node from which start balancing.
  */
 static void
-balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
+balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
     binary_search_tree_node_t *root, *parent, *grand_parent, *uncle;
 
     root = tree->root;
@@ -189,13 +189,17 @@ balance_tree(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
     ) {
         parent = node->parent;
         if (parent == NULL) {
-            fprintf(stderr, "[balance_tree] Internal error. The balancing operation resulted in a malformed tree.");
+            fprintf(
+                stderr,
+                "[balance_tree_after_insert] Internal error. The balancing operation resulted in a malformed tree.");
             exit(INTERNAL_ERROR);
         }
 
         grand_parent = parent->parent;
         if (grand_parent == NULL) {
-            fprintf(stderr, "[balance_tree] Internal error. The balancing operation resulted in a malformed tree.");
+            fprintf(
+                stderr,
+                "[balance_tree_after_insert] Internal error. The balancing operation resulted in a malformed tree.");
             exit(INTERNAL_ERROR);
         }
 
@@ -295,10 +299,134 @@ bstree_insert(binary_search_tree_t* tree, data_type value) {
 
         new_node = construct_node(value, RED);
         insert_node(tree, new_node);
-        balance_tree(tree, new_node);
+        balance_tree_after_insert(tree, new_node);
     }
 
     tree->count++;
+}
+
+static void
+rb_transplant(binary_search_tree_t* t, binary_search_tree_node_t* u, binary_search_tree_node_t* v) {
+    if (u->parent == NULL) {
+        t->root = v;
+    } else if (u == u->parent->left) {
+        u->parent->left = v;
+    } else {
+        u->parent->right = v;
+    }
+
+    if (v != NULL) {
+        v->parent = u->parent;
+    }
+}
+
+static binary_search_tree_node_t*
+find_subtree_min(binary_search_tree_node_t* x) {
+    while (x->left != NULL) {
+        x = x->left;
+    }
+    return x;
+}
+
+/**
+ * \brief           balance an existing tree after the deletion of a node.
+ * \param[in]       tree: pointer to the tree.
+ * \param[in]       node: node that replaced the deleted value, from which we should start balancing.
+ * \param[in]       leaf_parent: parent of the node. We are forced to pass this parameter as we are not using a special struct to handle empty leafs and we might need to handle
+ *                  `NULL` node values.
+ */
+static void
+balance_tree_after_delete(binary_search_tree_t* t, binary_search_tree_node_t* x,
+                          binary_search_tree_node_t* leaf_parent) {
+    binary_search_tree_node_t *parent, *w;
+
+    while (x != t->root && (x == NULL || x->color == BLACK)) {
+        parent = x != NULL ? x->parent : leaf_parent;
+        if (parent == NULL) {
+            fprintf(
+                stderr,
+                "[balance_tree_after_delete] Internal error. The balancing operation resulted in a malformed tree.");
+            exit(INTERNAL_ERROR);
+        }
+
+        if (x == parent->left) {
+            w = parent->right;
+            if (w == NULL) {
+                fprintf(stderr, "[balance_tree_after_delete] Internal error. The balancing operation resulted in a "
+                                "malformed tree.");
+                exit(INTERNAL_ERROR);
+            }
+
+            if (w->color == RED) {
+                w->color = BLACK;
+                parent->color = RED;
+                rotate_left(t, parent);
+                w = parent->right;
+            }
+
+            if ((w->left == NULL || w->left->color == BLACK) && (w->right == NULL || w->right->color == BLACK)) {
+                w->color = RED;
+                x = parent;
+            } else {
+                if (w->right == NULL || w->right->color == BLACK) {
+                    if (w->left != NULL) {
+                        w->left->color = BLACK;
+                    }
+
+                    w->color = RED;
+                    rotate_right(t, w);
+                    w = parent->right;
+                }
+                w->color = parent->color;
+                parent->color = BLACK;
+
+                if (w->right != NULL) {
+                    w->right->color = BLACK;
+                }
+
+                rotate_left(t, parent);
+                x = t->root;
+            }
+        } else {
+            w = parent->left;
+            if (w == NULL) {
+                fprintf(stderr, "[balance_tree_after_delete] Internal error. The balancing operation resulted in a "
+                                "malformed tree.");
+                exit(INTERNAL_ERROR);
+            }
+
+            if (w->color == RED) {
+                w->color = BLACK;
+                parent->color = RED;
+                rotate_right(t, parent);
+                w = parent->left;
+            }
+            if ((w->left == NULL || w->left->color == BLACK) && (w->right == NULL || w->right->color == BLACK)) {
+                w->color = RED;
+                x = parent;
+            } else {
+                if (w->left == NULL || w->left->color == BLACK) {
+                    w->right->color = BLACK;
+                    w->color = RED;
+                    rotate_left(t, w);
+                    w = parent->left;
+                }
+                w->color = parent->color;
+                parent->color = BLACK;
+
+                if (w->left != NULL) {
+                    w->left->color = BLACK;
+                }
+
+                rotate_right(t, parent);
+                x = t->root;
+            }
+        }
+    }
+
+    if (x != NULL) {
+        x->color = BLACK;
+    }
 }
 
 /**
@@ -317,6 +445,46 @@ bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
         fprintf(stderr, "[bstree_delete] Invalid input. Faulty delete request of NULL node.\n");
         exit(INVALID_INPUT);
     }
+
+    if (node == tree->root && node->left == NULL && node->right == NULL) {
+        free_s(tree->root);
+        return;
+    }
+
+    binary_search_tree_node_t* y = node;
+    binary_search_tree_node_t* x;
+
+    bstnode_color_t y_original_color = y->color;
+    if (node->left == NULL) {
+        x = node->right;
+        rb_transplant(tree, node, node->right);
+    } else if (node->right == NULL) {
+        x = node->left;
+        rb_transplant(tree, node, node->left);
+    } else {
+        y = find_subtree_min(node->right);
+        y_original_color = y->color;
+        x = y->right;
+        if (y->parent == node) {
+            if (x != NULL) {
+                x->parent = node;
+            }
+        } else {
+            rb_transplant(tree, y, y->right);
+            y->right = node->right;
+            y->right->parent = y;
+        }
+        rb_transplant(tree, node, y);
+        y->left = node->left;
+        y->left->parent = y;
+        y->color = node->color;
+    }
+
+    if (y_original_color == BLACK) {
+        balance_tree_after_delete(tree, x, node->parent);
+    }
+
+    free_s(node);
 }
 
 /**

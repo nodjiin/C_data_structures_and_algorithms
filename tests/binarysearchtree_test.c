@@ -1,3 +1,8 @@
+/* 
+* if you are having issues visualizing the red black tree structure during insertion/deletions try out this tool:
+* https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+*/
+
 #include <assert.h>
 #include "binarysearchtree_test.h"
 #include "data_structures/binarysearchtree.h"
@@ -65,7 +70,96 @@ bstree_insert_test(void) {
 
 void
 bstree_delete_test(void) {
-    assert(0);
+    binary_search_tree_t* tree;
+    binary_search_tree_node_t* to_delete;
+    tree = bstree_construct(compare);
+
+    /* insert 1,4,6,3,5,7,8,2,9 */
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL4);
+    bstree_insert(tree, TESTVAL6);
+    bstree_insert(tree, TESTVAL3);
+    bstree_insert(tree, TESTVAL5);
+    bstree_insert(tree, TESTVAL7);
+    bstree_insert(tree, TESTVAL8);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL9);
+
+    to_delete = bstree_search(tree, TESTVAL8);
+    bstree_delete(tree, to_delete);
+    to_delete = bstree_search(tree, TESTVAL6);
+    bstree_delete(tree, to_delete);
+
+    /*
+    *	we expect a tree with the following structure:
+    *	
+    *	                     4
+    *                      /    \
+    *                    2       7
+    *                  /   \    /  \
+    *                 1     3  5    9
+    */
+    assert(tree->root->value == TESTVAL4); /* root */
+    assert(tree->root->color == BLACK);
+    assert(tree->root->left->value == TESTVAL2); /* left subtree */
+    assert(tree->root->left->color == BLACK);
+    assert(tree->root->left->left->value == TESTVAL1);
+    assert(tree->root->left->left->color == RED);
+    assert(tree->root->left->right->value == TESTVAL3);
+    assert(tree->root->left->right->color == RED);
+    assert(tree->root->right->value == TESTVAL7); /* right subtree */
+    assert(tree->root->right->color == RED);
+    assert(tree->root->right->left->value == TESTVAL5);
+    assert(tree->root->right->left->color == BLACK);
+    assert(tree->root->right->right->value == TESTVAL9);
+    assert(tree->root->right->right->color == BLACK);
+}
+
+void
+bstree_delete_test_2(void) {
+    binary_search_tree_t* tree;
+    binary_search_tree_node_t* to_delete;
+    tree = bstree_construct(compare);
+
+    /* insert 1,4,6,3,5,7,8,2,9 */
+    bstree_insert(tree, TESTVAL1);
+    bstree_insert(tree, TESTVAL4);
+    bstree_insert(tree, TESTVAL6);
+    bstree_insert(tree, TESTVAL3);
+    bstree_insert(tree, TESTVAL5);
+    bstree_insert(tree, TESTVAL7);
+    bstree_insert(tree, TESTVAL8);
+    bstree_insert(tree, TESTVAL2);
+    bstree_insert(tree, TESTVAL9);
+
+    to_delete = bstree_search(tree, TESTVAL1);
+    bstree_delete(tree, to_delete);
+    to_delete = bstree_search(tree, TESTVAL2);
+    bstree_delete(tree, to_delete);
+    to_delete = bstree_search(tree, TESTVAL3);
+    bstree_delete(tree, to_delete);
+
+    /*
+    *	we expect a tree with the following structure:
+    *	
+    *	                     6
+    *                      /    \
+    *                    4       8
+    *                      \    /  \
+    *                       5  7    9
+    */
+    assert(tree->root->value == TESTVAL6); /* root */
+    assert(tree->root->color == BLACK);
+    assert(tree->root->left->value == TESTVAL4); /* left subtree */
+    assert(tree->root->left->color == BLACK);
+    assert(tree->root->left->right->value == TESTVAL5);
+    assert(tree->root->left->right->color == RED);
+    assert(tree->root->right->value == TESTVAL8); /* right subtree */
+    assert(tree->root->right->color == BLACK);
+    assert(tree->root->right->left->value == TESTVAL7);
+    assert(tree->root->right->left->color == RED);
+    assert(tree->root->right->right->value == TESTVAL9);
+    assert(tree->root->right->right->color == RED);
 }
 
 void
@@ -185,6 +279,7 @@ bstree_testall(void) {
     bstree_construct_test();
     bstree_insert_test();
     bstree_delete_test();
+    bstree_delete_test_2();
     bstree_search_test();
     bstree_find_min_test();
     bstree_find_max_test();
