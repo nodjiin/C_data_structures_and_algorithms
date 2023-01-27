@@ -305,27 +305,43 @@ bstree_insert(binary_search_tree_t* tree, data_type value) {
     tree->count++;
 }
 
+/**
+ * \brief           replace an existing node in the tree.
+ * \param[in]       tree: tree pointer. 
+ * \param[in]       node_to_be_replaced: node which will be replaced. 
+ * \param[in]       replacement: node that will replace the existing node. It can be NULL.
+ */
 static void
-rb_transplant(binary_search_tree_t* t, binary_search_tree_node_t* u, binary_search_tree_node_t* v) {
-    if (u->parent == NULL) {
-        t->root = v;
-    } else if (u == u->parent->left) {
-        u->parent->left = v;
+replace_node(binary_search_tree_t* tree, binary_search_tree_node_t* node_to_be_replaced,
+             binary_search_tree_node_t* replacement) {
+    if (node_to_be_replaced->parent == NULL) {
+        tree->root = replacement;
+    } else if (node_to_be_replaced == node_to_be_replaced->parent->left) {
+        node_to_be_replaced->parent->left = replacement;
     } else {
-        u->parent->right = v;
+        node_to_be_replaced->parent->right = replacement;
     }
 
-    if (v != NULL) {
-        v->parent = u->parent;
+    if (replacement != NULL) {
+        replacement->parent = node_to_be_replaced->parent;
     }
 }
 
+/**
+ * \brief           find the node containing the minimum value in the given subtree.
+ * \param[in]       node: root node of the subtree. 
+ * \return          the minimum subtree node.
+ */
 static binary_search_tree_node_t*
-find_subtree_min(binary_search_tree_node_t* x) {
-    while (x->left != NULL) {
-        x = x->left;
+find_subtree_min(binary_search_tree_node_t* node) {
+    if (node == NULL) {
+        return NULL;
     }
-    return x;
+
+    while (node->left != NULL) {
+        node = node->left;
+    }
+    return node;
 }
 
 /**
@@ -436,6 +452,9 @@ balance_tree_after_delete(binary_search_tree_t* t, binary_search_tree_node_t* x,
  */
 void
 bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
+    binary_search_tree_node_t* replacement;
+    bstnode_color_t node_color;
+
     if (tree == NULL) {
         fprintf(stderr, "[bstree_delete] Invalid input. Faulty delete request on NULL tree.\n");
         exit(INVALID_INPUT);
@@ -451,37 +470,35 @@ bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
         return;
     }
 
-    binary_search_tree_node_t* y = node;
-    binary_search_tree_node_t* x;
+    node_color = node->color;
 
-    bstnode_color_t y_original_color = y->color;
-    if (node->left == NULL) {
-        x = node->right;
-        rb_transplant(tree, node, node->right);
-    } else if (node->right == NULL) {
-        x = node->left;
-        rb_transplant(tree, node, node->left);
-    } else {
-        y = find_subtree_min(node->right);
-        y_original_color = y->color;
-        x = y->right;
-        if (y->parent == node) {
-            if (x != NULL) {
-                x->parent = node;
-            }
-        } else {
-            rb_transplant(tree, y, y->right);
-            y->right = node->right;
-            y->right->parent = y;
+    if (node->left == NULL) { /* the node has got 1 child on its right side, we can use it as replacement... */
+        replacement = node->right;
+        replace_node(tree, node, replacement);
+    } else if (node->right == NULL) { /* ...and vice-versa on the left side */
+        replacement = node->left;
+        replace_node(tree, node, replacement);
+    } else { /* if the node has got 2 child, we look for the minimum value of it's right subtree */
+        binary_search_tree_node_t* min;
+
+        min = find_subtree_min(node->right);
+        node_color = min->color;
+        replacement = min->right; /* replacement in this case will replace min, and not node */
+
+        if (min->parent != node) { /* if min is not a direct child of the node, we need to replace it first */
+            replace_node(tree, min, replacement);
+            min->right = node->right;
+            min->right->parent = min;
         }
-        rb_transplant(tree, node, y);
-        y->left = node->left;
-        y->left->parent = y;
-        y->color = node->color;
+
+        replace_node(tree, node, min); /* and then we use min to replace the node itself */
+        min->left = node->left;
+        min->left->parent = min;
+        min->color = node->color;
     }
 
-    if (y_original_color == BLACK) {
-        balance_tree_after_delete(tree, x, node->parent);
+    if (node_color == BLACK) {
+        balance_tree_after_delete(tree, replacement, node->parent);
     }
 
     free_s(node);
