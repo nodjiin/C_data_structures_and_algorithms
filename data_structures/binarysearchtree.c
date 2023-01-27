@@ -360,6 +360,8 @@ find_subtree_min(binary_search_tree_node_t* node) {
  * \param[in]       node: node that replaced the deleted value, from which we should start balancing.
  * \param[in]       leaf_parent: parent of the node. We are forced to pass this parameter as we are not using a special struct to handle empty leafs and we might need to handle
  *                  `NULL` node values.
+ * \note            this function is a bit verbose, and it could be shortened by a couple of generic purposes utility functions BUT I'm going to leave it this way, 
+ *                  to make it easier for anyone looking to understand the balancing process of a red-black tree delete operation.
  */
 static void
 balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node,
@@ -383,25 +385,45 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
                 exit(INTERNAL_ERROR);
             }
 
-            /* if the sibling is red, we recolor it and the node, and then left rotate the parent*/
+            /* if the sibling is red, we recolor it and the node, and then left rotate the parent */
             if (sibling->color == RED) {
-                /* TODO tree drawing */
-
+                /*
+				*           p(B)                s(B)
+				*         /   \		           /   \
+				*        n(B)  s(R)    =>      p(R)  c2(B)
+				*             /    \         /   \
+				*            c1(B) c2(B)    n(B)  c1(B) <-the new sibling of n is c1, and we moved s up a level
+				*/
                 sibling->color = BLACK;
                 parent->color = RED;
                 rotate_left(tree, parent);
                 sibling = parent->right; /* update sibling after the rotation*/
             }
 
-            /* if both sibling children are black, we can recolor it and move the analysis to parent */
+            /* if both sibling children are black, we can recolor it to keep black height consistent and move the analysis to parent */
             if ((sibling->left == NULL || sibling->left->color == BLACK)
                 && (sibling->right == NULL || sibling->right->color == BLACK)) {
+                /*
+                *           p                       p <- switch focus on the parent   
+                *         /   \	                  /   \
+                *        n(B)  s(B)    =>      n(B)   s(R)
+                *             /    \                 /   \
+                *            c1(B) c2(B)            c1(B)  c2(B)
+                */
                 sibling->color = RED;
                 node = parent;
                 continue; /* go to next iteration */
             }
 
+            /* the right children is black, the left is red. we can get rid of this scenario by transforming it */
             if (sibling->right == NULL || sibling->right->color == BLACK) {
+                /*
+				*           p                      p   
+				*         /   \	                 /    \
+				*        n(B)  s(B)    =>      n(B)   c1(B)  <= note that c1 was red, so we are sure that its left children will be black
+				*             /    \                   /  \
+				*            c1(R) c2(B)             x(B) s(R)
+				*/
                 if (sibling->left != NULL) {
                     sibling->left->color = BLACK;
                 }
@@ -410,6 +432,17 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
                 rotate_right(tree, sibling);
                 sibling = parent->right;
             }
+
+            /* with the previous condition we are sure that the right children is red, and the left children is black. 
+			*  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
+			*  luckily we can do so simply by recoloring and rotating.
+			* 
+			*           p(x)                 s(x) <- preserve parent color after the rotation
+			*         /   \	                /    \
+			*        n(B)  s(B)    =>      p(B)   c2(B) 
+			*             /    \          /  \       
+			*            c1(B) c2(R)    n(B)  c1(B) 
+			*/
             sibling->color = parent->color;
             parent->color = BLACK;
 
@@ -418,7 +451,7 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             rotate_left(tree, parent);
-        } else {
+        } else { /* node on the right, sibling on the left */
             sibling = parent->left;
             if (sibling == NULL) {
                 fprintf(stderr, "[balance_tree_after_delete] Internal error. The balancing operation resulted in a "
@@ -428,28 +461,62 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
 
             /* if the sibling is red, we recolor it and the node, and then right rotate the parent*/
             if (sibling->color == RED) {
-                /* TODO tree drawing */
-
+                /*
+				*           p(B)                s(B)
+				*         /   \		           /   \
+				*        s(R)  n(B)    =>    c1(B) p(R)  
+				*      /   \                       /  \
+				*     c1(B) c2(B)               c2(B) n(B) <-the new sibling of n is c2, and we moved s up a level
+				*/
                 sibling->color = BLACK;
                 parent->color = RED;
                 rotate_right(tree, parent);
                 sibling = parent->left; /* update sibling after the rotation*/
             }
 
-            /* if both sibling children are black, we can recolor it and move the analysis to parent */
+            /* if both sibling children are black, we can recolor it to keep black height consistent and move the analysis to parent */
             if ((sibling->left == NULL || sibling->left->color == BLACK)
                 && (sibling->right == NULL || sibling->right->color == BLACK)) {
+                /*
+                *           p                       p <- switch focus on the parent   
+                *         /   \	                  /   \
+                *        s(B)  n(B)    =>      s(R)   n(B)
+                *       /    \                 /   \
+                *     c1(B) c2(B)           c1(B)  c2(B)
+                */
                 sibling->color = RED;
                 node = parent;
                 continue; /* go to next iteration */
             }
 
+            /* the left children is black, the right is red. we can get rid of this scenario by transforming it */
             if (sibling->left == NULL || sibling->left->color == BLACK) {
-                sibling->right->color = BLACK;
+                /*
+                *           p                       p   
+                *         /   \	                  /   \
+                *        s(B)  n(B)    =>      c2(R)   n(B) 
+                *       /    \                 /  \ 
+                *     c1(B) c2(R)           s(B)  x(B) <= note that c2 was red, so we are sure that its right children will be black
+                */
+                if (sibling->right != NULL) {
+                    sibling->right->color = BLACK;
+                }
+
                 sibling->color = RED;
                 rotate_left(tree, sibling);
                 sibling = parent->left;
             }
+
+            /* with the previous condition we are sure that the left children is red, and the right children is black. 
+			*  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
+			*  luckily we can do so simply by recoloring and rotating.
+			* 
+            *           p(x)                   s(x) <- preserve parent color after the rotation
+            *         /   \	                  /   \
+            *        s(B)  n(B)    =>      c1(b)   p(B) 
+            *       /    \                        /   \
+            *     c1(B) c2(R)                   c2(B)  n(B)
+            */
             sibling->color = parent->color;
             parent->color = BLACK;
 
