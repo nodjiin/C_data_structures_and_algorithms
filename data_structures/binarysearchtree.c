@@ -206,23 +206,33 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
         /* get the uncle as the child of grandparent opposite to parent */
         uncle = parent == grand_parent->left ? grand_parent->right : grand_parent->left;
         if (uncle != NULL && uncle->color == RED) { /* uncle and parent are both red, we can recolor and continue */
+            /*
+			*           gp(B)               gp(R)
+			*          /  \                /   \
+			*         p(R) u(R)   =>      p(B)  u(B)
+			*        /                   /
+			*       n(R)                n(R)           
+			* 
+			*  the position of grandfather, uncle and father do not matter in this configuration, since we do not have to perform any rotations.
+			*/
             grand_parent->color = RED;
             parent->color = BLACK;
             uncle->color = BLACK;
-            node = grand_parent; /* move the focus to the grand_parent and keep iterating */
-            continue;
+
+            node = grand_parent; /* move the focus to grand_parent... */
+            continue;            /*... and keep iterating */
         }
 
         /* parent is red and uncle is black (NULL leafs are considered black), we need to rotate*/
         if (parent == grand_parent->left) {
             if (node == parent->right) { /* "rectify" the edge if we are in a complex state */
                 /*
-                    *           gp                  gp
-                    *          /  \                /   \
-                    *         p    u      =>      n     u
-                    *          \                 /
-                    *           n               p
-                    */
+				*           gp                  gp
+				*          /  \                /   \
+				*         p    u      =>      n     u
+				*          \                 /
+				*           n               p
+				*/
                 rotate_left(tree, parent);
 
                 /* swap node and parent variables to adapt to the new configuration */
@@ -231,25 +241,25 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* fix the balance by performing a right rotation on the grandparent, update colors 
-                * 
-                *          gp                 p
-                *         /   \             /   \
-                *        p     u     =>    n     gp
-                *       /                          \
-                *      n                            u
-                */
+			* 
+			*          gp(B)              p(B)
+			*         /   \             /   \
+			*        p(R)  u(B)  =>    n(R)  gp(R)
+			*       /                          \
+			*      n(R)                         u(B)
+			*/
             rotate_right(tree, grand_parent);
             swap_colors(parent, grand_parent);
             node = parent;
         } else {
             if (node == parent->left) { /* "rectify" the edge if we are in a complex state */
                 /* 
-                *          gp                gp
-                *         /   \             /   \
-                *        u     p     =>    u     n
-                *             /                    \
-                *            n                      p
-                */
+				*          gp                gp
+				*         /   \             /   \
+				*        u     p     =>    u     n
+				*             /                    \
+				*            n                      p
+				*/
                 rotate_right(tree, parent);
 
                 /* swap node and parent variables to adapt to the new configuration */
@@ -258,13 +268,13 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* fix the balance by performing a right rotation on the grandparent, update colors 
-            * 
-            *          gp                 p
-            *         /   \             /   \
-            *        u     p     =>    gp    n
-            *               \         /         
-            *                n       u         
-            */
+			* 
+			*          gp(B)              p(B)
+			*         /   \             /   \
+			*        u(B)  p(R)  =>    gp(R) n(R)
+			*               \         /         
+			*                n(R)    u(B)      
+			*/
             rotate_left(tree, grand_parent);
             swap_colors(parent, grand_parent);
             node = parent;
