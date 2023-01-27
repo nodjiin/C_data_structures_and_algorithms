@@ -352,12 +352,12 @@ find_subtree_min(binary_search_tree_node_t* node) {
  *                  `NULL` node values.
  */
 static void
-balance_tree_after_delete(binary_search_tree_t* t, binary_search_tree_node_t* x,
+balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node,
                           binary_search_tree_node_t* leaf_parent) {
-    binary_search_tree_node_t *parent, *w;
+    binary_search_tree_node_t *parent, *sibling;
 
-    while (x != t->root && (x == NULL || x->color == BLACK)) {
-        parent = x != NULL ? x->parent : leaf_parent;
+    while (node != tree->root && (node == NULL || node->color == BLACK)) {
+        parent = node != NULL ? node->parent : leaf_parent;
         if (parent == NULL) {
             fprintf(
                 stderr,
@@ -365,83 +365,96 @@ balance_tree_after_delete(binary_search_tree_t* t, binary_search_tree_node_t* x,
             exit(INTERNAL_ERROR);
         }
 
-        if (x == parent->left) {
-            w = parent->right;
-            if (w == NULL) {
+        if (node == parent->left) { /* node on the left, sibling on the right */
+            sibling = parent->right;
+            if (sibling == NULL) {
                 fprintf(stderr, "[balance_tree_after_delete] Internal error. The balancing operation resulted in a "
                                 "malformed tree.");
                 exit(INTERNAL_ERROR);
             }
 
-            if (w->color == RED) {
-                w->color = BLACK;
+            /* if the sibling is red, we recolor it and the node, and then left rotate the parent*/
+            if (sibling->color == RED) {
+                /* TODO tree drawing */
+
+                sibling->color = BLACK;
                 parent->color = RED;
-                rotate_left(t, parent);
-                w = parent->right;
+                rotate_left(tree, parent);
+                sibling = parent->right; /* update sibling after the rotation*/
             }
 
-            if ((w->left == NULL || w->left->color == BLACK) && (w->right == NULL || w->right->color == BLACK)) {
-                w->color = RED;
-                x = parent;
-            } else {
-                if (w->right == NULL || w->right->color == BLACK) {
-                    if (w->left != NULL) {
-                        w->left->color = BLACK;
-                    }
-
-                    w->color = RED;
-                    rotate_right(t, w);
-                    w = parent->right;
-                }
-                w->color = parent->color;
-                parent->color = BLACK;
-
-                if (w->right != NULL) {
-                    w->right->color = BLACK;
-                }
-
-                rotate_left(t, parent);
-                x = t->root;
+            /* if both sibling children are black, we can recolor it and move the analysis to parent */
+            if ((sibling->left == NULL || sibling->left->color == BLACK)
+                && (sibling->right == NULL || sibling->right->color == BLACK)) {
+                sibling->color = RED;
+                node = parent;
+                continue; /* go to next iteration */
             }
+
+            if (sibling->right == NULL || sibling->right->color == BLACK) {
+                if (sibling->left != NULL) {
+                    sibling->left->color = BLACK;
+                }
+
+                sibling->color = RED;
+                rotate_right(tree, sibling);
+                sibling = parent->right;
+            }
+            sibling->color = parent->color;
+            parent->color = BLACK;
+
+            if (sibling->right != NULL) {
+                sibling->right->color = BLACK;
+            }
+
+            rotate_left(tree, parent);
         } else {
-            w = parent->left;
-            if (w == NULL) {
+            sibling = parent->left;
+            if (sibling == NULL) {
                 fprintf(stderr, "[balance_tree_after_delete] Internal error. The balancing operation resulted in a "
                                 "malformed tree.");
                 exit(INTERNAL_ERROR);
             }
 
-            if (w->color == RED) {
-                w->color = BLACK;
+            /* if the sibling is red, we recolor it and the node, and then right rotate the parent*/
+            if (sibling->color == RED) {
+                /* TODO tree drawing */
+
+                sibling->color = BLACK;
                 parent->color = RED;
-                rotate_right(t, parent);
-                w = parent->left;
+                rotate_right(tree, parent);
+                sibling = parent->left; /* update sibling after the rotation*/
             }
-            if ((w->left == NULL || w->left->color == BLACK) && (w->right == NULL || w->right->color == BLACK)) {
-                w->color = RED;
-                x = parent;
-            } else {
-                if (w->left == NULL || w->left->color == BLACK) {
-                    w->right->color = BLACK;
-                    w->color = RED;
-                    rotate_left(t, w);
-                    w = parent->left;
-                }
-                w->color = parent->color;
-                parent->color = BLACK;
 
-                if (w->left != NULL) {
-                    w->left->color = BLACK;
-                }
-
-                rotate_right(t, parent);
-                x = t->root;
+            /* if both sibling children are black, we can recolor it and move the analysis to parent */
+            if ((sibling->left == NULL || sibling->left->color == BLACK)
+                && (sibling->right == NULL || sibling->right->color == BLACK)) {
+                sibling->color = RED;
+                node = parent;
+                continue; /* go to next iteration */
             }
+
+            if (sibling->left == NULL || sibling->left->color == BLACK) {
+                sibling->right->color = BLACK;
+                sibling->color = RED;
+                rotate_left(tree, sibling);
+                sibling = parent->left;
+            }
+            sibling->color = parent->color;
+            parent->color = BLACK;
+
+            if (sibling->left != NULL) {
+                sibling->left->color = BLACK;
+            }
+
+            rotate_right(tree, parent);
         }
+
+        node = tree->root; /* move reference to root and end the cycle */
     }
 
-    if (x != NULL) {
-        x->color = BLACK;
+    if (node != NULL) {
+        node->color = BLACK;
     }
 }
 
