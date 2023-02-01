@@ -592,6 +592,7 @@ bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
     }
 
     free_s(node);
+    tree->count--;
 }
 
 /**
