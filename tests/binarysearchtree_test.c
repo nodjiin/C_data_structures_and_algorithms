@@ -48,6 +48,7 @@ bstree_insert_test(void) {
     *                             /   \
     *                            7     9
     */
+    assert(tree->count == 9);
     assert(tree->root->value == TESTVAL4); /* root */
     assert(tree->root->color == BLACK);
     assert(tree->root->left->value == TESTVAL2); /* left subtree */
@@ -99,6 +100,7 @@ bstree_delete_test(void) {
     *                  /   \    /  \
     *                 1     3  5    9
     */
+    assert(tree->count == 7);
     assert(tree->root->value == TESTVAL4); /* root */
     assert(tree->root->color == BLACK);
     assert(tree->root->left->value == TESTVAL2); /* left subtree */
@@ -148,6 +150,7 @@ bstree_delete_test_2(void) {
     *                      \    /  \
     *                       5  7    9
     */
+    assert(tree->count == 6);
     assert(tree->root->value == TESTVAL6); /* root */
     assert(tree->root->color == BLACK);
     assert(tree->root->left->value == TESTVAL4); /* left subtree */
