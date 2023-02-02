@@ -17,7 +17,7 @@ extern "C" {
 /**
  * \brief           hash function used to bin a key in the dictionary.
  */
-typedef int (*hash_key_fn)(key_type key);
+typedef size_t (*hash_key_fn)(key_type key);
 
 /**
  * \brief           key/value pair structure stored in the hash table.
