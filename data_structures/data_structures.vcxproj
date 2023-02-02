@@ -131,6 +131,7 @@
     <ClInclude Include="datatype.h" />
     <ClInclude Include="dynamicarray.h" />
     <ClInclude Include="exitcodes.h" />
+    <ClInclude Include="hashtable_primes.h" />
     <ClInclude Include="heap.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="memalloc.h" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="binarysearchtree.c" />
     <ClCompile Include="dynamicarray.c" />
+    <ClCompile Include="hashtable.c" />
     <ClCompile Include="hashtable.h" />
     <ClCompile Include="heap.c" />
     <ClCompile Include="linkedlist.c" />

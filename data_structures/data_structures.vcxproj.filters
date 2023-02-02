@@ -42,6 +42,9 @@
     <ClInclude Include="binarysearchtree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hashtable_primes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="linkedlist.c">
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="hashtable.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hashtable.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
