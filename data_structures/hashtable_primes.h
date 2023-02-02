@@ -1,4 +1,16 @@
 
+/**
+ * \file			hashtable_prime.h
+ * \brief           header file containing the prime lookup table used on hash table resizing.
+ */
+
+#ifndef HASHTABLE_PRIMES
+#define HASHTABLE_PRIMES
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 #include <stdlib.h>
 
 #define PRIME_NUMBERS_64BIT 62
@@ -70,3 +82,9 @@ static const size_t hashtable_primes[PRIME_NUMBERS_64BIT] = {
     /* 60    */ 9223372036854775783ull,
     /* 61    */ 18446744073709551557ull,
 };
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+#endif // !HASHTABLE_PRIMES
