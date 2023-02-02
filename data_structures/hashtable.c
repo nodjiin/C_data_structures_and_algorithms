@@ -1,3 +1,8 @@
+/**
+ * \file            hashtable.c
+ * \brief           source file containing the definition of hash table operations.
+ */
+
 #include <stdio.h>
 #include "exitcodes.h"
 #include "hashtable.h"
