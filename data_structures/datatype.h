@@ -36,6 +36,11 @@ typedef int data_type;
  */
 typedef int (*data_type_compare_fn)(const data_type a, const data_type b);
 
+/**
+ * \brief           data type of the key values used in the data structures containing a key/value pair in this library.
+ */
+typedef char* key_type;
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -65,5 +65,8 @@
     <ClCompile Include="binarysearchtree.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="hashtable.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

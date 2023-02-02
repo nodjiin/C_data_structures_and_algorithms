@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="binarysearchtree.c" />
     <ClCompile Include="dynamicarray.c" />
+    <ClCompile Include="hashtable.h" />
     <ClCompile Include="heap.c" />
     <ClCompile Include="linkedlist.c" />
     <ClCompile Include="memalloc.c" />
