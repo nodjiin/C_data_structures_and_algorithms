@@ -49,9 +49,9 @@ typedef struct {
 } hashtable_t;
 
 __declspec(dllexport) hashtable_t* htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash);
-__declspec(dllexport) data_type htable_search(hashtable_t* htable, key_type key, data_type value);
+__declspec(dllexport) data_type htable_search(hashtable_t* htable, key_type key);
 __declspec(dllexport) void htable_insert(hashtable_t* htable, key_type key, data_type value);
-__declspec(dllexport) void htable_delete(hashtable_t* htable, key_type key, data_type value);
+__declspec(dllexport) void htable_delete(hashtable_t* htable, key_type key);
 __declspec(dllexport) void htable_clear(hashtable_t** htable);
 
 #ifdef __cplusplus
