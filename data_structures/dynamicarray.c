@@ -22,6 +22,7 @@ darray_construct(size_t initial_size) {
 
     if (initial_size == 0) {
         fprintf(stderr, "[darray_construct] Invalid input. Faulty construct request with size 0.\n");
+        exit(INVALID_INPUT);
     }
 
     new_array = malloc_s(sizeof(dynamic_array_t));
