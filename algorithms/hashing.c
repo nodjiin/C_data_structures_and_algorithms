@@ -16,7 +16,8 @@ hash_djb2(const unsigned char* string, size_t string_length) {
 
     hash = 5381; /* B. has chosen this number as testing showed results of fewer collisions and better avalanching. */
     while (string_length--) {
-        hash = ((hash << 5) + hash) + *string++;
+        hash = ((hash << 5) + hash) + *string;
+        string++;
     }
 
     return hash;
