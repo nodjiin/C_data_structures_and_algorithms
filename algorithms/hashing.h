@@ -7,12 +7,13 @@
 #define HASHING
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
-__declspec(dllexport) unsigned long hash_djb2(const unsigned char* string, size_t string_length);
+__declspec(dllexport) uint32_t hash_djb2(const unsigned char* string, size_t string_length);
 
 #ifdef __cplusplus
 }

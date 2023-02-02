@@ -10,13 +10,13 @@
  *                  `c` is the value of character in position n inside the string.
  *                  `m` is 32. We are working with an unsigned long (32 bits of size), an overflow will naturally result in a modulo 32 operation.
  */
-unsigned long
+uint32_t
 hash_djb2(const unsigned char* string, size_t string_length) {
-    unsigned long hash;
+    uint32_t hash;
 
     hash = 5381; /* B. has chosen this number as testing showed results of fewer collisions and better avalanching. */
     while (string_length--) {
-        hash = ((hash << 5L) + hash) + *string++;
+        hash = ((hash << 5) + hash) + *string++;
     }
 
     return hash;
