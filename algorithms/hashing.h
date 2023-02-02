@@ -14,6 +14,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 __declspec(dllexport) uint32_t hash_djb2(const unsigned char* string, size_t string_length);
+__declspec(dllexport) uint64_t hash_fnv(const unsigned char* string, size_t string_length);
 
 #ifdef __cplusplus
 }
