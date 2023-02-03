@@ -108,11 +108,11 @@ construct_bucket_element(key_type key, data_type value) {
     hashtable_bucket_element_t* bucket_element;
     key_value_pair_t* pair;
 
-    pair = malloc_s(sizeof(pair));
+    pair = malloc_s(sizeof(key_value_pair_t));
     pair->key = key;
     pair->value = value;
 
-    bucket_element = malloc_s(sizeof(bucket_element));
+    bucket_element = malloc_s(sizeof(hashtable_bucket_element_t));
     bucket_element->pair = pair;
     bucket_element->next = NULL;
     bucket_element->previous = NULL;
