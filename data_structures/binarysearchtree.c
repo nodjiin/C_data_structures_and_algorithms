@@ -207,14 +207,14 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
         uncle = parent == grand_parent->left ? grand_parent->right : grand_parent->left;
         if (uncle != NULL && uncle->color == RED) { /* uncle and parent are both red, we can recolor and continue */
             /*
-			*           gp(B)               gp(R)
-			*          /  \                /   \
-			*         p(R) u(R)   =>      p(B)  u(B)
-			*        /                   /
-			*       n(R)                n(R)           
-			* 
-			*  the position of grandfather, uncle and father do not matter in this configuration, since we do not have to perform any rotations.
-			*/
+            *           gp(B)               gp(R)
+            *          /  \                /   \
+            *         p(R) u(R)   =>      p(B)  u(B)
+            *        /                   /
+            *       n(R)                n(R)           
+            * 
+            *  the position of grandfather, uncle and father do not matter in this configuration, since we do not have to perform any rotations.
+            */
             grand_parent->color = RED;
             parent->color = BLACK;
             uncle->color = BLACK;
@@ -227,12 +227,12 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
         if (parent == grand_parent->left) {
             if (node == parent->right) { /* "rectify" the edge if we are in a complex state */
                 /*
-				*           gp                  gp
-				*          /  \                /   \
-				*         p    u      =>      n     u
-				*          \                 /
-				*           n               p
-				*/
+                *           gp                  gp
+                *          /  \                /   \
+                *         p    u      =>      n     u
+                *          \                 /
+                *           n               p
+                */
                 rotate_left(tree, parent);
 
                 /* swap node and parent variables to adapt to the new configuration */
@@ -241,25 +241,25 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* fix the balance by performing a right rotation on the grandparent, update colors 
-			* 
-			*          gp(B)              p(B)
-			*         /   \             /   \
-			*        p(R)  u(B)  =>    n(R)  gp(R)
-			*       /                          \
-			*      n(R)                         u(B)
-			*/
+            * 
+            *          gp(B)              p(B)
+            *         /   \             /   \
+            *        p(R)  u(B)  =>    n(R)  gp(R)
+            *       /                          \
+            *      n(R)                         u(B)
+            */
             rotate_right(tree, grand_parent);
             swap_colors(parent, grand_parent);
             node = parent;
         } else {
             if (node == parent->left) { /* "rectify" the edge if we are in a complex state */
                 /* 
-				*          gp                gp
-				*         /   \             /   \
-				*        u     p     =>    u     n
-				*             /                    \
-				*            n                      p
-				*/
+                *          gp                gp
+                *         /   \             /   \
+                *        u     p     =>    u     n
+                *             /                    \
+                *            n                      p
+                */
                 rotate_right(tree, parent);
 
                 /* swap node and parent variables to adapt to the new configuration */
@@ -268,13 +268,13 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* fix the balance by performing a right rotation on the grandparent, update colors 
-			* 
-			*          gp(B)              p(B)
-			*         /   \             /   \
-			*        u(B)  p(R)  =>    gp(R) n(R)
-			*               \         /         
-			*                n(R)    u(B)      
-			*/
+            * 
+            *          gp(B)              p(B)
+            *         /   \             /   \
+            *        u(B)  p(R)  =>    gp(R) n(R)
+            *               \         /         
+            *                n(R)    u(B)      
+            */
             rotate_left(tree, grand_parent);
             swap_colors(parent, grand_parent);
             node = parent;
@@ -388,12 +388,12 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             /* if the sibling is red, we recolor it and the node, and then left rotate the parent */
             if (sibling->color == RED) {
                 /*
-				*           p(B)                s(B)
-				*         /   \		           /   \
-				*        n(B)  s(R)    =>      p(R)  c2(B)
-				*             /    \         /   \
-				*            c1(B) c2(B)    n(B)  c1(B) <-the new sibling of n is c1, and we moved s up a level
-				*/
+                *           p(B)                s(B)
+                *         /   \		           /   \
+                *        n(B)  s(R)    =>      p(R)  c2(B)
+                *             /    \         /   \
+                *            c1(B) c2(B)    n(B)  c1(B) <-the new sibling of n is c1, and we moved s up a level
+                */
                 sibling->color = BLACK;
                 parent->color = RED;
                 rotate_left(tree, parent);
@@ -418,12 +418,12 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             /* the right children is black, the left is red. we can get rid of this scenario by transforming it */
             if (sibling->right == NULL || sibling->right->color == BLACK) {
                 /*
-				*           p                      p   
-				*         /   \	                 /    \
-				*        n(B)  s(B)    =>      n(B)   c1(B)  <= note that c1 was red, so we are sure that its left children will be black
-				*             /    \                   /  \
-				*            c1(R) c2(B)             x(B) s(R)
-				*/
+                *           p                      p   
+                *         /   \	                 /    \
+                *        n(B)  s(B)    =>      n(B)   c1(B)  <= note that c1 was red, so we are sure that its left children will be black
+                *             /    \                   /  \
+                *            c1(R) c2(B)             x(B) s(R)
+                */
                 if (sibling->left != NULL) {
                     sibling->left->color = BLACK;
                 }
@@ -434,15 +434,15 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* with the previous condition we are sure that the right children is red, and the left children is black. 
-			*  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
-			*  luckily we can do so simply by recoloring and rotating.
-			* 
-			*           p(x)                 s(x) <- preserve parent color after the rotation
-			*         /   \	                /    \
-			*        n(B)  s(B)    =>      p(B)   c2(B) 
-			*             /    \          /  \       
-			*            c1(B) c2(R)    n(B)  c1(B) 
-			*/
+            *  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
+            *  luckily we can do so simply by recoloring and rotating.
+            * 
+            *           p(x)                 s(x) <- preserve parent color after the rotation
+            *         /   \	                /    \
+            *        n(B)  s(B)    =>      p(B)   c2(B) 
+            *             /    \          /  \       
+            *            c1(B) c2(R)    n(B)  c1(B) 
+            */
             sibling->color = parent->color;
             parent->color = BLACK;
 
@@ -462,12 +462,12 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             /* if the sibling is red, we recolor it and the node, and then right rotate the parent*/
             if (sibling->color == RED) {
                 /*
-				*           p(B)                s(B)
-				*         /   \		           /   \
-				*        s(R)  n(B)    =>    c1(B) p(R)  
-				*      /   \                       /  \
-				*     c1(B) c2(B)               c2(B) n(B) <-the new sibling of n is c2, and we moved s up a level
-				*/
+                *           p(B)                s(B)
+                *         /   \		           /   \
+                *        s(R)  n(B)    =>    c1(B) p(R)  
+                *      /   \                       /  \
+                *     c1(B) c2(B)               c2(B) n(B) <-the new sibling of n is c2, and we moved s up a level
+                */
                 sibling->color = BLACK;
                 parent->color = RED;
                 rotate_right(tree, parent);
@@ -508,9 +508,9 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
             }
 
             /* with the previous condition we are sure that the left children is red, and the right children is black. 
-			*  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
-			*  luckily we can do so simply by recoloring and rotating.
-			* 
+            *  in this scenario all the possible violations have already been solved, we just need to fix the original black height problem.
+            *  luckily we can do so simply by recoloring and rotating.
+            * 
             *           p(x)                   s(x) <- preserve parent color after the rotation
             *         /   \	                  /   \
             *        s(B)  n(B)    =>      c1(b)   p(B) 
