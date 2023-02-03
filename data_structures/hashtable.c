@@ -10,6 +10,15 @@
 #include "hashtable_primes.h"
 
 /**
+ * \brief           match the key contained in the element with the given one, using the comparison function of the table.
+ * \param[in]       table: pointer to an hash table.
+ * \param[in]       element: pointer to bucket element.
+ * \param[in]       key: key value to match.
+ * \hideinitializer
+ */
+#define match_keys(table, element, key) (table->key_compare(element->pair->key, key) == 0)
+
+/**
  * \brief           get the first prime number greater than the given value, stored in the internal collection.
  * \param[in]       size: a numeric value.
  * \return          a prime number greater than value, or `SIZE_MAX` if none was found.
@@ -189,7 +198,7 @@ htable_insert(hashtable_t* htable, key_type key, data_type value) {
         goto finish;
     }
 
-    if (htable->key_compare(bucket->pair->key, key) == 0) {
+    if (match_keys(htable, bucket, key)) {
         bucket->pair->value = value;
         return;
     }
@@ -197,7 +206,7 @@ htable_insert(hashtable_t* htable, key_type key, data_type value) {
     while (bucket->next != NULL) { /* iterate until you find the empty value... */
         bucket = bucket->next;
 
-        if (htable->key_compare(bucket->pair->key, key) == 0) { /*... or an existing pair to update */
+        if (match_keys(htable, bucket, key)) { /*... or an existing pair to update */
             bucket->pair->value = value;
             return;
         }
@@ -247,7 +256,7 @@ htable_delete(hashtable_t* htable, key_type key) {
     }
 
     /* if the key is contained in the first element of a bucket we can update it directly */
-    if (htable->key_compare(bucket->pair->key, key) == 0) {
+    if (match_keys(htable, bucket, key)) {
         htable->buckets[bucket_index] = bucket->next;
         if (bucket->next != NULL) {
             bucket->next->previous = NULL;
@@ -259,7 +268,7 @@ htable_delete(hashtable_t* htable, key_type key) {
     }
 
     /* if it's not we need to explore the bucket to find our element */
-    while (bucket != NULL && htable->key_compare(bucket->pair->key, key) != 0) {
+    while (bucket != NULL && !match_keys(htable, bucket, key)) {
         bucket = bucket->next;
     }
 
@@ -293,7 +302,7 @@ htable_search(hashtable_t* htable, key_type key) {
     }
 
     bucket = htable->buckets[get_bucket_index(htable, key)];
-    while (bucket != NULL && htable->key_compare(bucket->pair->key, key) != 0) {
+    while (bucket != NULL && !match_keys(htable, bucket, key)) {
         bucket = bucket->next;
     }
 
