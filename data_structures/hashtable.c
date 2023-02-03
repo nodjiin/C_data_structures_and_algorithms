@@ -270,6 +270,32 @@ htable_delete(hashtable_t* htable, key_type key) {
 }
 
 /**
+ * \brief           search a pair with the given key in the hash table, and return the associated value.
+ * \param[in]       htable: pointer to the hash table. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       key: key of the value to search.
+ * \return          the value associated with the given key, or `NULL_DATA` if none is found.
+ * \note            choosing to return a "pseudo-NULL" item in this case instead of exiting early with an error state is a remarkable departure from what 
+ *                  I have done on other structures. However, keeping in mind the common usage of an hash table, it might be a worthy trade off for anyone using 
+ *                  this library with pointers or other easily data types with an easily defined NULL value.
+ */
+data_type
+htable_search(hashtable_t* htable, key_type key) {
+    hashtable_bucket_element_t* bucket;
+
+    if (htable == NULL) {
+        fprintf(stderr, "[htable_search] Invalid input. Faulty search request on NULL table.\n");
+        exit(INVALID_INPUT);
+    }
+
+    bucket = htable->buckets[get_bucket_index(htable, key)];
+    while (bucket != NULL && htable->key_compare(bucket->pair->key, key) != 0) {
+        bucket = bucket->next;
+    }
+
+    return bucket != NULL ? bucket->pair->value : NULL_DATA;
+}
+
+/**
  * \brief           free the given hash table.
  * \param[in]       htable: pointer to hash table pointer.
  * \note            this function will free the memory used by the hash table. The input pointer itself will be set to `NULL`.
