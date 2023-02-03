@@ -41,11 +41,12 @@ typedef struct hashtable_bucket_element_t {
  * \note            the current implementation uses chaining to resolve collisions.
  */
 typedef struct {
-    hashtable_bucket_element_t* buckets; /*!< array of buckets */
-    size_t count;                        /*!< count of item currently present inside the array */
-    size_t capacity;                     /*!< current maximum capacity of the hash table */
-    uint8_t load_factor;                 /*!< max fill percentage that is accepted before the hash table is resized */
-    hash_key_fn hash;                    /*!< hash function used when inserting items in the table */
+    hashtable_bucket_element_t** buckets; /*!< array of buckets */
+    size_t count;                         /*!< count of item currently present inside the array */
+    size_t capacity;                      /*!< current maximum capacity of the hash table */
+    uint8_t load_factor;                  /*!< max fill percentage that is accepted before the hash table is resized */
+    size_t load_threshold;                /*<! load factor applied to the current capacity*/
+    hash_key_fn hash;                     /*!< hash function used when inserting items in the table */
 } hashtable_t;
 
 __declspec(dllexport) hashtable_t* htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash);

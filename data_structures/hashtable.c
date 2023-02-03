@@ -25,6 +25,11 @@ get_prime(size_t value) {
     return SIZE_MAX;
 }
 
+static void
+update_load_threshold(hashtable_t* htable) {
+    htable->load_threshold = (htable->load_factor * htable->capacity) / 100;
+}
+
 /**
  * \brief           construct a new hash table.
  * \param[in]       initial_capacity: number of items that the hash table will be able to contain after initialization. 0 is not considered a valid input, 
@@ -60,11 +65,116 @@ htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash)
 
     real_size = get_prime(initial_capacity);
     new_hashtable = malloc_s(sizeof(hashtable_t));
-    new_hashtable->buckets = calloc_s(real_size, sizeof(hashtable_bucket_element_t));
+    new_hashtable->buckets = calloc_s(real_size, sizeof(hashtable_bucket_element_t*));
     new_hashtable->count = 0;
     new_hashtable->capacity = real_size;
     new_hashtable->load_factor = load_factor;
     new_hashtable->hash = hash;
+    update_load_threshold(new_hashtable);
 
     return new_hashtable;
+}
+
+static size_t
+get_bucket_index(hashtable_t* htable, key_type key) {
+    return htable->hash(key) % htable->capacity;
+}
+
+static hashtable_bucket_element_t*
+construct_bucket_element(key_type key, data_type value) {
+    hashtable_bucket_element_t* bucket_element;
+    key_value_pair_t* pair;
+
+    pair = malloc_s(sizeof(pair));
+    pair->key = key;
+    pair->value = value;
+
+    bucket_element = malloc_s(sizeof(bucket_element));
+    bucket_element->pair = pair;
+    bucket_element->next = NULL;
+    bucket_element->previous = NULL;
+
+    return bucket_element;
+}
+
+static void
+resize_table(hashtable_t* htable, size_t new_size) {
+    hashtable_bucket_element_t **new_buckets, *element;
+    size_t original_capacity, rehash_index;
+
+    new_buckets = calloc_s(new_size, sizeof(hashtable_bucket_element_t*));
+    original_capacity = htable->capacity;
+    htable->capacity = new_size;
+
+    /* rehash */
+    for (size_t i = 0; i < original_capacity; i++) {
+        element = htable->buckets[i];
+
+        while (element != NULL) {
+            hashtable_bucket_element_t* next;
+
+            next = element->next;
+            rehash_index = get_bucket_index(htable, element->pair->key);
+
+            if (new_buckets[rehash_index] == NULL) {
+                element->previous = NULL;
+                element->next = NULL;
+                new_buckets[rehash_index] = element;
+            } else { /* insert as head of the list to speed up the operation */
+                element->previous = NULL;
+                element->next = new_buckets[rehash_index];
+                new_buckets[rehash_index]->previous = element;
+                new_buckets[rehash_index] = element;
+            }
+
+            element = next;
+        }
+    }
+
+    free(htable->buckets);
+    htable->buckets = new_buckets;
+    update_load_threshold(htable);
+}
+
+/**-
+ * \brief           insert a new key/value pair in the hash table.
+ * \param[in]       htable: pointer to the hash table.
+ * \param[in]       key: key of the value. Performing an inserting operation with a key already contained inside the table will cause the existing value to be overwritten.
+ * \param[in]       value: value to insert.
+ */
+void
+htable_insert(hashtable_t* htable, key_type key, data_type value) {
+    size_t bucket_index;
+    hashtable_bucket_element_t* bucket;
+
+    if (htable == NULL) {
+        fprintf(stderr, "[htable_insert] Invalid input. Faulty insert request on NULL table.\n");
+        exit(INVALID_INPUT);
+    }
+
+    bucket_index = get_bucket_index(htable, key);
+    if (htable->buckets[bucket_index] == NULL) { /* add first element to the bucket if still empty */
+        htable->buckets[bucket_index] = construct_bucket_element(key, value);
+        goto finish;
+    }
+
+    bucket = htable->buckets[bucket_index]; /* if not reference the appropriate bucket */
+    do {                                    /* iterate until you find the empty value... */
+        if (bucket->pair->key == key) {     /*... or an existing key */
+            bucket->pair->value = value;
+            return;
+        }
+
+        bucket = bucket->next;
+    } while (bucket->next != NULL);
+
+    bucket->next = construct_bucket_element(key, value); /* add the new element to the bucket */
+    bucket->next->previous = bucket;
+
+finish: /* increase count and resize if necessary */
+    htable->count++;
+
+    if (htable->count > htable->load_threshold) {
+        resize_table(htable, get_prime(2 * htable->count));
+    }
 }
