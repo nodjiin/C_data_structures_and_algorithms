@@ -155,6 +155,9 @@
     <ClInclude Include="testvalues.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\algorithms\algorithms.vcxproj">
+      <Project>{2cab42fb-4894-49af-9201-9132b55fb2f6}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\data_structures\data_structures.vcxproj">
       <Project>{85492752-cb37-4e65-85ea-fe375b017ec6}</Project>
     </ProjectReference>
