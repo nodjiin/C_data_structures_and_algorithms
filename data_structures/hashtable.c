@@ -25,6 +25,11 @@ get_prime(size_t value) {
     return SIZE_MAX;
 }
 
+/**
+ * \brief           updated the load threshold associated with the given hash table.
+ * \param[in]       htable: pointer to an hash table.
+ * \note            the load threshold is calculated as a percentage of its current capacity, determined by the load factor.
+ */
 static void
 update_load_threshold(hashtable_t* htable) {
     htable->load_threshold = (htable->load_factor * htable->capacity) / 100;
@@ -75,11 +80,23 @@ htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash)
     return new_hashtable;
 }
 
+/**
+ * \brief           get the index of the value corresponding to the given key.
+ * \param[in]       htable: pointer to a table.
+ * \param[in]       key: key used to obtain the index.
+ * \return          a numerical value representing the index of the bucket.
+ */
 static size_t
 get_bucket_index(hashtable_t* htable, key_type key) {
     return htable->hash(key) % htable->capacity;
 }
 
+/**
+ * \brief           create a new bucket element.
+ * \param[in]       key: key to insert in the pair structure contained in the element.
+ * \param[in]       value: value to insert in the pair structure contained in the element.
+ * \return          the newly created element.
+ */
 static hashtable_bucket_element_t*
 construct_bucket_element(key_type key, data_type value) {
     hashtable_bucket_element_t* bucket_element;
@@ -97,6 +114,11 @@ construct_bucket_element(key_type key, data_type value) {
     return bucket_element;
 }
 
+/**
+ * \brief           resize the given hash table, and rehash its content.
+ * \param[in]       htable: pointer to the hash table.
+ * \param[in]       new_size: new capacity of the resized table.
+ */
 static void
 resize_table(hashtable_t* htable, size_t new_size) {
     hashtable_bucket_element_t **new_buckets, *element;
@@ -136,7 +158,7 @@ resize_table(hashtable_t* htable, size_t new_size) {
     update_load_threshold(htable);
 }
 
-/**-
+/**
  * \brief           insert a new key/value pair in the hash table.
  * \param[in]       htable: pointer to the hash table.
  * \param[in]       key: key of the value. Performing an inserting operation with a key already contained inside the table will cause the existing value to be overwritten.
