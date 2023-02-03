@@ -268,3 +268,28 @@ htable_delete(hashtable_t* htable, key_type key) {
         clear_bucket_element(bucket);
     }
 }
+
+/**
+ * \brief           free the given hash table.
+ * \param[in]       htable: pointer to hash table pointer.
+ * \note            this function will free the memory used by the hash table. The input pointer itself will be set to `NULL`.
+ */
+void
+htable_clear(hashtable_t** htable) {
+    hashtable_bucket_element_t *bucket, *to_free;
+
+    if (htable == NULL || *htable == NULL) {
+        return;
+    }
+
+    for (size_t i = 0; i < (*htable)->capacity; i++) {
+        bucket = (*htable)->buckets[i];
+        while (bucket != NULL) {
+            to_free = bucket;
+            bucket = bucket->next;
+            clear_bucket_element(to_free);
+        }
+    }
+
+    free_s(*htable);
+}
