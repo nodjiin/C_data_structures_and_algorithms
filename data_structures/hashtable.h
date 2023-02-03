@@ -38,7 +38,8 @@ typedef struct hashtable_bucket_element_t {
 
 /**
  * \brief           hash table data structure.
- * \note            the current implementation uses chaining to resolve collisions.
+ * \note            the current implementation uses chaining to resolve collisions. The hash table will grow automatically when the number of elements
+ *                  it contains exceed the load_factor, but it won't shrink.
  */
 typedef struct {
     hashtable_bucket_element_t** buckets; /*!< array of buckets */
@@ -47,9 +48,11 @@ typedef struct {
     uint8_t load_factor;                  /*!< max fill percentage that is accepted before the hash table is resized */
     size_t load_threshold;                /*<! load factor applied to the current capacity*/
     hash_key_fn hash;                     /*!< hash function used when inserting items in the table */
+    key_type_compare_fn key_compare;      /*!< key used to compare the values of 2 keys */
 } hashtable_t;
 
-__declspec(dllexport) hashtable_t* htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash);
+__declspec(dllexport) hashtable_t* htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash,
+                                                    key_type_compare_fn key_compare);
 __declspec(dllexport) data_type htable_search(hashtable_t* htable, key_type key);
 __declspec(dllexport) void htable_insert(hashtable_t* htable, key_type key, data_type value);
 __declspec(dllexport) void htable_delete(hashtable_t* htable, key_type key);

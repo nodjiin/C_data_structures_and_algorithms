@@ -47,7 +47,7 @@ update_load_threshold(hashtable_t* htable) {
  * \return          a pointer the newly constructed hash table.
  */
 hashtable_t*
-htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash) {
+htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash, key_type_compare_fn key_compare) {
     hashtable_t* new_hashtable;
     size_t real_size;
 
@@ -68,6 +68,11 @@ htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash)
         exit(INVALID_INPUT);
     }
 
+    if (key_compare == NULL) {
+        fprintf(stderr, "[htable_construct] Invalid input. Faulty construct request with NULL key compare function.\n");
+        exit(INVALID_INPUT);
+    }
+
     real_size = get_prime(initial_capacity);
     new_hashtable = malloc_s(sizeof(hashtable_t));
     new_hashtable->buckets = calloc_s(real_size, sizeof(hashtable_bucket_element_t*));
@@ -75,6 +80,7 @@ htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash)
     new_hashtable->capacity = real_size;
     new_hashtable->load_factor = load_factor;
     new_hashtable->hash = hash;
+    new_hashtable->key_compare = key_compare;
     update_load_threshold(new_hashtable);
 
     return new_hashtable;
@@ -160,9 +166,11 @@ resize_table(hashtable_t* htable, size_t new_size) {
 
 /**
  * \brief           insert a new key/value pair in the hash table.
- * \param[in]       htable: pointer to the hash table.
+ * \param[in]       htable: pointer to the hash table. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       key: key of the value. Performing an inserting operation with a key already contained inside the table will cause the existing value to be overwritten.
  * \param[in]       value: value to insert.
+ * \note            this function will try to increase the table capacity if the number of internal elements stored surpasses the load_threshold. Any error in the
+ *                  resize operation will cause the program to exit early with a MEMORY_EXHAUSTED code.
  */
 void
 htable_insert(hashtable_t* htable, key_type key, data_type value) {
@@ -180,9 +188,9 @@ htable_insert(hashtable_t* htable, key_type key, data_type value) {
         goto finish;
     }
 
-    bucket = htable->buckets[bucket_index]; /* if not reference the appropriate bucket */
-    do {                                    /* iterate until you find the empty value... */
-        if (bucket->pair->key == key) {     /*... or an existing key */
+    bucket = htable->buckets[bucket_index];                     /* if not reference the appropriate bucket */
+    do {                                                        /* iterate until you find the empty value... */
+        if (htable->key_compare(bucket->pair->key, key) == 0) { /*... or an existing key */
             bucket->pair->value = value;
             return;
         }
@@ -198,5 +206,65 @@ finish: /* increase count and resize if necessary */
 
     if (htable->count > htable->load_threshold) {
         resize_table(htable, get_prime(2 * htable->count));
+    }
+}
+
+/**
+ * \brief           free the memory associated with a given bucket element.
+ * \param[in]       element: element to clear.
+ */
+static void
+clear_bucket_element(hashtable_bucket_element_t* element) {
+    free(element->pair);
+    free(element);
+}
+
+/**
+ * \brief           delete a pair with the given key from the hash table.
+ * \param[in]       htable: pointer to the hash table. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       key: key of the value to delete.
+ * \note            if the given key is not contained in the hash table the function will terminate without raising an error message.
+ */
+void
+htable_delete(hashtable_t* htable, key_type key) {
+    size_t bucket_index;
+    hashtable_bucket_element_t* bucket;
+
+    if (htable == NULL) {
+        fprintf(stderr, "[htable_delete] Invalid input. Faulty delete request on NULL table.\n");
+        exit(INVALID_INPUT);
+    }
+
+    bucket_index = get_bucket_index(htable, key);
+    bucket = htable->buckets[bucket_index];
+    if (bucket == NULL) { /* the key has not been found in the table */
+        return;
+    }
+
+    /* if the key is contained in the first element of a bucket we can update it directly */
+    if (htable->key_compare(bucket->pair->key, key) == 0) {
+        htable->buckets[bucket_index] = bucket->next;
+        if (bucket->next != NULL) {
+            bucket->next->previous = NULL;
+        }
+
+        htable->count--;
+        clear_bucket_element(bucket);
+        return;
+    }
+
+    /* if it's not we need to explore the bucket to find our element */
+    while (bucket != NULL && htable->key_compare(bucket->pair->key, key) != 0) {
+        bucket = bucket->next;
+    }
+
+    if (bucket != NULL) { /* proceed to delete, if we actually found it */
+        bucket->previous->next = bucket->next;
+        if (bucket->next != NULL) {
+            bucket->next->previous = bucket->previous;
+        }
+
+        htable->count--;
+        clear_bucket_element(bucket);
     }
 }
