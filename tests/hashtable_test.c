@@ -1,4 +1,5 @@
 #include <assert.h>
+#include "hashtable_test.h"
 #include "data_structures/hashtable.h"
 #include "testvalues.h"
 
