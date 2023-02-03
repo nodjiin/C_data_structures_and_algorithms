@@ -188,7 +188,7 @@ darray_get(dynamic_array_t* darray, size_t index) {
  *                  number of items in the array will cause an early exit with invalid input code.
  * \return          the value stored at the given index.
  * \note            this function will try to halve the array length if the number of internal values dropped to a quarter of its length. Any error in the
- *                  resize operation will cause the program to exit early with a MEMORY_EXAHUSTED code.
+ *                  resize operation will cause the program to exit early with a MEMORY_EXHAUSTED code.
  */
 data_type
 darray_remove(dynamic_array_t* darray, size_t index) {
