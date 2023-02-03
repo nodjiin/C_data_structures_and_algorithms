@@ -194,13 +194,13 @@ htable_insert(hashtable_t* htable, key_type key, data_type value) {
         return;
     }
 
-    while (bucket->next != NULL) {                              /* iterate until you find the empty value... */
+    while (bucket->next != NULL) { /* iterate until you find the empty value... */
+        bucket = bucket->next;
+
         if (htable->key_compare(bucket->pair->key, key) == 0) { /*... or an existing pair to update */
             bucket->pair->value = value;
             return;
         }
-
-        bucket = bucket->next;
     }
 
     bucket->next = construct_bucket_element(key, value); /* add the new element to the bucket */
