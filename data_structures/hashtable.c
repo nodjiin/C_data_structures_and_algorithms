@@ -183,20 +183,25 @@ htable_insert(hashtable_t* htable, key_type key, data_type value) {
     }
 
     bucket_index = get_bucket_index(htable, key);
-    if (htable->buckets[bucket_index] == NULL) { /* add first element to the bucket if still empty */
+    bucket = htable->buckets[bucket_index];
+    if (bucket == NULL) { /* add first element to the bucket if still empty */
         htable->buckets[bucket_index] = construct_bucket_element(key, value);
         goto finish;
     }
 
-    bucket = htable->buckets[bucket_index];                     /* if not reference the appropriate bucket */
-    do {                                                        /* iterate until you find the empty value... */
-        if (htable->key_compare(bucket->pair->key, key) == 0) { /*... or an existing key */
+    if (htable->key_compare(bucket->pair->key, key) == 0) {
+        bucket->pair->value = value;
+        return;
+    }
+
+    while (bucket->next != NULL) {                              /* iterate until you find the empty value... */
+        if (htable->key_compare(bucket->pair->key, key) == 0) { /*... or an existing pair to update */
             bucket->pair->value = value;
             return;
         }
 
         bucket = bucket->next;
-    } while (bucket->next != NULL);
+    }
 
     bucket->next = construct_bucket_element(key, value); /* add the new element to the bucket */
     bucket->next->previous = bucket;
