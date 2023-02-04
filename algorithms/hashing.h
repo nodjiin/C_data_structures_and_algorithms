@@ -1,5 +1,5 @@
 /**
- * \file            HASHING.h
+ * \file            hashing.h
  * \brief           header file containing the declaration of hashing algorithms implemented in this library.
  */
 

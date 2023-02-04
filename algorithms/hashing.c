@@ -1,3 +1,7 @@
+/**
+ * \file            hashing.c
+ * \brief           source file containing the definition of hashing algorithms implemented in this library.
+ */
 #include "hashing.h"
 
 /**
