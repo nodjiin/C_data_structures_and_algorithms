@@ -32,7 +32,7 @@ compare(const data_type a, const data_type b) {
 
 inline uint64_t
 hash(key_type value) {
-    return hash_djb2(value, strlen(value));
+    return hash_djb2(value);
 }
 
 inline int
