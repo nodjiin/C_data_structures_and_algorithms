@@ -54,6 +54,7 @@ update_load_threshold(hashtable_t* htable) {
  *                  a valid input, and will result a program early exit with INVALID_INPUT code.
  * \param[in]       hash: hash function which will be used to insert new values in the table.
  * \return          a pointer the newly constructed hash table.
+ * \relates         hashtable_t
  */
 hashtable_t*
 htable_construct(size_t initial_capacity, uint8_t load_factor, hash_key_fn hash, key_type_compare_fn key_compare) {
@@ -180,6 +181,7 @@ resize_table(hashtable_t* htable, size_t new_size) {
  * \param[in]       value: value to insert.
  * \note            this function will try to increase the table capacity if the number of internal elements stored surpasses the load_threshold. Any error in the
  *                  resize operation will cause the program to exit early with a MEMORY_EXHAUSTED code.
+ * \relates         hashtable_t
  */
 void
 htable_insert(hashtable_t* htable, key_type key, data_type value) {
@@ -238,6 +240,7 @@ clear_bucket_element(hashtable_bucket_element_t* element) {
  * \param[in]       htable: pointer to the hash table. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       key: key of the value to delete.
  * \note            if the given key is not contained in the hash table the function will terminate without raising an error message.
+ * \relates         hashtable_t
  */
 void
 htable_delete(hashtable_t* htable, key_type key) {
@@ -291,6 +294,7 @@ htable_delete(hashtable_t* htable, key_type key) {
  * \note            choosing to return a "pseudo-NULL" item in this case instead of exiting early with an error state is a remarkable departure from what 
  *                  I have done on other structures. However, keeping in mind the common usage of an hash table, it might be a worthy trade off for anyone using 
  *                  this library with pointers or other easily data types with an easily defined NULL value.
+ * \relates         hashtable_t
  */
 data_type
 htable_search(hashtable_t* htable, key_type key) {
@@ -313,6 +317,7 @@ htable_search(hashtable_t* htable, key_type key) {
  * \brief           free the given hash table.
  * \param[in]       htable: pointer to hash table pointer.
  * \note            this function will free the memory used by the hash table. The input pointer itself will be set to `NULL`.
+ * \relates         hashtable_t
  */
 void
 htable_clear(hashtable_t** htable) {

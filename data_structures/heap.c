@@ -33,6 +33,7 @@
  * \note            the actual size of the heap will always one unit bigger of the given initial_size. The additional space is used as offset as the beginning to simplify 
  *                  heap elements position calculations.
  * \return          a pointer the newly constructed heap.
+ * \relates         heap_t
  */
 heap_t*
 heap_construct(size_t initial_size, data_type_compare_fn compare) {
@@ -60,6 +61,7 @@ heap_construct(size_t initial_size, data_type_compare_fn compare) {
  * \brief           find the parent of the given index.
  * \param[in]       index: index of an element inside the heap. Will return ROOT if the element is the first one in the heap (e.g. doesn't have a parent)
  * \return          the parent index.
+ * \relates         heap_t
  */
 static size_t
 get_parent(size_t index) {
@@ -121,6 +123,7 @@ bubble_up(heap_t* heap, size_t index) {
  * \brief           insert a new value in the heap.
  * \param[in]       heap: heap pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       value: value to be inserted.
+ * \relates         heap_t
  */
 void
 heap_insert(heap_t* heap, data_type value) {
@@ -167,6 +170,7 @@ bubble_down(heap_t* heap, size_t index) {
  * \param[in]       heap: heap pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the highest priority value of the heap.
  * \note            trying to extract a value from an empty stack is considered an invalid operation, and will cause an early exit with INVALID_OPERATION status code.
+ * \relates         heap_t
  */
 data_type
 heap_extract(heap_t* heap) {
@@ -205,6 +209,7 @@ heap_extract(heap_t* heap) {
  *                  with an INVALID_INPUT status code.
  * \note            this operation is efficient and should be preferred to insert elements in the heap one by one for a fast initialization.
  * \return          a pointer the newly constructed heap.
+ * \relates         heap_t
  */
 heap_t*
 heap_construct_from_array(data_type array[], size_t array_size, data_type_compare_fn compare) {
@@ -238,6 +243,7 @@ heap_construct_from_array(data_type array[], size_t array_size, data_type_compar
  * \brief           check how many values are contained in the heap.
  * \param[in]       heap: heap pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of values currently in the heap.
+ * \relates         heap_t
  */
 size_t
 heap_count(heap_t* heap) {
@@ -253,6 +259,7 @@ heap_count(heap_t* heap) {
  * \brief           check if the heap is empty.
  * \param[in]       stack: heap pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          true if the heap is empty, false otherwise.
+ * \relates         heap_t
  */
 bool
 heap_is_empty(heap_t* heap) {
@@ -268,6 +275,7 @@ heap_is_empty(heap_t* heap) {
  * \brief           free the given heap.
  * \param[in]       heap: pointer to heap pointer.
  * \note            this function will free the memory used by the heap. The input pointer itself will be set to `NULL`.
+ * \relates         heap_t
  */
 void
 heap_clear(heap_t** heap) {

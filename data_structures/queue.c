@@ -12,6 +12,7 @@
 /**
  * \brief           construct a new queue.
  * \return          a pointer the newly constructed queue.
+ * \relates         queue_t
  */
 queue_t*
 queue_construct(void) {
@@ -29,6 +30,7 @@ queue_construct(void) {
  * \brief           enqueue the given value.
  * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       value: new value to be enqueued.
+ * \relates         queue_t
  */
 void
 queue_enqueue(queue_t* queue, data_type value) {
@@ -49,6 +51,7 @@ queue_enqueue(queue_t* queue, data_type value) {
  * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the first value of the queue.
  * \note            trying to dequeue a value from an empty queue is considered an invalid operation, and will cause an early exit with INVALID_OPERATION status code.
+ * \relates         queue_t
  */
 data_type
 queue_dequeue(queue_t* queue) {
@@ -78,6 +81,7 @@ queue_dequeue(queue_t* queue) {
  * \brief           get the number of elements currently in the queue.
  * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of elements in the queue.
+ * \relates         queue_t
  */
 size_t
 queue_count(queue_t* queue) {
@@ -93,6 +97,7 @@ queue_count(queue_t* queue) {
  * \brief           check if the queue is empty.
  * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          true if the queue is empty, false otherwise.
+ * \relates         queue_t
  */
 bool
 queue_is_empty(queue_t* queue) {
@@ -108,6 +113,7 @@ queue_is_empty(queue_t* queue) {
  * \brief           free the given queue.
  * \param[in]       queue: pointer to queue pointer.
  * \note            this function will free the memory used by the queue. The input pointer itself will be set to `NULL`.
+ * \relates         queue_t
  */
 void
 queue_clear(queue_t** queue) {

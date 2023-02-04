@@ -14,6 +14,7 @@
  * \param[in]       initial_size: number of items that the stack will be able to contain after initialization. 0 is not considered a valid input, 
  *                  and will cause an early exit with INVALID_INPUT status code.
  * \return          a pointer the newly constructed array.
+ * \relates         stack_t
  */
 stack_t*
 stack_construct(size_t initial_size) {
@@ -34,6 +35,7 @@ stack_construct(size_t initial_size) {
  * \brief           push the given value on top of the stack.
  * \param[in]       stack: stack pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       value: new value to be pushed in the stack.
+ * \relates         stack_t
  */
 void
 stack_push(stack_t* stack, data_type value) {
@@ -50,6 +52,7 @@ stack_push(stack_t* stack, data_type value) {
  * \param[in]       stack: stack pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the value on top of the stack.
  * \note            trying to pop an empty stack is considered an invalid operation, and will cause an early exit with INVALID_OPERATION status code.
+ * \relates         stack_t
  */
 data_type
 stack_pop(stack_t* stack) {
@@ -73,6 +76,7 @@ stack_pop(stack_t* stack) {
  * \brief           check how many values are contained in the stack.
  * \param[in]       stack: stack pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of values currently in the stack.
+ * \relates         stack_t
  */
 size_t
 stack_count(stack_t* stack) {
@@ -88,6 +92,7 @@ stack_count(stack_t* stack) {
  * \brief           check if the stack is empty.
  * \param[in]       stack: stack pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          true if the stack is empty, false otherwise.
+ * \relates         stack_t
  */
 bool
 stack_is_empty(stack_t* stack) {
@@ -103,6 +108,7 @@ stack_is_empty(stack_t* stack) {
  * \brief           free the given stack.
  * \param[in]       stack: pointer to stack pointer.
  * \note            this function will free the memory used by the stack. The input pointer itself will be set to `NULL`.
+ * \relates         stack_t
  */
 void
 stack_clear(stack_t** stack) {

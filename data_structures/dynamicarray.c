@@ -15,6 +15,7 @@
  * \param[in]       initial_size: number of items that the array will be able to contain after initialization. 0 is not considered a valid input, 
  *                  and will result a program early exit with INVALID_INPUT code.
  * \return          a pointer the newly constructed array.
+ * \relates         dynamic_array_t
  */
 dynamic_array_t*
 darray_construct(size_t initial_size) {
@@ -48,6 +49,7 @@ double_length(dynamic_array_t* darray) {
  * \param[in]       value: new value to be inserted in the array.
  * \note            this function will try to double the array length if its current size is not enough to contain the new item. 
  *                  This might lead to the program exiting early if not enough memory is available.
+ * \relates         dynamic_array_t
  */
 void
 darray_insert(dynamic_array_t* darray, data_type value) {
@@ -71,6 +73,7 @@ darray_insert(dynamic_array_t* darray, data_type value) {
  * \note            this function will try to double the array length if its current size is not enough to contain the new item. 
  *                  This might lead to the program exiting early if not enough memory is available.
  *                  This function running time is 0(n), where n is the current count of the array, as each insertion require a shift of all the existing elements.
+ * \relates         dynamic_array_t
  */
 void
 darray_insert_head(dynamic_array_t* darray, data_type value) {
@@ -101,6 +104,7 @@ darray_insert_head(dynamic_array_t* darray, data_type value) {
  *                  This might lead to the program exiting early if not enough memory is available.
  *					This function running time is 0(n - index), where n is the current count of the array, as each insertion require a shift of all the existing elements
  *                  located right to the index.
+ * \relates         dynamic_array_t
  */
 void
 darray_insert_at(dynamic_array_t* darray, data_type value, size_t index) {
@@ -136,6 +140,7 @@ darray_insert_at(dynamic_array_t* darray, data_type value, size_t index) {
  * \param[in]       value: new value to be put in the array, overriding an existing one.
  * \param[in]       index: index to use for value override. The value of the index has to be taken from the current spawn of the array. A value greater than the current
  *                  number of items in the array will cause an early exit with invalid input code.
+ * \relates         dynamic_array_t
  */
 void
 darray_put(dynamic_array_t* darray, data_type value, size_t index) {
@@ -162,6 +167,7 @@ darray_put(dynamic_array_t* darray, data_type value, size_t index) {
  *                  number of items in the array will cause an early exit with invalid input code.
  * \return          the value stored at the given index.
  * \note            this function won't remove the item from the array.
+ * \relates         dynamic_array_t
  */
 data_type
 darray_get(dynamic_array_t* darray, size_t index) {
@@ -189,6 +195,7 @@ darray_get(dynamic_array_t* darray, size_t index) {
  * \return          the value stored at the given index.
  * \note            this function will try to halve the array length if the number of internal values dropped to a quarter of its length. Any error in the
  *                  resize operation will cause the program to exit early with a MEMORY_EXHAUSTED code.
+ * \relates         dynamic_array_t
  */
 data_type
 darray_remove(dynamic_array_t* darray, size_t index) {
@@ -230,6 +237,7 @@ darray_remove(dynamic_array_t* darray, size_t index) {
  * \param[in]       value: value to search.
  * \param[in]       compare: function to use to compare 2 data_type.
  * \return          the index where the value is stored. `SIZE_MAX` will be returned if the value has not been found in the array.
+ * \relates         dynamic_array_t
  */
 size_t
 darray_search(dynamic_array_t* darray, data_type value, data_type_compare_fn compare) {
@@ -256,6 +264,7 @@ darray_search(dynamic_array_t* darray, data_type value, data_type_compare_fn com
  * \brief           free the given array.
  * \param[in]       darray: dynamic array pointer.
  * \note            this function will free the memory used by the dynamic array. The input pointer itself will be set to `NULL`.
+ * \relates         dynamic_array_t
  */
 void
 darray_clear(dynamic_array_t** darray) {

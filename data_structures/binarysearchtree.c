@@ -16,6 +16,7 @@
  *                  If the output is 0 the 2 values will be considered of equals. `NULL` is not considered a valid input and will cause the program to exit early 
  *                  with an INVALID_INPUT status code.
  * \return          a pointer the newly constructed heap.
+ * \relates         binary_search_tree_t
  */
 binary_search_tree_t*
 bstree_construct(data_type_compare_fn compare) {
@@ -294,6 +295,7 @@ balance_tree_after_insert(binary_search_tree_t* tree, binary_search_tree_node_t*
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       value: value to insert. Trying to insert a duplicate value in the tree is considered an invalid operation, and will result in the program exiting early
  *                  with INVALID_OPERATION status code.
+ * \relates         binary_search_tree_t
  */
 void
 bstree_insert(binary_search_tree_t* tree, data_type value) {
@@ -539,6 +541,7 @@ balance_tree_after_delete(binary_search_tree_t* tree, binary_search_tree_node_t*
  * \brief           delete the given node from the tree.
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       node: node to delete. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \relates         binary_search_tree_t
  */
 void
 bstree_delete(binary_search_tree_t* tree, binary_search_tree_node_t* node) {
@@ -625,6 +628,7 @@ search_tree(binary_search_tree_node_t* node, data_type value, data_type_compare_
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       value: value to search for.
  * \return          a pointer to the tree node holding the given value, or `NULL` if none is found.
+ * \relates         binary_search_tree_t
  */
 binary_search_tree_node_t*
 bstree_search(binary_search_tree_t* tree, data_type value) {
@@ -643,6 +647,7 @@ bstree_search(binary_search_tree_t* tree, data_type value) {
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          a pointer to the tree node holding the minimum value.
  * \note            using this function on an empty tree is considered an invalid operation, and will cause an early exit with INVALID_OPERATION status code.
+ * \relates         binary_search_tree_t
  */
 binary_search_tree_node_t*
 bstree_find_min(binary_search_tree_t* tree) {
@@ -670,6 +675,7 @@ bstree_find_min(binary_search_tree_t* tree) {
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          a pointer to the tree node holding the maximum value.
  * \note            using this function on an empty tree is considered an invalid operation, and will cause an early exit with INVALID_OPERATION status code.
+ * \relates         binary_search_tree_t
  */
 binary_search_tree_node_t*
 bstree_find_max(binary_search_tree_t* tree) {
@@ -712,6 +718,7 @@ traverse_tree(binary_search_tree_node_t* node, process_node_value_fn process) {
  * \brief           perform an in-order traversal of the tree, processing all the visited node using the given function.
  * \param[in]       tree: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       process: process function pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \relates         binary_search_tree_t
  */
 void
 bstree_traverse(binary_search_tree_t* tree, process_node_value_fn process) {
@@ -732,6 +739,7 @@ bstree_traverse(binary_search_tree_t* tree, process_node_value_fn process) {
  * \brief           check how many nodes are contained in the tree.
  * \param[in]       heap: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of nodes currently in the tree.
+ * \relates         binary_search_tree_t
  */
 size_t
 bstree_count(binary_search_tree_t* tree) {
@@ -747,6 +755,7 @@ bstree_count(binary_search_tree_t* tree) {
  * \brief           check if the tree is empty.
  * \param[in]       stack: tree pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          true if the tree is empty, false otherwise.
+ * \relates         binary_search_tree_t
  */
 bool
 bstree_is_empty(binary_search_tree_t* tree) {
@@ -777,6 +786,7 @@ free_tree_nodes(binary_search_tree_node_t* node) {
  * \brief           free the given tree.
  * \param[in]       tree: pointer to tree pointer.
  * \note            this function will free the memory used by the tree. The input pointer itself will be set to `NULL`.
+ * \relates         binary_search_tree_t
  */
 void
 bstree_clear(binary_search_tree_t** tree) {

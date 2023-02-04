@@ -9,10 +9,11 @@
 #include "memalloc.h"
 
 /**
-  * \brief          construct a new singly linked list.
-  * \note           since the current implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
-  * \return         a pointer to head of the newly constructed linked list.
-  */
+ * \brief           construct a new singly linked list.
+ * \return          NULL.
+ * \note            since the current implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
+ * \relates         singly_linked_list_t
+ */
 singly_linked_list_t*
 sllist_construct() {
     return NULL;
@@ -22,6 +23,7 @@ sllist_construct() {
  * \brief           insert a new item at the beginning of the linked list.
  * \param[in]       list: a pointer to a pointer of the list head.
  * \param[in]       value: the new value to insert.
+ * \relates         singly_linked_list_t
  */
 void
 sllist_insert(singly_linked_list_t** list, data_type value) {
@@ -37,9 +39,10 @@ sllist_insert(singly_linked_list_t** list, data_type value) {
 
 /**
  * \brief           delete a node from the list.
- * \note            node_to_delete will always be freed, even if it was not found in the given list.
  * \param[in]       list: a pointer to a pointer of the list head.
  * \param[in]       node_to_delete: a pointer to the node of the list to delete.
+ * \note            node_to_delete will always be freed, even if it was not found in the given list.
+ * \relates         singly_linked_list_t
  */
 void
 sllist_delete(singly_linked_list_t** list, singly_linked_list_t* node_to_delete) {
@@ -77,6 +80,7 @@ sllist_delete(singly_linked_list_t** list, singly_linked_list_t* node_to_delete)
  * \param[in]       value: value to search.
  * \param[in]       compare: function to use to compare 2 data_type.
  * \param[in]       node_to_delete: a pointer to the node of the list containing the value. If none is found `NULL` will be returned instead.
+ * \relates         singly_linked_list_t
  */
 singly_linked_list_t*
 sllist_search(singly_linked_list_t* list, data_type value, data_type_compare_fn compare) {
@@ -93,8 +97,9 @@ sllist_search(singly_linked_list_t* list, data_type value, data_type_compare_fn 
 
 /**
  * \brief           free all the elements contained in the list.
- * \note            the input pointer will be set to `NULL`.
  * \param[in]       list: a pointer to a pointer of the list head.
+ * \note            the input pointer will be set to `NULL`.
+ * \relates         singly_linked_list_t
  */
 void
 sllist_clear(singly_linked_list_t** list) {
@@ -110,8 +115,9 @@ sllist_clear(singly_linked_list_t** list) {
 
 /**
  * \brief           construct a new doubly linked list.
+ * \return          NULL.
  * \note            since the current implementation uses a single structure to contain both the nodes and the list itself, a simple NULL pointer will be returned.
- * \return          a pointer to head of the newly constructed linked list.
+ * \relates         doubly_linked_list_t
  */
 doubly_linked_list_t*
 dllist_construct() {
@@ -122,6 +128,7 @@ dllist_construct() {
  * \brief           insert a new item at the beginning of the linked list.
  * \param[in]       list: a pointer to a pointer of the list head.
  * \param[in]       value: the new value to insert.
+ * \relates         doubly_linked_list_t
  */
 void
 dllist_insert(doubly_linked_list_t** list, data_type value) {
@@ -144,6 +151,7 @@ dllist_insert(doubly_linked_list_t** list, data_type value) {
  * \note            node_to_delete will always be freed, even if it was not found in the given list.
  * \param[in]       list: a pointer to a pointer of the list head.
  * \param[in]       node_to_delete: a pointer to the node of the list to delete.
+ * \relates         doubly_linked_list_t
  */
 void
 dllist_delete(doubly_linked_list_t** list, doubly_linked_list_t* node_to_delete) {
@@ -184,6 +192,7 @@ dllist_delete(doubly_linked_list_t** list, doubly_linked_list_t* node_to_delete)
  * \param[in]       value: value to search.
  * \param[in]       compare: function to use to compare the input value and the content of the list nodes.
  * \param[in]       node_to_delete: a pointer to the node of the list containing the value. If none is found `NULL` will be returned instead.
+ * \relates         doubly_linked_list_t
  */
 doubly_linked_list_t*
 dllist_search(doubly_linked_list_t* list, data_type value, data_type_compare_fn compare) {
@@ -202,6 +211,7 @@ dllist_search(doubly_linked_list_t* list, data_type value, data_type_compare_fn 
  * \brief           free all the elements contained in the list.
  * \note            the input pointer will be set to `NULL`.
  * \param[in]       list: a pointer to a pointer of the list head.
+ * \relates         doubly_linked_list_t
  */
 void
 dllist_clear(doubly_linked_list_t** list) {
