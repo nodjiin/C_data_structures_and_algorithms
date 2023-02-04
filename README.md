@@ -47,7 +47,7 @@ the latter contains a set of unit tests, created by exploiting the standard libr
 
 ## Algorithms
 
-- [Hash functions](https://nodjiin.github.io/C_data_structures_and_algorithms/hashing_8h.html)
+- [Hash functions](https://nodjiin.github.io/C_data_structures_and_algorithms/hashing_8c.html)
 
 ## Disclaimer
 
