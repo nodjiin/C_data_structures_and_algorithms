@@ -28,7 +28,7 @@ typedef struct {
 } key_value_pair_t;
 
 /**
- * \brief           bucket element, implemented as a doubly linked list node.
+ * \brief           hash table bucket element, implemented as a doubly linked list node.
  */
 typedef struct hashtable_bucket_element_t {
     struct hashtable_bucket_element_t* next;     /*!< pointer to the next element in the bucket */
