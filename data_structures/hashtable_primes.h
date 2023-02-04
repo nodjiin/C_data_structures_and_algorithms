@@ -1,6 +1,6 @@
 
 /**
- * \file			hashtable_prime.h
+ * \file			hashtable_primes.h
  * \brief           header file containing the prime lookup table used on hash table resizing.
  */
 
