@@ -25,7 +25,6 @@ hash_djb2(const unsigned char* string) {
 /**
  * \brief           hash the given string using the Fowler–Noll–Vo 1a hash function.
  * \param[in]       string: pointer to a NUL terminated character array.
- * \param[in]       string_length: size of the character array.
  * \return          the hashed value.
  */
 uint64_t
