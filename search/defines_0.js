@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['data_5fprint_5fformat_247',['DATA_PRINT_FORMAT',['../datatype_8h.html#a1dc977a74d53c99fbaf88c97212ba060',1,'datatype.h']]]
+  ['alphabet_5findex_272',['alphabet_index',['../trie_8h.html#a8b788f4c6d70ab7fa9a396acec36bc05',1,'trie.h']]],
+  ['alphabet_5fsize_273',['ALPHABET_SIZE',['../trie_8h.html#a6572f1706059832f94025fa12c6c45ed',1,'trie.h']]]
 ];

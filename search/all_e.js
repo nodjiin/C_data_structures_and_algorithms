@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['realloc_5fs_105',['realloc_s',['../memalloc_8c.html#aba693a838fbbaba164f451e267fa6844',1,'realloc_s(void *block, size_t size):&#160;memalloc.c'],['../memalloc_8h.html#aba693a838fbbaba164f451e267fa6844',1,'realloc_s(void *block, size_t size):&#160;memalloc.c']]],
-  ['right_106',['right',['../structbinary__search__tree__node__t.html#a7825a4bf2f527bfc9d189a310f10fab6',1,'binary_search_tree_node_t']]],
-  ['root_107',['root',['../structbinary__search__tree__t.html#a2b23966e9c858f8696bbd44130a7f1d6',1,'binary_search_tree_t']]],
-  ['root_108',['ROOT',['../heap_8c.html#a77988da40e9a35da51ea0e8943ebbd4a',1,'heap.c']]]
+  ['queue_2ec_100',['queue.c',['../queue_8c.html',1,'']]],
+  ['queue_2eh_101',['queue.h',['../queue_8h.html',1,'']]],
+  ['queue_5fclear_102',['queue_clear',['../structqueue__t.html#a7a58b5e591b1a2f11594c5f73f806ca7',1,'queue_t']]],
+  ['queue_5fconstruct_103',['queue_construct',['../structqueue__t.html#aab3cba95f6f0d968db82ca9f6f36c7b9',1,'queue_t']]],
+  ['queue_5fcount_104',['queue_count',['../structqueue__t.html#aed97827fb3f733536fd09e712c418481',1,'queue_t']]],
+  ['queue_5fdequeue_105',['queue_dequeue',['../structqueue__t.html#ad6323723da3231c5d79bbe5b7bf0a8cb',1,'queue_t']]],
+  ['queue_5fenqueue_106',['queue_enqueue',['../structqueue__t.html#accb3b09b165acf5d02a913aa6a748ec5',1,'queue_t']]],
+  ['queue_5fis_5fempty_107',['queue_is_empty',['../structqueue__t.html#a09a3da9bf84f747356ef8050447bf35a',1,'queue_t']]],
+  ['queue_5ft_108',['queue_t',['../structqueue__t.html',1,'']]]
 ];

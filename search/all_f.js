@@ -1,18 +1,7 @@
 var searchData=
 [
-  ['singly_5flinked_5flist_5ft_109',['singly_linked_list_t',['../structsingly__linked__list__t.html',1,'singly_linked_list_t'],['../linkedlist_8h.html#a4f675149a28c4ac0b32107093e0a9bef',1,'singly_linked_list_t():&#160;linkedlist.h']]],
-  ['sllist_5fclear_110',['sllist_clear',['../structsingly__linked__list__t.html#abb667b12b1b7873214ca715ee77fc0b7',1,'singly_linked_list_t']]],
-  ['sllist_5fconstruct_111',['sllist_construct',['../structsingly__linked__list__t.html#a9c4412ead22dd12d9c91fc8de1694ff9',1,'singly_linked_list_t']]],
-  ['sllist_5fdelete_112',['sllist_delete',['../structsingly__linked__list__t.html#a1751776ebe5e7aa4e36d319f44750b95',1,'singly_linked_list_t']]],
-  ['sllist_5finsert_113',['sllist_insert',['../structsingly__linked__list__t.html#a24b370bdc7611393b00a6125783f8f7a',1,'singly_linked_list_t']]],
-  ['sllist_5fsearch_114',['sllist_search',['../structsingly__linked__list__t.html#a1797bb233d703ca7afa7be53d99f0519',1,'singly_linked_list_t']]],
-  ['stack_2ec_115',['stack.c',['../stack_8c.html',1,'']]],
-  ['stack_2eh_116',['stack.h',['../stack_8h.html',1,'']]],
-  ['stack_5fclear_117',['stack_clear',['../structstack__t.html#ab38d05d09f65905be1aa2b64c994fa72',1,'stack_t']]],
-  ['stack_5fconstruct_118',['stack_construct',['../structstack__t.html#a402d4e4d715f53ae6721fdf6d9f70855',1,'stack_t']]],
-  ['stack_5fcount_119',['stack_count',['../structstack__t.html#a1e12512326928ab483f8ed8570e8d47d',1,'stack_t']]],
-  ['stack_5fis_5fempty_120',['stack_is_empty',['../structstack__t.html#a2f1f9ecb82109db5ce4515330533f350',1,'stack_t']]],
-  ['stack_5fpop_121',['stack_pop',['../structstack__t.html#adbb44ad268511019426358f8af761588',1,'stack_t']]],
-  ['stack_5fpush_122',['stack_push',['../structstack__t.html#a4fb266f02c05edec7eab8b2d205d0364',1,'stack_t']]],
-  ['stack_5ft_123',['stack_t',['../structstack__t.html',1,'']]]
+  ['realloc_5fs_109',['realloc_s',['../memalloc_8c.html#aba693a838fbbaba164f451e267fa6844',1,'realloc_s(void *block, size_t size):&#160;memalloc.c'],['../memalloc_8h.html#aba693a838fbbaba164f451e267fa6844',1,'realloc_s(void *block, size_t size):&#160;memalloc.c']]],
+  ['right_110',['right',['../structbinary__search__tree__node__t.html#a7825a4bf2f527bfc9d189a310f10fab6',1,'binary_search_tree_node_t']]],
+  ['root_111',['root',['../structbinary__search__tree__t.html#a2b23966e9c858f8696bbd44130a7f1d6',1,'binary_search_tree_t::root()'],['../structtrie__t.html#ad62fd9a3dee9bf98829063b5cbd98f20',1,'trie_t::root()']]],
+  ['root_112',['ROOT',['../heap_8c.html#a77988da40e9a35da51ea0e8943ebbd4a',1,'heap.c']]]
 ];

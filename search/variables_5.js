@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_5fcompare_224',['key_compare',['../structhashtable__t.html#a480945a1b05da1ec920d31b6dc6a1f43',1,'hashtable_t']]]
+  ['is_5fterminal_247',['is_terminal',['../structtrie__node__t.html#a8ebdd154caad87fdc6e195ecda05b12f',1,'trie_node_t']]]
 ];

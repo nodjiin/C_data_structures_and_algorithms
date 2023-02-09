@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['first_5fposition_248',['FIRST_POSITION',['../heap_8c.html#a9b4ba3650de963b1af915361bbc34b4a',1,'heap.c']]],
-  ['free_5fs_249',['free_s',['../memalloc_8h.html#a2bc6bb4ddacdf4e6029c16771c4995d6',1,'memalloc.h']]]
+  ['data_5fprint_5fformat_274',['DATA_PRINT_FORMAT',['../datatype_8h.html#a1dc977a74d53c99fbaf88c97212ba060',1,'datatype.h']]]
 ];

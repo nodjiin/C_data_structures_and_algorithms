@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['value_235',['value',['../structbinary__search__tree__node__t.html#a6b1d835d8926a10a22bd5dfbb48a8c68',1,'binary_search_tree_node_t::value()'],['../structsingly__linked__list__t.html#a7c5e3a27119a8f0560375fcbec2317b0',1,'singly_linked_list_t::value()'],['../structdoubly__linked__list__t.html#a5d125116dd9b3e6c566b20f837e02688',1,'doubly_linked_list_t::value()']]]
+  ['right_257',['right',['../structbinary__search__tree__node__t.html#a7825a4bf2f527bfc9d189a310f10fab6',1,'binary_search_tree_node_t']]],
+  ['root_258',['root',['../structbinary__search__tree__t.html#a2b23966e9c858f8696bbd44130a7f1d6',1,'binary_search_tree_t::root()'],['../structtrie__t.html#ad62fd9a3dee9bf98829063b5cbd98f20',1,'trie_t::root()']]]
 ];
