@@ -137,6 +137,7 @@
     <ClInclude Include="memalloc.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="trie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="binarysearchtree.c" />
