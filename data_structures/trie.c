@@ -1,3 +1,8 @@
+/**
+ * \file            trie.c
+ * \brief           source file containing the definition of trie operations.
+ */
+
 #include <stdio.h>
 #include "memalloc.h"
 #include "trie.h"

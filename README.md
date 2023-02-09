@@ -42,6 +42,7 @@ the latter contains a set of unit tests, created by exploiting the standard libr
 - [Dynamic array](https://nodjiin.github.io/C_data_structures_and_algorithms/structdynamic__array__t.html)
 - [Hash Table](https://nodjiin.github.io/C_data_structures_and_algorithms/structhashtable__t.html)
 - [Binary search tree](https://nodjiin.github.io/C_data_structures_and_algorithms/structbinary__search__tree__t.html)
+- [Trie](https://nodjiin.github.io/C_data_structures_and_algorithms/structtrie__t.html)
 - [Heap](https://nodjiin.github.io/C_data_structures_and_algorithms/structheap__t.html)
 - Graph (WIP)
 
