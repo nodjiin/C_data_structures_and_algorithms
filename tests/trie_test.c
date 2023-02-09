@@ -12,11 +12,26 @@ trie_construct_test(void) {
     assert(trie != NULL);
     assert(trie->count == 0);
     assert(trie->root != NULL);
+    assert(trie->root->children != NULL);
+    assert(trie->root->is_terminal == false);
 }
 
 void
 trie_insert_test(void) {
-    assert(0);
+    trie_t* trie;
+
+    trie = trie_construct();
+
+    trie_insert(trie, TESTTRIEKEY1, TESTVAL1);
+    trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
+    trie_insert(trie, TESTTRIEKEY3, TESTVAL3);
+
+    assert(trie->root->children[0]->is_terminal == true);
+    assert(trie->root->children[0]->value == TESTVAL1);
+    assert(trie->root->children[0]->children[0]->is_terminal == true);
+    assert(trie->root->children[0]->children[0]->value == TESTVAL2);
+    assert(trie->root->children[1]->is_terminal == true);
+    assert(trie->root->children[1]->value == TESTVAL3);
 }
 
 void

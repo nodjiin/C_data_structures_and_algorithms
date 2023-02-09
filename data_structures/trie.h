@@ -44,8 +44,8 @@ typedef struct trie_node_t {
  *                  but allows fast search operations without having to reorder the children of individual nodes at each insertion.
  */
 typedef struct {
-    trie_node_t** root; /*!< pointer to the root node */
-    size_t count;       /*!< number of values contained in the tree */
+    trie_node_t* root; /*!< pointer to the root node */
+    size_t count;      /*!< number of values contained in the tree */
 } trie_t;
 
 __declspec(dllexport) trie_t* trie_construct(void);
