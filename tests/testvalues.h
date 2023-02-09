@@ -28,6 +28,7 @@
 #define TESTTRIEKEY1 "a"
 #define TESTTRIEKEY2 "aa"
 #define TESTTRIEKEY3 "b"
+#define TESTTRIEKEY4 "aaa"
 
 inline int
 compare(const data_type a, const data_type b) {

@@ -50,7 +50,7 @@ typedef struct {
 
 __declspec(dllexport) trie_t* trie_construct(void);
 __declspec(dllexport) void trie_insert(trie_t* trie, char* key, data_type value);
-__declspec(dllexport) void trie_delete(trie_t* trie, char* key);
+__declspec(dllexport) data_type trie_delete(trie_t* trie, char* key);
 __declspec(dllexport) data_type trie_search(trie_t* trie, char* key);
 __declspec(dllexport) void trie_clear(trie_t** trie);
 

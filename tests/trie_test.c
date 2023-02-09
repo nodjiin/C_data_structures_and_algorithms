@@ -26,6 +26,7 @@ trie_insert_test(void) {
     trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
     trie_insert(trie, TESTTRIEKEY3, TESTVAL3);
 
+    assert(trie->count == 3);
     assert(trie->root->children[0]->is_terminal == true);
     assert(trie->root->children[0]->value == TESTVAL1);
     assert(trie->root->children[0]->children[0]->is_terminal == true);
@@ -36,7 +37,42 @@ trie_insert_test(void) {
 
 void
 trie_delete_test(void) {
-    assert(0);
+    trie_t* trie;
+    data_type value, value_not_inside;
+
+    trie = trie_construct();
+    trie_insert(trie, TESTTRIEKEY1, TESTVAL1);
+    trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
+
+    value = trie_delete(trie, TESTTRIEKEY2);
+    value_not_inside = trie_delete(trie, TESTTRIEKEY3);
+
+    assert(trie->count == 1);
+    assert(trie->root->children[0]->is_terminal == true);
+    assert(trie->root->children[0]->value == TESTVAL1);
+    assert(trie->root->children[0]->children[0] == NULL);
+    assert(value == TESTVAL2);
+    assert(value_not_inside == NULL);
+}
+
+void
+trie_delete_test2(void) {
+    trie_t* trie;
+    data_type value;
+
+    trie = trie_construct();
+    trie_insert(trie, TESTTRIEKEY1, TESTVAL1);
+    trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
+    trie_insert(trie, TESTTRIEKEY4, TESTVAL4);
+
+    value = trie_delete(trie, TESTTRIEKEY2);
+
+    assert(trie->count == 2);
+    assert(trie->root->children[0]->is_terminal == true);
+    assert(trie->root->children[0]->value == TESTVAL1);
+    assert(trie->root->children[0]->children[0] != NULL);
+    assert(trie->root->children[0]->children[0]->is_terminal == false);
+    assert(value == TESTVAL2);
 }
 
 void
@@ -54,6 +90,7 @@ trie_testall(void) {
     trie_construct_test();
     trie_insert_test();
     trie_delete_test();
+    trie_delete_test2();
     trie_search_test();
     trie_clear_test();
 }
