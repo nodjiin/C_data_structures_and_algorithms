@@ -39,6 +39,9 @@
     <ClCompile Include="hashtable_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="trie_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedlist_test.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hashtable_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trie_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

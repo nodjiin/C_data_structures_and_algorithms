@@ -143,6 +143,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="queue_test.c" />
     <ClCompile Include="stack_test.c" />
+    <ClCompile Include="trie_test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binarysearchtree_test.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="queue_test.h" />
     <ClInclude Include="stack_test.h" />
     <ClInclude Include="testvalues.h" />
+    <ClInclude Include="trie_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\algorithms\algorithms.vcxproj">
