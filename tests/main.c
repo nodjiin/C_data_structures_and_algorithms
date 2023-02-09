@@ -6,6 +6,7 @@
 #include "heap_test.h"
 #include "binarysearchtree_test.h"
 #include "hashtable_test.h"
+#include "trie_test.h"
 
 int
 main(void) {
@@ -16,6 +17,7 @@ main(void) {
     heap_testall();
     bstree_testall();
     hashtable_testall();
+    trie_testall();
 
     exit(0);
 }

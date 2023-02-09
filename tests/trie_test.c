@@ -5,7 +5,13 @@
 
 void
 trie_construct_test(void) {
-    assert(0);
+    trie_t* trie;
+
+    trie = trie_construct();
+
+    assert(trie != NULL);
+    assert(trie->count == 0);
+    assert(trie->root != NULL);
 }
 
 void
