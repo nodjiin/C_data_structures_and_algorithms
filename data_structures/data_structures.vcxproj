@@ -143,6 +143,7 @@
     <ClCompile Include="binarysearchtree.c" />
     <ClCompile Include="dynamicarray.c" />
     <ClCompile Include="hashtable.c" />
+    <ClCompile Include="trie.c" />
     <ClInclude Include="hashtable.h" />
     <ClCompile Include="heap.c" />
     <ClCompile Include="linkedlist.c" />

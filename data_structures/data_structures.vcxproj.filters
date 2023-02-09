@@ -77,5 +77,8 @@
     <ClCompile Include="hashtable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="trie.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
