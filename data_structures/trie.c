@@ -180,3 +180,78 @@ trie_delete(trie_t* trie, char* key) {
     trie_delete_recursive(trie, trie->root, key, &value);
     return value;
 }
+
+/**
+ * \brief           search the given key/value pair inside the trie.
+ * \param[in]       trie: pointer to the trie. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \param[in]       key: pointer to the character array containing the key. `NULL` and strings containing characters not belonging to the target alphabet 
+ *                  (e.g., causing alphabet_index to output invalid indexes) are not considered a valid input and will cause an early exit with INVALID_INPUT
+ *                  status code. Using keys which are not NUL-terminated will result in undefined behavior.
+ * \return          the value connected to the given key or NULL_DATA if none is found.
+ * \relates         trie_t
+ */
+data_type
+trie_search(trie_t* trie, char* key) {
+    trie_node_t* node;
+
+    if (trie == NULL) {
+        fprintf(stderr, "[trie_delete] Invalid input. Faulty deletion request on NULL trie.\n");
+        exit(INVALID_INPUT);
+    }
+
+    if (key == NULL) {
+        fprintf(stderr, "[trie_delete] Invalid input. Faulty deletion request with NULL key.\n");
+        exit(INVALID_INPUT);
+    }
+
+    node = trie->root;
+    while (node != NULL && *key != '\0') {
+        int index;
+
+        index = alphabet_index(*key);
+        if (index < 0 || index >= ALPHABET_SIZE) {
+            fprintf(stderr,
+                    "[trie_search] Invalid input. Faulty search request with key containing invalid character: '%c'.\n",
+                    *key);
+            exit(INVALID_INPUT);
+        }
+
+        node = node->children[index];
+        key++;
+    }
+
+    return node != NULL ? node->value : NULL_DATA;
+}
+
+/**
+ * \brief           recursively free the given node an its children.
+ * \param[in]       trie: pointer to trie node.
+ */
+static void
+free_node_recursive(trie_node_t* node) {
+    if (node == NULL) {
+        return;
+    }
+
+    for (size_t i = 0; i < ALPHABET_SIZE; i++) {
+        free_node_recursive(node->children[i]);
+    }
+
+    free(node);
+}
+
+/**
+ * \brief           free the given trie.
+ * \param[in]       trie: pointer to trie pointer.
+ * \note            this function will free the memory used by the trie. The input pointer itself will be set to `NULL`.
+ * \relates         trie_t
+ */
+void
+trie_clear(trie_t** trie) {
+    if (trie == NULL || *trie == NULL) {
+        return;
+    }
+
+    free_node_recursive((*trie)->root);
+    free_s(*trie);
+}

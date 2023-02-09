@@ -77,12 +77,33 @@ trie_delete_test2(void) {
 
 void
 trie_search_test(void) {
-    assert(0);
+    trie_t* trie;
+    data_type value, value_not_inside;
+
+    trie = trie_construct();
+    trie_insert(trie, TESTTRIEKEY1, TESTVAL1);
+    trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
+    trie_insert(trie, TESTTRIEKEY4, TESTVAL4);
+
+    value = trie_search(trie, TESTTRIEKEY2);
+    value_not_inside = trie_search(trie, TESTTRIEKEY3);
+
+    assert(trie->count == 3);
+    assert(value == TESTVAL2);
+    assert(value_not_inside == NULL_DATA);
 }
 
 void
 trie_clear_test(void) {
-    assert(0);
+    trie_t* trie;
+
+    trie = trie_construct();
+    trie_insert(trie, TESTTRIEKEY1, TESTVAL1);
+    trie_insert(trie, TESTTRIEKEY2, TESTVAL2);
+
+    trie_clear(&trie);
+
+    assert(trie == NULL);
 }
 
 void
