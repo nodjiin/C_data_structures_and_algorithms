@@ -13,7 +13,7 @@
 /**
  * \brief           construct a new dynamic array.
  * \param[in]       initial_size: number of items that the array will be able to contain after initialization. 0 is not considered a valid input, 
- *                  and will result a program early exit with INVALID_INPUT code.
+ *                  and will result in an early exit with INVALID_INPUT code.
  * \return          a pointer the newly constructed array.
  * \relates         dynamic_array_t
  */
