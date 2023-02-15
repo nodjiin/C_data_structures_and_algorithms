@@ -20,4 +20,4 @@ __declspec(dllexport) uint64_t hash_fnv(const unsigned char* string);
 }
 #endif /* __cplusplus */
 
-#endif // !HASHTABLE
+#endif // !HASHING
