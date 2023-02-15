@@ -6,6 +6,7 @@
 #ifndef GRAPH
 #define GRAPH
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include "datatype.h"
