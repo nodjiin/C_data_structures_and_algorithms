@@ -83,5 +83,8 @@
     <ClCompile Include="trie.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="graph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

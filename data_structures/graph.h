@@ -22,15 +22,16 @@ extern "C" {
  *                  This is not an hypergraph, edges connecting more than 2 vertices are not supported.
  */
 typedef struct edgenode_t {
-    size_t y;              /* adjacency info */
-    int32_t weight;        /* edge weight, if any */
-    char* label;           /* label, if any */
-    struct edgenode* next; /* next edge in list */
+    size_t y;                /* adjacency info */
+    data_type weight;        /* edge weight, if any */
+    struct edgenode_t* next; /* next edge in list */
 } edgenode_t;
 
 /**
  * \brief           graph data structure.
- * \note            This implementation uses an adjacency list to store  the neighbors of each vertex.
+ * \note            This implementation uses an adjacency list to store  the neighbors of each vertex. The array containing the adjacency list doesn't resize 
+ *                  after the initial construction, the x and y vertex values used in the insertion of an edge must therefore respect the maximum vertex size 
+ *                  given during graph construction.
  *                  This is not an hypergraph, edges connecting more than 2 vertices are not supported.
  */
 typedef struct {
@@ -41,7 +42,7 @@ typedef struct {
 } graph_t;
 
 __declspec(dllexport) graph_t* graph_construct(size_t vertices_size, bool directed);
-__declspec(dllexport) void graph_insert_edge(graph_t* graph, size_t x, size_t y, int32_t weight, char* label);
+__declspec(dllexport) void graph_insert_edge(graph_t* graph, size_t x, size_t y, data_type weight);
 __declspec(dllexport) void graph_remove_edge(graph_t* graph, size_t x, size_t y);
 __declspec(dllexport) void graph_clear(graph_t** graph);
 

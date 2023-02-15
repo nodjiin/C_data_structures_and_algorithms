@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="binarysearchtree.c" />
     <ClCompile Include="dynamicarray.c" />
+    <ClCompile Include="graph.c" />
     <ClCompile Include="hashtable.c" />
     <ClCompile Include="trie.c" />
     <ClInclude Include="hashtable.h" />
