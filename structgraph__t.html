@@ -64,7 +64,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#pub-attribs">Data Fields</a> &#124;
+<a href="#related">Related Functions</a>  </div>
   <div class="headertitle">
 <div class="title">graph_t Struct Reference</div>  </div>
 </div><!--header-->
@@ -89,12 +90,224 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>nedges</b></td></tr
 <tr class="memitem:a594d2b1e668fb05e6f57601ccc7c7ba4"><td class="memItemLeft" align="right" valign="top"><a id="a594d2b1e668fb05e6f57601ccc7c7ba4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_directed</b></td></tr>
 <tr class="separator:a594d2b1e668fb05e6f57601ccc7c7ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:a7c0c44a6e4f2ddc7d598534f3874ff44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgraph__t.html">graph_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#a7c0c44a6e4f2ddc7d598534f3874ff44">graph_construct</a> (size_t vertices_size, bool directed)</td></tr>
+<tr class="memdesc:a7c0c44a6e4f2ddc7d598534f3874ff44"><td class="mdescLeft">&#160;</td><td class="mdescRight">construct a new graph.  <a href="structgraph__t.html#a7c0c44a6e4f2ddc7d598534f3874ff44">More...</a><br /></td></tr>
+<tr class="separator:a7c0c44a6e4f2ddc7d598534f3874ff44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13666e8a2a6c5a569173acacc236c56a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#a13666e8a2a6c5a569173acacc236c56a">graph_insert_edge</a> (<a class="el" href="structgraph__t.html">graph_t</a> *graph, size_t x, size_t y, <a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a> weight)</td></tr>
+<tr class="memdesc:a13666e8a2a6c5a569173acacc236c56a"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a new edge between vertices x and y in graph.  <a href="structgraph__t.html#a13666e8a2a6c5a569173acacc236c56a">More...</a><br /></td></tr>
+<tr class="separator:a13666e8a2a6c5a569173acacc236c56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae219a98606f3fedd996a9c4ba447f71a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#ae219a98606f3fedd996a9c4ba447f71a">graph_remove_edge</a> (<a class="el" href="structgraph__t.html">graph_t</a> *graph, size_t x, size_t y)</td></tr>
+<tr class="memdesc:ae219a98606f3fedd996a9c4ba447f71a"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove an existing edge from the graph.  <a href="structgraph__t.html#ae219a98606f3fedd996a9c4ba447f71a">More...</a><br /></td></tr>
+<tr class="separator:ae219a98606f3fedd996a9c4ba447f71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e01b5eab84bcc6311f97c07ec99ace"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#af9e01b5eab84bcc6311f97c07ec99ace">graph_clear</a> (<a class="el" href="structgraph__t.html">graph_t</a> **graph)</td></tr>
+<tr class="memdesc:af9e01b5eab84bcc6311f97c07ec99ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">free the given graph.  <a href="structgraph__t.html#af9e01b5eab84bcc6311f97c07ec99ace">More...</a><br /></td></tr>
+<tr class="separator:af9e01b5eab84bcc6311f97c07ec99ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>graph data structure. </p>
-<dl class="section note"><dt>Note</dt><dd>This implementation uses an adjacency list to store the neighbors of each vertex. This is not an hypergraph, edges connecting more than 2 vertices are not supported. </dd></dl>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<dl class="section note"><dt>Note</dt><dd>This implementation uses an adjacency list to store the neighbors of each vertex. The array containing the adjacency list doesn't resize after the initial construction, the x and y vertex values used in the insertion of an edge must therefore respect the maximum vertex size given during graph construction. This is not an hypergraph, edges connecting more than 2 vertices are not supported. </dd></dl>
+</div><h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="af9e01b5eab84bcc6311f97c07ec99ace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9e01b5eab84bcc6311f97c07ec99ace">&#9670;&nbsp;</a></span>graph_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graph_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph__t.html">graph_t</a> **&#160;</td>
+          <td class="paramname"><em>graph</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>free the given graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>pointer to graph pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>this function will free the memory used by the graph. The input pointer itself will be set to <code>NULL</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a7c0c44a6e4f2ddc7d598534f3874ff44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c0c44a6e4f2ddc7d598534f3874ff44">&#9670;&nbsp;</a></span>graph_construct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgraph__t.html">graph_t</a> * graph_construct </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>vertices_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>directed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>construct a new graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertices_size</td><td>number of vertices that the graph will be able to contain after initialization. 0 is not considered a valid input, and will result in a program early exit with INVALID_INPUT code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">directed</td><td>parameter indicating whether the graph should be directed, or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a pointer the newly constructed graph. </dd></dl>
+
+</div>
+</div>
+<a id="a13666e8a2a6c5a569173acacc236c56a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13666e8a2a6c5a569173acacc236c56a">&#9670;&nbsp;</a></span>graph_insert_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graph_insert_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph__t.html">graph_t</a> *&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a>&#160;</td>
+          <td class="paramname"><em>weight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>insert a new edge between vertices x and y in graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>graph pointer. <code>NULL</code> is not considered a valid input and will cause an early exit with INVALID_INPUT status code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>vertex from which the edge starts. Trying to insert an edge with index greater than vertices size will result in an early exit with invalid input status code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>vertex towards which the edge is directed. Trying to insert an edge with index greater than vertices size will result in an early exit with invalid input status code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">weight</td><td>weight of the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae219a98606f3fedd996a9c4ba447f71a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae219a98606f3fedd996a9c4ba447f71a">&#9670;&nbsp;</a></span>graph_remove_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graph_remove_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph__t.html">graph_t</a> *&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>remove an existing edge from the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>graph pointer. <code>NULL</code> is not considered a valid input and will cause an early exit with INVALID_INPUT status code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>vertex from which the edge starts. Trying to insert an edge with index greater than vertices size will result in an early exit with invalid input status code. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>vertex towards which the edge is directed. Trying to insert an edge with index greater than vertices size will result in an early exit with invalid input status code. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>trying to remove an edge not present in the graph, but whose coordinates respect its maximum size will not result in an error. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>data_structures/<a class="el" href="graph_8h_source.html">graph.h</a></li>
+<li>data_structures/<a class="el" href="graph_8c.html">graph.c</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
