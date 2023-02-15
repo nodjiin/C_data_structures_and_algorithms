@@ -47,7 +47,7 @@ static void
 insert_edge(graph_t* graph, size_t x, size_t y, data_type weight, bool directed) {
     edgenode_t* edge;
 
-    edge = malloc_s(sizeof(edge));
+    edge = malloc_s(sizeof(edgenode_t));
     edge->weight = weight;
     edge->y = y;
     edge->next = graph->edges[x];
@@ -55,35 +55,6 @@ insert_edge(graph_t* graph, size_t x, size_t y, data_type weight, bool directed)
 
     if (!directed) { /* if the edge is not directed insert a copy at index y */
         insert_edge(graph, y, x, weight, true);
-    }
-}
-
-static void
-remove_edge(graph_t* graph, size_t x, size_t y, bool directed) {
-    edgenode_t *edge, *to_free;
-
-    edge = graph->edges[x];
-    if (edge == NULL) {
-        return;
-    }
-
-    if (edge->y == y) { /* if the edge is the first element of the list, we can remove it directly */
-        graph->edges[x] = edge->next;
-        free(edge);
-    } else { /* otherwise we iterate the list to find it */
-        while (edge->next != NULL && edge->next->y != y) {
-            edge = edge->next;
-        }
-
-        if (edge->next != NULL) { /* safety check in case we didn't find it */
-            to_free = edge->next;
-            edge->next = edge->next->next;
-            free(to_free);
-        }
-    }
-
-    if (!directed) { /* if the edge is not directed remove its copy at index y */
-        remove_edge(graph, y, x, true);
     }
 }
 
@@ -125,7 +96,43 @@ graph_insert_edge(graph_t* graph, size_t x, size_t y, data_type weight) {
 }
 
 /**
- * \brief           remove an existing edge from the graph.
+ * \brief           remove an edge from the graph.
+ * \param[in]       graph: graph pointer.
+ * \param[in]       x: vertex from which the edge starts. 
+ * \param[in]       y: vertex towards which the edge is directed.
+ * \param[in]       directed: value indicating if the edge is directed or not.
+ */
+static void
+remove_edge(graph_t* graph, size_t x, size_t y, bool directed) {
+    edgenode_t *edge, *to_free;
+
+    edge = graph->edges[x];
+    if (edge == NULL) {
+        return;
+    }
+
+    if (edge->y == y) { /* if the edge is the first element of the list, we can remove it directly */
+        graph->edges[x] = edge->next;
+        free(edge);
+    } else { /* otherwise we iterate the list to find it */
+        while (edge->next != NULL && edge->next->y != y) {
+            edge = edge->next;
+        }
+
+        if (edge->next != NULL) { /* safety check in case we didn't find it */
+            to_free = edge->next;
+            edge->next = edge->next->next;
+            free(to_free);
+        }
+    }
+
+    if (!directed) { /* if the edge is not directed remove its copy at index y */
+        remove_edge(graph, y, x, true);
+    }
+}
+
+/**
+ * \brief           remove an edge from the graph.
  * \param[in]       graph: graph pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \param[in]       x: vertex from which the edge starts. Trying to insert an edge with index greater than vertices size will result in an early 
  *                  exit with invalid input status code.
@@ -184,5 +191,5 @@ graph_clear(graph_t** graph) {
         }
     }
 
-    free_s(graph);
+    free_s(*graph);
 }
