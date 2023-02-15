@@ -135,6 +135,7 @@
     <ClInclude Include="datatype.h" />
     <ClInclude Include="dynamicarray.h" />
     <ClInclude Include="exitcodes.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="hashtable_primes.h" />
     <ClInclude Include="heap.h" />
     <ClInclude Include="linkedlist.h" />
