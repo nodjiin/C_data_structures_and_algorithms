@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trie_5fnode_5ft_270',['trie_node_t',['../trie_8h.html#ab3f2fe8a714124ad5970bca89694abc6',1,'trie.h']]]
+  ['singly_5flinked_5flist_5ft_276',['singly_linked_list_t',['../linkedlist_8h.html#a4f675149a28c4ac0b32107093e0a9bef',1,'linkedlist.h']]]
 ];
