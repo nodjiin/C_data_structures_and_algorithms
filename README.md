@@ -44,7 +44,7 @@ the latter contains a set of unit tests, created by exploiting the standard libr
 - [Binary search tree](https://nodjiin.github.io/C_data_structures_and_algorithms/structbinary__search__tree__t.html)
 - [Trie](https://nodjiin.github.io/C_data_structures_and_algorithms/structtrie__t.html)
 - [Heap](https://nodjiin.github.io/C_data_structures_and_algorithms/structheap__t.html)
-- Graph (WIP)
+- [Graph](https://nodjiin.github.io/C_data_structures_and_algorithms/structgraph__t.html)
 
 ## Algorithms
 
