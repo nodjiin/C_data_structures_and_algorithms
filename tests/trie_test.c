@@ -52,7 +52,7 @@ trie_delete_test(void) {
     assert(trie->root->children[0]->value == TESTVAL1);
     assert(trie->root->children[0]->children[0] == NULL);
     assert(value == TESTVAL2);
-    assert(value_not_inside == NULL);
+    assert(value_not_inside == NULL_DATA);
 }
 
 void
