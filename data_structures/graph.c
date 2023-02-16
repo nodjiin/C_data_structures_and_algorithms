@@ -3,11 +3,11 @@
  * \brief           source file containing the definition of graph operations.
  */
 
-#include <stdio.h>;
-#include <stdlib.h>;
-#include "memalloc.h";
-#include "exitcodes.h";
-#include "graph.h";
+#include <stdio.h>
+#include <stdlib.h>
+#include "memalloc.h"
+#include "exitcodes.h"
+#include "graph.h"
 
 /**
  * \brief           construct a new graph.
