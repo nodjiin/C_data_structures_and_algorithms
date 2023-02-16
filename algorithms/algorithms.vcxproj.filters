@@ -18,9 +18,15 @@
     <ClInclude Include="hashing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hashing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="search.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
