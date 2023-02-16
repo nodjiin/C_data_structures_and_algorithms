@@ -121,18 +121,19 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
     edgenode_t* edge;
 
     if (graph == NULL) {
-        fprintf(stderr, "[graph_breadth_first_search] Invalid input. Faulty bfs search on NULL graph.\n");
+        fprintf(stderr, "[graph_breadth_first_search] Invalid input. Faulty breadth first search on NULL graph.\n");
         exit(INVALID_INPUT);
     }
 
     if (traverser == NULL) {
-        fprintf(stderr, "[graph_breadth_first_search] Invalid input. Faulty bfs search with NULL traverser.\n");
+        fprintf(stderr,
+                "[graph_breadth_first_search] Invalid input. Faulty breadth first search with NULL traverser.\n");
         exit(INVALID_INPUT);
     }
 
     if (starting_vertex >= graph->nvertices) {
         fprintf(stderr,
-                "[graph_breadth_first_search] Invalid input. Faulty bfs search with starting vertex '%zu' "
+                "[graph_breadth_first_search] Invalid input. Faulty breadth first search with starting vertex '%zu' "
                 "exceeding vertices size '%zu'.\n",
                 starting_vertex, graph->nvertices);
         exit(INVALID_INPUT);
