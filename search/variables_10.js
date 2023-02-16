@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_317',['y',['../structedgenode__t.html#ae65cf6f5f0407caffe450b47fc0b59d7',1,'edgenode_t']]]
+  ['weight_324',['weight',['../structedgenode__t.html#a48eb550b51124e113f767ed76a3572ea',1,'edgenode_t']]]
 ];

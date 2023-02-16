@@ -91,9 +91,9 @@ Data Fields</h2></td></tr>
 Related Functions</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
 </td></tr>
-<tr class="memitem:ab01e4558a1a031e91fbcf6cc1c875c22"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgraph__traverser__t.html">graph_traverser_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#ab01e4558a1a031e91fbcf6cc1c875c22">graph_traverser_construct</a> (<a class="el" href="structgraph__t.html">graph_t</a> *graph, <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> process_vertex_early, <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> process_vertex_late, <a class="el" href="search_8h.html#a6d7b55df7ac31da223f922fbe00063e3">process_edge_fn</a> process_edge)</td></tr>
-<tr class="memdesc:ab01e4558a1a031e91fbcf6cc1c875c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new graph traverser.  <a href="structgraph__t.html#ab01e4558a1a031e91fbcf6cc1c875c22">More...</a><br /></td></tr>
-<tr class="separator:ab01e4558a1a031e91fbcf6cc1c875c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab441a04be18d1ddab1ea41e1985c178"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgraph__traverser__t.html">graph_traverser_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#aab441a04be18d1ddab1ea41e1985c178">graph_traverser_construct</a> (<a class="el" href="structgraph__t.html">graph_t</a> *graph, <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> process_vertex_early, <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> process_vertex_late, <a class="el" href="search_8h.html#a6d7b55df7ac31da223f922fbe00063e3">process_edge_fn</a> process_edge, enum search_type type)</td></tr>
+<tr class="memdesc:aab441a04be18d1ddab1ea41e1985c178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new graph traverser.  <a href="structgraph__t.html#aab441a04be18d1ddab1ea41e1985c178">More...</a><br /></td></tr>
+<tr class="separator:aab441a04be18d1ddab1ea41e1985c178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab46538c3c0df6292f42113ecd2782c27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph__t.html#ab46538c3c0df6292f42113ecd2782c27">graph_traverser_clear</a> (<a class="el" href="structgraph__traverser__t.html">graph_traverser_t</a> **traverser)</td></tr>
 <tr class="memdesc:ab46538c3c0df6292f42113ecd2782c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">free the given graph.  <a href="structgraph__t.html#ab46538c3c0df6292f42113ecd2782c27">More...</a><br /></td></tr>
 <tr class="separator:ab46538c3c0df6292f42113ecd2782c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,8 +342,8 @@ Related Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab01e4558a1a031e91fbcf6cc1c875c22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab01e4558a1a031e91fbcf6cc1c875c22">&#9670;&nbsp;</a></span>graph_traverser_construct()</h2>
+<a id="aab441a04be18d1ddab1ea41e1985c178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab441a04be18d1ddab1ea41e1985c178">&#9670;&nbsp;</a></span>graph_traverser_construct()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +373,13 @@ Related Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="search_8h.html#a6d7b55df7ac31da223f922fbe00063e3">process_edge_fn</a>&#160;</td>
-          <td class="paramname"><em>process_edge</em>&#160;</td>
+          <td class="paramname"><em>process_edge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum search_type&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -394,7 +400,8 @@ Related Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>pointer to the graph object to be traversed. <code>NULL</code> is not considered a valid input and will cause an early exit with INVALID_INPUT status code. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">process_vertex_early</td><td>pointer to a function that processes a vertex before its adjacent edges. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">process_vertex_late</td><td>pointer to a function that processes a vertex after its adjacent edges. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">process_edge</td><td>pointer to a function that processes an. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">process_edge</td><td>pointer to a function that processes an edge. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>type of search that this traverser will be used on. </td></tr>
   </table>
   </dd>
 </dl>
