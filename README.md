@@ -1,6 +1,6 @@
 # C data structures and algorithms
 
-C is a great language for learning both basic development concepts and complex algorithms. Unfortunately, the C standard library doesn't provide any implementation for many of the most common data structures offered by modern languages. The purpose of this repository is therefore to fill this gap, giving anyone who wants to approach the world of algorithms in C some working tools.
+C is an excellent language for mastering fundamental development concepts and sophisticated algorithms. However, the C standard library lacks many of the prevalent data structures that modern languages offer. This repository aims to bridge this gap by providing some useful tools for anyone who wants to explore the world of algorithms in C.
 
 ## Table of Contents
 
@@ -13,15 +13,14 @@ C is a great language for learning both basic development concepts and complex a
 
 ## Overview
 
-As is well known among C users, the lack of features such as c++ templates makes it difficult to produce generic data structures in C. The two techniques usually used to overcome this problem are:
+C users know that the absence of features like c++ templates makes it hard to create generic data structures in C. The two common techniques to address this issue are:
 
-- The extended use of C preprocessor to automatically generate code suitable for a specific type from time to time.
-- The use of void pointers items inside the data structures to hold all possible data types.
+- The extensive use of C preprocessor to generate code for a specific type on demand.
+- The use of void pointers items inside the data structures to store any data type.
 
-Given the specific target of this repository, I decided to avoid these 2 solutions and offer a simpler one.
+Considering the particular goal of this repository, I chose to skip these 2 solutions and propose a simpler one.
 
-All the data structures in the repository will contain objects of type `data_type`. `data_type` will be defined within the `datatype.h` header. The redefinition of this type will make the library adaptable to any specific exercise the user is trying to solve.
-Functions that execute comparisons between user-defined types will also accept as input a function pointer of type `data_type_compare_fn` (also found within `datatype.h`) that can be implemented as needed.
+All the data structures in the repository will hold objects of type `data_type`. `data_type` will be declared in the `datatype.h` header. Redefining this type will make the library suitable for any specific problem the user is trying to solve. Functions that perform comparisons between user-defined types will also take as input a function pointer of type `data_type_compare_fn` (also in `datatype.h`) that can be implemented as required.
 
 ## Repository structure
 
