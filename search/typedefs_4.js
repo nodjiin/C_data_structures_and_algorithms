@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['key_5ftype_283',['key_type',['../datatype_8h.html#a05704b4e56c62e79fbc7dfb3821d2658',1,'datatype.h']]],
-  ['key_5ftype_5fcompare_5ffn_284',['key_type_compare_fn',['../datatype_8h.html#a7a4cdfe9b367d4f846408a2e2d525391',1,'datatype.h']]]
+  ['hash_5fkey_5ffn_324',['hash_key_fn',['../hashtable_8h.html#a513c2aa5e1bc776e16a581b3d18beca7',1,'hashtable.h']]],
+  ['hashtable_5fbucket_5felement_5ft_325',['hashtable_bucket_element_t',['../hashtable_8h.html#a69b878898a09ff5afc578ad6a95ba99d',1,'hashtable.h']]]
 ];

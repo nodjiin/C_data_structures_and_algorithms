@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['left_265',['left',['../structbinary__search__tree__node__t.html#af23999fe12a47d68c0d890585180d351',1,'binary_search_tree_node_t']]],
-  ['length_266',['length',['../structdynamic__array__t.html#a9a3cefb4f41ceed5a657647023d69082',1,'dynamic_array_t']]],
-  ['list_267',['list',['../structqueue__t.html#af05651a35b0f8af4157db8a65bfa0770',1,'queue_t']]],
-  ['load_5ffactor_268',['load_factor',['../structhashtable__t.html#aabebe01f6d092d1e37cdcf57018d8d4d',1,'hashtable_t']]]
+  ['is_5fdirected_293',['is_directed',['../structgraph__t.html#a594d2b1e668fb05e6f57601ccc7c7ba4',1,'graph_t']]],
+  ['is_5fterminal_294',['is_terminal',['../structtrie__node__t.html#a8ebdd154caad87fdc6e195ecda05b12f',1,'trie_node_t']]]
 ];

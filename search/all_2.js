@@ -1,7 +1,7 @@
 var searchData=
 [
   ['c_20data_20structures_20and_20algorithms_19',['C data structures and algorithms',['../index.html',1,'']]],
-  ['calloc_5fs_20',['calloc_s',['../memalloc_8c.html#af04bb2a38824390ae9acf84fce3de0a6',1,'calloc_s(size_t count, size_t size):&#160;memalloc.c'],['../memalloc_8h.html#af04bb2a38824390ae9acf84fce3de0a6',1,'calloc_s(size_t count, size_t size):&#160;memalloc.c']]],
+  ['calloc_5fs_20',['calloc_s',['../memalloc_8c.html#af04bb2a38824390ae9acf84fce3de0a6',1,'memalloc.c']]],
   ['capacity_21',['capacity',['../structhashtable__t.html#a40008407253a01d61d41cd1eef973415',1,'hashtable_t']]],
   ['children_22',['children',['../structtrie__node__t.html#a9f0c8836b48f093154c36c0ca3d9b175',1,'trie_node_t']]],
   ['color_23',['color',['../structbinary__search__tree__node__t.html#a75ebd24c2058a15b5f58f43abaa7d4b6',1,'binary_search_tree_node_t']]],

@@ -69,7 +69,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">memalloc.h File Reference</div>  </div>
 </div><!--header-->
@@ -88,15 +89,15 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6bbf470630c4235f7c8a9af8915e34d9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memalloc_8h.html#a6bbf470630c4235f7c8a9af8915e34d9">malloc_s</a> (size_t size)</td></tr>
-<tr class="memdesc:a6bbf470630c4235f7c8a9af8915e34d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocate a new memory block of requested size.  <a href="memalloc_8h.html#a6bbf470630c4235f7c8a9af8915e34d9">More...</a><br /></td></tr>
-<tr class="separator:a6bbf470630c4235f7c8a9af8915e34d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af04bb2a38824390ae9acf84fce3de0a6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memalloc_8h.html#af04bb2a38824390ae9acf84fce3de0a6">calloc_s</a> (size_t count, size_t size)</td></tr>
-<tr class="memdesc:af04bb2a38824390ae9acf84fce3de0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocate a new memory block of requested size and then initialize it to <code>0</code>.  <a href="memalloc_8h.html#af04bb2a38824390ae9acf84fce3de0a6">More...</a><br /></td></tr>
-<tr class="separator:af04bb2a38824390ae9acf84fce3de0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba693a838fbbaba164f451e267fa6844"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memalloc_8h.html#aba693a838fbbaba164f451e267fa6844">realloc_s</a> (void *block, size_t size)</td></tr>
-<tr class="memdesc:aba693a838fbbaba164f451e267fa6844"><td class="mdescLeft">&#160;</td><td class="mdescRight">resize an existing memory block to the given value.  <a href="memalloc_8h.html#aba693a838fbbaba164f451e267fa6844">More...</a><br /></td></tr>
-<tr class="separator:aba693a838fbbaba164f451e267fa6844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db0d78b47f2dd63659af9841569edfe"><td class="memItemLeft" align="right" valign="top"><a id="a2db0d78b47f2dd63659af9841569edfe"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__declspec</b> (dllexport) void *<a class="el" href="memalloc_8c.html#a6bbf470630c4235f7c8a9af8915e34d9">malloc_s</a>(size_t size)</td></tr>
+<tr class="separator:a2db0d78b47f2dd63659af9841569edfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a854352f53b148adc24983a58a1866d66"><td class="memItemLeft" align="right" valign="top"><a id="a854352f53b148adc24983a58a1866d66"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="separator:a854352f53b148adc24983a58a1866d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>header file containing the declaration of the memory management wrapper functions used in this library. </p>
@@ -124,113 +125,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="af04bb2a38824390ae9acf84fce3de0a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af04bb2a38824390ae9acf84fce3de0a6">&#9670;&nbsp;</a></span>calloc_s()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* calloc_s </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>count</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>allocate a new memory block of requested size and then initialize it to <code>0</code>. </p>
-<dl class="section note"><dt>Note</dt><dd>failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>number of objects to allocate. <code>0</code> is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>bytes necessary to contain one of the allocated objects. <code>0</code> is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to the newly allocated memory. </dd></dl>
-
-</div>
-</div>
-<a id="a6bbf470630c4235f7c8a9af8915e34d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bbf470630c4235f7c8a9af8915e34d9">&#9670;&nbsp;</a></span>malloc_s()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* malloc_s </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>allocate a new memory block of requested size. </p>
-<dl class="section note"><dt>Note</dt><dd>failing to allocate the requested memory will result in the program to exit with a MEMORY_EXHAUSTED code. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>bytes of memory to allocate. <code>0</code> is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to the newly allocated memory. </dd></dl>
-
-</div>
-</div>
-<a id="aba693a838fbbaba164f451e267fa6844"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba693a838fbbaba164f451e267fa6844">&#9670;&nbsp;</a></span>realloc_s()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* realloc_s </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>block</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>resize an existing memory block to the given value. </p>
-<dl class="section note"><dt>Note</dt><dd>failing to resize the memory block will result in the program to exit with a MEMORY_EXHAUSTED code. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">block</td><td>memory block to resize. in case <code>NULL</code> is provided as input the function will act as a malloc_s would. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>bytes of memory to allocate. <code>0</code> is not considered as a valid input and will cause the program to exit with an INVALID_INPUT code. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to the newly allocated memory. </dd></dl>
 
 </div>
 </div>

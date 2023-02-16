@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['hash_5fkey_5ffn_281',['hash_key_fn',['../hashtable_8h.html#a513c2aa5e1bc776e16a581b3d18beca7',1,'hashtable.h']]],
-  ['hashtable_5fbucket_5felement_5ft_282',['hashtable_bucket_element_t',['../hashtable_8h.html#a69b878898a09ff5afc578ad6a95ba99d',1,'hashtable.h']]]
+  ['graph_5ftraverser_5ft_323',['graph_traverser_t',['../search_8h.html#ac2db3467dd0e94b621f2d35f541a5f6a',1,'search.h']]]
 ];

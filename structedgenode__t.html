@@ -77,20 +77,63 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ae65cf6f5f0407caffe450b47fc0b59d7"><td class="memItemLeft" align="right" valign="top"><a id="ae65cf6f5f0407caffe450b47fc0b59d7"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
+<tr class="memitem:ae65cf6f5f0407caffe450b47fc0b59d7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedgenode__t.html#ae65cf6f5f0407caffe450b47fc0b59d7">y</a></td></tr>
 <tr class="separator:ae65cf6f5f0407caffe450b47fc0b59d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48eb550b51124e113f767ed76a3572ea"><td class="memItemLeft" align="right" valign="top"><a id="a48eb550b51124e113f767ed76a3572ea"></a>
-<a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>weight</b></td></tr>
+<tr class="memitem:a48eb550b51124e113f767ed76a3572ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedgenode__t.html#a48eb550b51124e113f767ed76a3572ea">weight</a></td></tr>
 <tr class="separator:a48eb550b51124e113f767ed76a3572ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a242a0d30c6d0854f966bf2d1fba3d0f2"><td class="memItemLeft" align="right" valign="top"><a id="a242a0d30c6d0854f966bf2d1fba3d0f2"></a>
-struct <a class="el" href="structedgenode__t.html">edgenode_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>next</b></td></tr>
+<tr class="memitem:a242a0d30c6d0854f966bf2d1fba3d0f2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structedgenode__t.html">edgenode_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedgenode__t.html#a242a0d30c6d0854f966bf2d1fba3d0f2">next</a></td></tr>
 <tr class="separator:a242a0d30c6d0854f966bf2d1fba3d0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>structure representing a single edge of the graph. </p>
 <dl class="section note"><dt>Note</dt><dd>each edge is considered a segment between vertices x and y. We can store only the y vertex inside the edge as the x vertex is used as index in the edges array of the graph structure. This is not an hypergraph, edges connecting more than 2 vertices are not supported. </dd></dl>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="a242a0d30c6d0854f966bf2d1fba3d0f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a242a0d30c6d0854f966bf2d1fba3d0f2">&#9670;&nbsp;</a></span>next</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structedgenode__t.html">edgenode_t</a>* edgenode_t::next</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>next edge in list </p>
+
+</div>
+</div>
+<a id="a48eb550b51124e113f767ed76a3572ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48eb550b51124e113f767ed76a3572ea">&#9670;&nbsp;</a></span>weight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a> edgenode_t::weight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>edge weight, if any </p>
+
+</div>
+</div>
+<a id="ae65cf6f5f0407caffe450b47fc0b59d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65cf6f5f0407caffe450b47fc0b59d7">&#9670;&nbsp;</a></span>y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t edgenode_t::y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>adjacency info </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>data_structures/<a class="el" href="graph_8h_source.html">graph.h</a></li>
 </ul>
 </div><!-- contents -->

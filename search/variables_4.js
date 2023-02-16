@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hash_262',['hash',['../structhashtable__t.html#adab1359820a2a5a37e849e459dc997f8',1,'hashtable_t']]]
+  ['edges_289',['edges',['../structgraph__t.html#a3bbe2394598d6459e09b7acf627fa078',1,'graph_t']]],
+  ['end_290',['end',['../structvertices__queue__t.html#ae71c4c4bc919720c648efa6311102702',1,'vertices_queue_t']]]
 ];
