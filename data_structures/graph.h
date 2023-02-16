@@ -22,9 +22,9 @@ extern "C" {
  *                  This is not an hypergraph, edges connecting more than 2 vertices are not supported.
  */
 typedef struct edgenode_t {
-    size_t y;                /* adjacency info */
-    data_type weight;        /* edge weight, if any */
-    struct edgenode_t* next; /* next edge in list */
+    size_t y;                /*!< adjacency info */
+    data_type weight;        /*!< edge weight, if any */
+    struct edgenode_t* next; /*!< next edge in list */
 } edgenode_t;
 
 /**
@@ -35,10 +35,10 @@ typedef struct edgenode_t {
  *                  This is not an hypergraph, edges connecting more than 2 vertices are not supported.
  */
 typedef struct {
-    edgenode_t** edges; /* adjacency info */
-    size_t nvertices;   /* number of vertices in the graph */
-    size_t nedges;      /* number of edges in the graph */
-    bool is_directed;   /* flag indicating whether the graph is directed or not */
+    edgenode_t** edges; /*!< adjacency info */
+    size_t nvertices;   /*!< number of vertices in the graph */
+    size_t nedges;      /*!< number of edges in the graph */
+    bool is_directed;   /*!< flag indicating whether the graph is directed or not */
 } graph_t;
 
 __declspec(dllexport) graph_t* graph_construct(size_t vertices_size, bool directed);

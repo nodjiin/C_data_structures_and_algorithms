@@ -23,8 +23,8 @@ typedef size_t (*hash_key_fn)(key_type key);
  * \brief           key/value pair structure stored in the hash table.
  */
 typedef struct {
-    key_type key;    /* element that will be hashed to determine the position of the pair in the table */
-    data_type value; /* element that will contain the value to store */
+    key_type key;    /*!< element that will be hashed to determine the position of the pair in the table */
+    data_type value; /*!< element that will contain the value to store */
 } key_value_pair_t;
 
 /**
