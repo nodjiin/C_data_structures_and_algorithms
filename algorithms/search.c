@@ -9,13 +9,14 @@
  *                  with INVALID_INPUT status code.
  * \param[in]       process_vertex_early: pointer to a function that processes a vertex before its adjacent edges.
  * \param[in]       process_vertex_late: pointer to a function that processes a vertex after its adjacent edges.
- * \param[in]       process_edge: pointer to a function that processes an.
+ * \param[in]       process_edge: pointer to a function that processes an edge.
+ * \param[in]       type: type of search that this traverser will be used on.
  * \return          a pointer to the newly created graph traverser object.
  * \relates         graph_t
  */
 graph_traverser_t*
 graph_traverser_construct(graph_t* graph, process_vertex_fn process_vertex_early, process_vertex_fn process_vertex_late,
-                          process_edge_fn process_edge) {
+                          process_edge_fn process_edge, enum search_type type) {
     graph_traverser_t* new_traverser;
 
     if (graph == NULL) {
@@ -31,6 +32,12 @@ graph_traverser_construct(graph_t* graph, process_vertex_fn process_vertex_early
     new_traverser->process_edge = process_edge;
     new_traverser->process_vertex_early = process_vertex_early;
     new_traverser->process_vertex_late = process_vertex_late;
+
+    if (type == DEPTH_FIRST) {
+        new_traverser->time = 0;
+        new_traverser->entry_time = calloc_s(graph->nvertices, sizeof(size_t));
+        new_traverser->exit_time = calloc_s(graph->nvertices, sizeof(size_t));
+    }
 
     return new_traverser;
 }
@@ -177,4 +184,90 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
     }
 
     vqueue_free(queue);
+}
+
+/**
+ * \brief           performs a recursive depth-first search on a graph, using as source the given vertex.
+ * \param[in]       graph: A pointer to the graph_t object representing the graph to be traversed.
+ * \param[in]       traverser: A pointer to the graph_traverser_t that stores the traversal state and callbacks.
+ * \param[in]       source_vertex: The index of the vertex where the traversal starts.
+ */
+static void
+graph_depth_first_search_recursive(graph_t* graph, graph_traverser_t* traverser, size_t source_vertex) {
+    edgenode_t* edge;
+    size_t destination_vertex;
+
+    if (traverser->terminate) {
+        return;
+    }
+
+    traverser->discovered[source_vertex] = true;
+    traverser->entry_time[source_vertex] = traverser->time++;
+    if (traverser->process_vertex_early != NULL) {
+        traverser->process_vertex_early(source_vertex);
+    }
+
+    edge = graph->edges[source_vertex];
+    while (edge != NULL) { /* TODO refactor for readability */
+        destination_vertex = edge->y;
+        if (!traverser->discovered[destination_vertex]) {
+            traverser->parent[destination_vertex] = source_vertex;
+            if (traverser->process_edge != NULL) {
+                traverser->process_edge(source_vertex, edge);
+            }
+            graph_depth_first_search_recursive(graph, traverser, destination_vertex);
+        } else if (((!traverser->processed[destination_vertex])
+                    && (traverser->parent[source_vertex] != destination_vertex))
+                   || (graph->is_directed)) {
+            if (traverser->process_edge != NULL) {
+                traverser->process_edge(source_vertex, edge);
+            }
+        }
+
+        if (traverser->terminate) {
+            return;
+        }
+        edge = edge->next;
+    }
+
+    if (traverser->process_vertex_late != NULL) {
+        traverser->process_vertex_late(source_vertex);
+    }
+
+    traverser->exit_time[source_vertex] = traverser->time++;
+    traverser->processed[source_vertex] = true;
+}
+
+/**
+ * \brief           performs a depth-first search on a graph, starting from a given vertex.
+ * \param[in]       graph: A pointer to the graph_t object representing the graph to be traversed.`NULL` is not considered a valid input and will cause an early exit
+ *                  with INVALID_INPUT status code.
+ * \param[in]       traverser: A pointer to the graph_traverser_t that stores the traversal state and callbacks. `NULL` is not considered a valid input and will
+ *                  cause an early exit with INVALID_INPUT status code.
+ * \param[in]       starting_vertex: The index of the vertex where the traversal starts, must be less than graph->nvertices.
+ *                  This function traverses a graph in depth-first order, using graph_traverser_t to store the visited vertices and edges. 
+ *                  It also invokes callbacks for pre-visit, post-visit,and edge processing events. 
+ *                  The traversal can be terminated early by setting graph_traverser_t->terminate to true in any of the callbacks. 
+ */
+void
+graph_depth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t starting_vertex) {
+    if (graph == NULL) {
+        fprintf(stderr, "[graph_depth_first_search] Invalid input. Faulty depth first search on NULL graph.\n");
+        exit(INVALID_INPUT);
+    }
+
+    if (traverser == NULL) {
+        fprintf(stderr, "[graph_depth_first_search] Invalid input. Faulty depth first search with NULL traverser.\n");
+        exit(INVALID_INPUT);
+    }
+
+    if (starting_vertex >= graph->nvertices) {
+        fprintf(stderr,
+                "[graph_depth_first_search] Invalid input. Faulty depth first search with starting vertex '%zu' "
+                "exceeding vertices size '%zu'.\n",
+                starting_vertex, graph->nvertices);
+        exit(INVALID_INPUT);
+    }
+
+    graph_depth_first_search_recursive(graph, traverser, starting_vertex);
 }

@@ -43,20 +43,24 @@ typedef void (*process_edge_fn)(size_t vertex, edgenode_t* edge);
 * \note             this structure is used to store the state and callbacks for graph traversal algorithms such as breadth-first search or depth-first search.
 */
 typedef struct graph_traverser_t {
-    bool* processed;  /*!< array that indicate whether a vertex has been processed. */
-    bool* discovered; /*!< array that indicate whether a vertex has been discovered*/
-    size_t* parent;   /*!< array containing the number of the parent of each vertex */
-    process_vertex_fn
-        process_vertex_early; /*!< function pointer that defines how to process a vertex before its adjacent edges */
-    process_vertex_fn
-        process_vertex_late;      /*!< function pointer that defines how to process a vertex after its adjacent edges */
-    process_edge_fn process_edge; /*!< function pointer that defines how to process an edge */
+    bool* processed;    /*!< array that indicate whether a vertex has been processed. */
+    bool* discovered;   /*!< array that indicate whether a vertex has been discovered*/
+    bool terminate;     /*!< boolean flag used to terminate the search early. (used only on depth-first search) */
+    size_t* parent;     /*!< array containing the number of the parent of each vertex */
+    size_t time;        /*!< value representing how many node have been elaborated so far. (used only on depth-first) */
+    size_t* entry_time; /*!< array containing the search entry time on each vertex. (used only on depth-first) */
+    size_t* exit_time;  /*!< array containing the search exit time from each vertex. (used only on depth-first) */
+    process_vertex_fn process_vertex_early; /*!< function pointer used to process a vertex before its adjacent edges */
+    process_vertex_fn process_vertex_late;  /*!< function pointer used to process a vertex after its adjacent edges */
+    process_edge_fn process_edge;           /*!< function pointer used to process an edge */
 } graph_traverser_t;
+
+enum search_type { BREADTH_FIRST, DEPTH_FIRST };
 
 __declspec(dllexport) graph_traverser_t* graph_traverser_construct(graph_t* graph,
                                                                    process_vertex_fn process_vertex_early,
                                                                    process_vertex_fn process_vertex_late,
-                                                                   process_edge_fn process_edge);
+                                                                   process_edge_fn process_edge, enum search_type);
 __declspec(dllexport) void graph_traverser_clear(graph_traverser_t** traverser);
 __declspec(dllexport) void graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser,
                                                       size_t starting_vertex);
