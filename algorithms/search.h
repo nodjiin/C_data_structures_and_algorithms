@@ -28,6 +28,7 @@ typedef struct {
 
 /**
 * \brief            function pointer type that defines a callback for processing a vertex.
+* \param[in]        vertex: vertex to process.
 * \note             this type is used to pass a function that performs some action on a vertex during graph traversal.
 *                   The function takes a size_t parameter that represents the vertex number, and returns void
 */
@@ -35,11 +36,11 @@ typedef void (*process_vertex_fn)(size_t vertex);
 
 /**
 * \brief            function pointer type that defines a callback for processing an edge.
-*                   this type is used to pass a function that performs some action on an edge during graph traversal.
-*                   The function takes two parameters: a size_t parameter that represents the source vertex number, and an edgenode_t pointer
-*                   that represents the edge node. The function returns void.
+* \param[in]        vertex_x: first vertex defining an edge. Source vertex in a directed graph.
+* \param[in]        edge: data structure containing the edge data.
+* \note             this type is used to pass a function that performs some action on an edge during graph traversal.
 */
-typedef void (*process_edge_fn)(size_t vertex, edgenode_t* edge);
+typedef void (*process_edge_fn)(size_t vertex_x, edgenode_t* edge);
 
 /**
 * \brief            structure that represents a graph traverser object.
