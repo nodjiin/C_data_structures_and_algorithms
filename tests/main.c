@@ -10,6 +10,12 @@
 #include "graph_test.h"
 #include "search_test.h"
 
+/* TODO
+ *	Most test procedures currently allocate memory without releasing it. Given the fairly limited scope of data used this is not a problem,
+ *	and the tests themselves run faster not having to waste time freeing the used memory. In the future it might be interesting to implement
+ *	true atomic setup and teardown procedures, maybe calling them in a wrapper function of the individual test methods
+ */
+
 int
 main(void) {
     linkedlist_testall();
