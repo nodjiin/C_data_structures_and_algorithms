@@ -64,6 +64,8 @@ __declspec(dllexport) graph_traverser_t* graph_traverser_construct(graph_t* grap
 __declspec(dllexport) void graph_traverser_clear(graph_traverser_t** traverser);
 __declspec(dllexport) void graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser,
                                                       size_t starting_vertex);
+__declspec(dllexport) void graph_depth_first_search(graph_t* graph, graph_traverser_t* traverser,
+                                                    size_t starting_vertex);
 
 #ifdef __cplusplus
 }
