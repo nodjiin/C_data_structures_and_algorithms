@@ -8,6 +8,7 @@
 #include "hashtable_test.h"
 #include "trie_test.h"
 #include "graph_test.h"
+#include "search_test.h"
 
 int
 main(void) {
@@ -20,6 +21,7 @@ main(void) {
     hashtable_testall();
     trie_testall();
     graph_testall();
+    search_testall();
 
     exit(0);
 }
