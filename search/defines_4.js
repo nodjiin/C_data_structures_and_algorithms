@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['null_5fdata_348',['NULL_DATA',['../datatype_8h.html#a106453894cef76da36e74f3cb446ae96',1,'datatype.h']]]
+  ['is_5fnot_5fempty_358',['is_not_empty',['../search_8c.html#add5e91411b32e9ffa729ef51f689a71a',1,'search.c']]]
 ];
