@@ -1,3 +1,8 @@
+/**
+ * \file            search.c
+ * \brief           source file containing the definition of search algorithms implemented in this library.
+ */
+
 #include <stdio.h>
 #include "search.h"
 #include "data_structures/memalloc.h"
