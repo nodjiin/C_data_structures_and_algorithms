@@ -72,6 +72,7 @@ dfs_graph_traverser_construct_test(void) {
     assert(traverser->entry_time != NULL);
     assert(traverser->exit_time != NULL);
     assert(traverser->terminate == false);
+    assert(traverser->time == 1);
     assert(traverser->process_vertex_early == pv_early);
     assert(traverser->process_vertex_late == pv_late);
     assert(traverser->process_edge == pe);
@@ -134,6 +135,21 @@ graph_depth_first_search_test(void) {
     assert(traverser->parent[3] == 1);
     assert(traverser->parent[6] == GRAPH_PARENT_UNDEFINED);
     assert(!traverser->discovered[6]);
+
+    assert(traverser->entry_time[0] == 1);
+    assert(traverser->exit_time[0] == 12);
+    assert(traverser->entry_time[1] == 2);
+    assert(traverser->exit_time[1] == 11);
+    assert(traverser->entry_time[2] == 3);
+    assert(traverser->exit_time[2] == 8);
+    assert(traverser->entry_time[3] == 9);
+    assert(traverser->exit_time[3] == 10);
+    assert(traverser->entry_time[4] == 5);
+    assert(traverser->exit_time[4] == 6);
+    assert(traverser->entry_time[5] == 4);
+    assert(traverser->exit_time[5] == 7);
+    assert(traverser->entry_time[6] == 0);
+    assert(traverser->exit_time[6] == 0);
 
     graph_traverser_clear(&traverser);
 }
