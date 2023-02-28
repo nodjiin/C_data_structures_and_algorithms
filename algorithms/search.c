@@ -43,7 +43,7 @@ graph_traverser_construct(graph_t* graph, process_vertex_fn process_vertex_early
     new_traverser->process_vertex_late = process_vertex_late;
 
     if (type == DEPTH_FIRST) {
-        new_traverser->time = 0;
+        new_traverser->time = 1;
         new_traverser->entry_time = calloc_s(graph->nvertices, sizeof(size_t));
         new_traverser->exit_time = calloc_s(graph->nvertices, sizeof(size_t));
         new_traverser->terminate = false;
