@@ -33,7 +33,11 @@ graph_traverser_construct(graph_t* graph, process_vertex_fn process_vertex_early
     new_traverser = malloc_s(sizeof(graph_traverser_t));
     new_traverser->discovered = calloc_s(graph->nvertices, sizeof(bool));
     new_traverser->processed = calloc_s(graph->nvertices, sizeof(bool));
-    new_traverser->parent = calloc_s(graph->nvertices, sizeof(size_t));
+    new_traverser->parent = malloc_s(sizeof(size_t) * graph->nvertices);
+    for (size_t i = 0; i < graph->nvertices; i++) {
+        new_traverser->parent[i] = GRAPH_PARENT_UNDEFINED;
+    }
+
     new_traverser->process_edge = process_edge;
     new_traverser->process_vertex_early = process_vertex_early;
     new_traverser->process_vertex_late = process_vertex_late;

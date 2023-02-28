@@ -7,11 +7,14 @@
 #define SEARCH
 
 #include <stdlib.h>
+#include <limits.h>
 #include "data_structures/graph.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+
+#define GRAPH_PARENT_UNDEFINED SIZE_MAX
 
 /**
  * \brief           structure that represents a queue of vertices.
