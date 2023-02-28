@@ -42,6 +42,10 @@ graph_traverser_construct(graph_t* graph, process_vertex_fn process_vertex_early
         new_traverser->time = 0;
         new_traverser->entry_time = calloc_s(graph->nvertices, sizeof(size_t));
         new_traverser->exit_time = calloc_s(graph->nvertices, sizeof(size_t));
+        new_traverser->terminate = false;
+    } else {
+        new_traverser->entry_time = NULL;
+        new_traverser->exit_time = NULL;
     }
 
     return new_traverser;
@@ -62,6 +66,9 @@ graph_traverser_clear(graph_traverser_t** traverser) {
     free((*traverser)->discovered);
     free((*traverser)->parent);
     free((*traverser)->processed);
+    free((*traverser)->entry_time);
+    free((*traverser)->exit_time);
+
     free_s(*traverser);
 }
 
