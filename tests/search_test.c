@@ -3,7 +3,7 @@
 #include "search_test.h"
 #include "testvalues.h"
 
-graph_t* graph; /* TODO test on indirected graph. */
+graph_t* graph; /* TODO test on undirected graph. */
 graph_traverser_t* trv;
 data_type sum;
 
