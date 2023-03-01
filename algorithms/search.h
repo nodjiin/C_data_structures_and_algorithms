@@ -70,7 +70,8 @@ __declspec(dllexport) void graph_breadth_first_search(graph_t* graph, graph_trav
                                                       size_t starting_vertex);
 __declspec(dllexport) void graph_depth_first_search(graph_t* graph, graph_traverser_t* traverser,
                                                     size_t starting_vertex);
-
+__declspec(dllexport) int binary_search(data_type array[], data_type key, data_type_compare_fn compare, int low,
+                                        int high);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -318,3 +318,32 @@ graph_depth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t st
 
     graph_depth_first_search_recursive(graph, traverser, starting_vertex);
 }
+
+/**
+ * \brief           performs a binary search on a sorted array.
+ * \param[in]       array: The array to search in.
+ * \param[in]       key: The element to search for.
+ * \param[in]       compare: a function that compares two elements of the same type.
+ * \param[in]       low: The lower bound of the search range (inclusive).
+ * \param[in]       high: The upper bound of the search range (inclusive).
+ * \return          the index of the element in the array that matches the key, or -1 if not found.
+ */
+int
+binary_search(data_type array[], data_type key, data_type_compare_fn compare, int low, int high) {
+    int middle; /* index of middle element */
+
+    if (low > high) {
+        return (-1); /* key not found */
+    }
+
+    middle = (low + high) / 2;
+    if (compare(array[middle], key)) {
+        return (middle);
+    }
+
+    if (compare(array[middle], key) > 0) {
+        return (binary_search(array, key, compare, low, middle - 1));
+    } else {
+        return (binary_search(array, key, compare, middle + 1, high));
+    }
+}
