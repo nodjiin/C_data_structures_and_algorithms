@@ -4,9 +4,9 @@
  */
 
 #include <stdlib.h>
-#include "datatype.h"
+#include "core\datatype.h"
 #include "linkedlist.h"
-#include "memalloc.h"
+#include "core\memalloc.h"
 
 /**
  * \brief           construct a new singly linked list.
