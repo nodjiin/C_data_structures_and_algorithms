@@ -9,6 +9,7 @@ void graph_traverser_construct_test(void);
 void graph_traverser_clear_test(void);
 void graph_breadth_first_search_test(void);
 void graph_depth_first_search_test(void);
+void binary_search_test(void);
 
 void search_testall(void);
 

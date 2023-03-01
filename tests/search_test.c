@@ -233,6 +233,19 @@ graph_depth_first_search_early_exit_test(void) {
 }
 
 void
+binary_search_test(void) {
+    int found_index, not_found_index;
+
+    data_type array[7] = {TESTVAL1, TESTVAL2, TESTVAL3, TESTVAL4, TESTVAL5, TESTVAL6, TESTVAL7};
+
+    found_index = binary_search(array, TESTVAL3, compare, 0, 6);
+    not_found_index = binary_search(array, TESTVAL8, compare, 0, 6);
+
+    assert(found_index == 2);
+    assert(not_found_index == -1);
+}
+
+void
 search_testall(void) {
     setup();
     graph_traverser_construct_test();
@@ -240,5 +253,6 @@ search_testall(void) {
     graph_breadth_first_search_test();
     graph_depth_first_search_test();
     graph_depth_first_search_early_exit_test();
+    binary_search_test();
     tear_down();
 }
