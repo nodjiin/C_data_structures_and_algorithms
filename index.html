@@ -89,8 +89,9 @@ Overview</h1>
 <p>All the data structures in the repository will hold objects of type <code>data_type</code>. <code>data_type</code> will be declared in the <code><a class="el" href="datatype_8h.html" title="header file containing the definition of the generic data type used in all the structures of this lib...">datatype.h</a></code> header. Redefining this type will make the library suitable for any specific problem the user is trying to solve. Functions that perform comparisons between user-defined types will also take as input a function pointer of type <code>data_type_compare_fn</code> (also in <code><a class="el" href="datatype_8h.html" title="header file containing the definition of the generic data type used in all the structures of this lib...">datatype.h</a></code>) that can be implemented as required.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Repository structure</h1>
-<p>This repository has been organized as a Visual Studio 2022 solution, composed of 3 projects:</p>
+<p>This repository has been organized as a Visual Studio 2022 solution, composed of 4 projects:</p>
 <ul>
+<li>core (dll)</li>
 <li>data_structures (dll)</li>
 <li>algorithms (dll)</li>
 <li>tests (app)</li>

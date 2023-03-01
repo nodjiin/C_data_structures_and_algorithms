@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C data structures &amp; algorithms: data_structures/heap.c File Reference</title>
+<title>C data structures &amp; algorithms: core Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,40 +63,31 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2e746e9d06bf2d8ff842208bcc6ebcfc.html">data_structures</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4270bfced15e0e73154b13468c7c9ad9.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">heap.c File Reference</div>  </div>
+<div class="title">core Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>source file containing the definition of heap operations.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;limits.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;core\exitcodes.h&quot;</code><br />
-<code>#include &quot;core\memalloc.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="heap_8h_source.html">heap.h</a>&quot;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a77988da40e9a35da51ea0e8943ebbd4a"><td class="memItemLeft" align="right" valign="top"><a id="a77988da40e9a35da51ea0e8943ebbd4a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a77988da40e9a35da51ea0e8943ebbd4a">ROOT</a></td></tr>
-<tr class="memdesc:a77988da40e9a35da51ea0e8943ebbd4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">value identifying the parent index for a root item (e.g. without a parent). <br /></td></tr>
-<tr class="separator:a77988da40e9a35da51ea0e8943ebbd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b4ba3650de963b1af915361bbc34b4a"><td class="memItemLeft" align="right" valign="top"><a id="a9b4ba3650de963b1af915361bbc34b4a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a9b4ba3650de963b1af915361bbc34b4a">FIRST_POSITION</a></td></tr>
-<tr class="memdesc:a9b4ba3650de963b1af915361bbc34b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">first position used in the heap, right after the offset. <br /></td></tr>
-<tr class="separator:a9b4ba3650de963b1af915361bbc34b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:datatype_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datatype_8h.html">datatype.h</a> <a href="datatype_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:datatype_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">header file containing the definition of the generic data type used in all the structures of this library. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:exitcodes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exitcodes_8h.html">exitcodes.h</a> <a href="exitcodes_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:exitcodes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">header file containing object-like exit codes macros. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:memalloc_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memalloc_8c.html">memalloc.c</a></td></tr>
+<tr class="memdesc:memalloc_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">header file containing the definition of the memory management wrapper functions used in this library. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:memalloc_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memalloc_8h.html">memalloc.h</a> <a href="memalloc_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:memalloc_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">header file containing the declaration of the memory management wrapper functions used in this library. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>source file containing the definition of heap operations. </p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
