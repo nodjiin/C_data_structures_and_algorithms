@@ -24,8 +24,9 @@ All the data structures in the repository will hold objects of type `data_type`.
 
 ## Repository structure
 
-This repository has been organized as a Visual Studio 2022 solution, composed of 3 projects:
+This repository has been organized as a Visual Studio 2022 solution, composed of 4 projects:
 
+- core (dll)
 - data_structures (dll)
 - algorithms (dll)
 - tests (app)
