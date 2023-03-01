@@ -227,6 +227,27 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
 }
 
 /**
+ * \brief           check the early termination flag and return if it's true.
+ * \param[in]       traverser: traverser object.
+ * \hideinitializer
+ */
+#define check_early_termination(traverser)                                                                             \
+    if (traverser->terminate)                                                                                          \
+        return;
+
+/**
+ * \brief           check if the edge has not been processed yet.
+ * \param[in]       graph: graph object.
+ * \param[in]       trv: traverser object.
+ * \param[in]       source: source vertex of the edge.
+ * \param[in]       destination: destination vertex of the edge.
+ * \returns         true if the edge has not been processed yet (e.g. this is the first time we <re encountering it), false otherwise.
+ * \hideinitializer
+ */
+#define is_edge_yet_to_process(graph, trv, source, destination)                                                        \
+    (graph->is_directed || (!trv->processed[destination] && trv->parent[source] != destination))
+
+/**
  * \brief           performs a recursive depth-first search on a graph, using as source the given vertex.
  * \param[in]       graph: A pointer to the graph_t object representing the graph to be traversed.
  * \param[in]       traverser: A pointer to the graph_traverser_t that stores the traversal state and callbacks.
@@ -237,34 +258,25 @@ graph_depth_first_search_recursive(graph_t* graph, graph_traverser_t* traverser,
     edgenode_t* edge;
     size_t destination_vertex;
 
-    if (traverser->terminate) {
-        return;
-    }
-
+    check_early_termination(traverser);
     traverser->discovered[source_vertex] = true;
     traverser->entry_time[source_vertex] = traverser->time++;
     process_vertex_early(traverser, source_vertex);
 
     edge = graph->edges[source_vertex];
-    while (edge != NULL) { /* TODO refactor for readability */
-
+    while (edge != NULL) {
         destination_vertex = edge->y;
 
-        if (!traverser->discovered[destination_vertex]) {
-
+        if (!traverser->discovered[destination_vertex]) { /* we found a new vertex, keep recursing */
             traverser->parent[destination_vertex] = source_vertex;
             process_edge(traverser, source_vertex, edge);
             graph_depth_first_search_recursive(graph, traverser, destination_vertex);
 
-        } else if (((!traverser->processed[destination_vertex])
-                    && (traverser->parent[source_vertex] != destination_vertex))
-                   || (graph->is_directed)) {
+        } else if (is_edge_yet_to_process(graph, traverser, source_vertex, destination_vertex)) {
             process_edge(traverser, source_vertex, edge);
         }
 
-        if (traverser->terminate) {
-            return;
-        }
+        check_early_termination(traverser);
         edge = edge->next;
     }
 
