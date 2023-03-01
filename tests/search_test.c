@@ -3,15 +3,24 @@
 #include "search_test.h"
 #include "testvalues.h"
 
-graph_t* graph;
+graph_t* graph; /* TODO test on indirected graph. */
 graph_traverser_t* trv;
 data_type sum;
 
-void
-pv_early(size_t v) {}
+size_t index_early;
+size_t v_early[6];
+size_t index_late;
+size_t v_late[6];
 
 void
-pv_late(size_t v) {}
+pv_early(size_t v) {
+    v_early[index_early++] = v;
+}
+
+void
+pv_late(size_t v) {
+    v_late[index_late++] = v;
+}
 
 void
 pe(size_t x, edgenode_t* edge) {
@@ -132,6 +141,20 @@ graph_breadth_first_search_test(void) {
     assert(!traverser->discovered[6]);
     assert(sum == 11);
 
+    /* check that we are respecting the correct early/late processing order */
+    assert(v_early[0] == 0);
+    assert(v_early[1] == 1);
+    assert(v_early[2] == 2);
+    assert(v_early[3] == 3);
+    assert(v_early[4] == 4);
+    assert(v_early[5] == 5);
+    assert(v_late[0] == 0);
+    assert(v_late[1] == 1);
+    assert(v_late[2] == 2);
+    assert(v_late[3] == 3);
+    assert(v_late[4] == 4);
+    assert(v_late[5] == 5);
+
     graph_traverser_clear(&traverser);
 }
 
@@ -141,6 +164,8 @@ graph_depth_first_search_test(void) {
 
     traverser = graph_traverser_construct(graph, pv_early, pv_late, pe, DEPTH_FIRST);
 
+    index_early = 0;
+    index_late = 0;
     sum = 0;
     graph_depth_first_search(graph, traverser, 0);
 
@@ -154,6 +179,20 @@ graph_depth_first_search_test(void) {
     assert(traverser->parent[6] == GRAPH_PARENT_UNDEFINED);
     assert(!traverser->discovered[6]);
     assert(sum == 11);
+
+    /* check that we are respecting the correct early/late processing order */
+    assert(v_early[0] == 0);
+    assert(v_early[1] == 1);
+    assert(v_early[2] == 2);
+    assert(v_early[3] == 5);
+    assert(v_early[4] == 4);
+    assert(v_early[5] == 3);
+    assert(v_late[0] == 4);
+    assert(v_late[1] == 5);
+    assert(v_late[2] == 2);
+    assert(v_late[3] == 3);
+    assert(v_late[4] == 1);
+    assert(v_late[5] == 0);
 
     assert(traverser->entry_time[0] == 1);
     assert(traverser->exit_time[0] == 12);
@@ -175,7 +214,7 @@ graph_depth_first_search_test(void) {
 
 void
 graph_depth_first_search_early_exit_test(void) {
-    trv = graph_traverser_construct(graph, pv_early, pv_late, pe_early_exit, DEPTH_FIRST);
+    trv = graph_traverser_construct(graph, NULL, NULL, pe_early_exit, DEPTH_FIRST);
 
     sum = 0;
     graph_depth_first_search(graph, trv, 0);
