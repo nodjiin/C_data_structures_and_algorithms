@@ -113,7 +113,7 @@ vqueue_free(vertices_queue_t* queue) {
 
 /**
  * \brief           returns the first vertex of the queue and move its head to the next item in line.
- * \param           queue: pointer to the vertices queue where the vertex will be removed from.
+ * \param[in]       queue: pointer to the vertices queue where the vertex will be removed from.
  * \return          the vertex that was the first item in the queue.
  * \hideinitializer
  */
@@ -121,11 +121,22 @@ vqueue_free(vertices_queue_t* queue) {
 
 /**
  * \brief           checks if a vertices queue is not empty.
- * \param           queue: pointer to the vertices queue to be checked.
+ * \param[in]       queue: pointer to the vertices queue to be checked.
  * \return          true if there are still elements in the queue, false otherwise.
  * \hideinitializer
  */
 #define is_not_empty(queue)    (queue->end > queue->start)
+
+/**
+ * \brief           calls process_edge if it has been defined.
+ * \param[in]       traverser: traverser object.
+ * \param[in]       source_vertex: source vertex of the edge to process.
+ * \param[in]       edge: edge to process.
+ * \hideinitializer
+ */
+#define process_edge(traverser, source_vertex, edge)                                                                   \
+    if (traverser->process_edge != NULL)                                                                               \
+        traverser->process_edge(source_vertex, edge);
 
 /**
  * \brief           performs a breadth-first search on a graph object, starting from a given vertex.
@@ -180,9 +191,7 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
             destination_vertex = edge->y;
 
             if ((!traverser->processed[destination_vertex]) || graph->is_directed) {
-                if (traverser->process_edge != NULL) {
-                    traverser->process_edge(source_vertex, edge);
-                }
+                process_edge(traverser, source_vertex, edge);
             }
 
             if (!traverser->discovered[destination_vertex]) {
@@ -225,19 +234,19 @@ graph_depth_first_search_recursive(graph_t* graph, graph_traverser_t* traverser,
 
     edge = graph->edges[source_vertex];
     while (edge != NULL) { /* TODO refactor for readability */
+
         destination_vertex = edge->y;
+
         if (!traverser->discovered[destination_vertex]) {
+
             traverser->parent[destination_vertex] = source_vertex;
-            if (traverser->process_edge != NULL) {
-                traverser->process_edge(source_vertex, edge);
-            }
+            process_edge(traverser, source_vertex, edge);
             graph_depth_first_search_recursive(graph, traverser, destination_vertex);
+
         } else if (((!traverser->processed[destination_vertex])
                     && (traverser->parent[source_vertex] != destination_vertex))
                    || (graph->is_directed)) {
-            if (traverser->process_edge != NULL) {
-                traverser->process_edge(source_vertex, edge);
-            }
+            process_edge(traverser, source_vertex, edge);
         }
 
         if (traverser->terminate) {
