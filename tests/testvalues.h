@@ -2,7 +2,7 @@
 #define TESTVALUES
 
 #include <string.h>
-#include "data_structures/datatype.h"
+#include "core/datatype.h"
 #include "algorithms/hashing.h"
 
 #define TESTVAL1     1

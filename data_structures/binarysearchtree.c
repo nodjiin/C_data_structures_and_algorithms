@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "binarysearchtree.h"
-#include "memalloc.h"
-#include "exitcodes.h"
+#include "core\memalloc.h"
+#include "core\exitcodes.h"
 
 /**
  * \brief           construct a new binary search tree.

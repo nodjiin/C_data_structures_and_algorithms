@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dynamicarray.h"
-#include "memalloc.h"
-#include "exitcodes.h"
+#include "core\memalloc.h"
+#include "core\exitcodes.h"
 
 /**
  * \brief           construct a new dynamic array.

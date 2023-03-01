@@ -6,7 +6,7 @@
 #ifndef LINKEDLIST
 #define LINKEDLIST
 
-#include "datatype.h"
+#include "core\datatype.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 #include "search.h"
-#include "data_structures/memalloc.h"
-#include "data_structures/exitcodes.h"
+#include "core/memalloc.h"
+#include "core/exitcodes.h"
 
 /**
  * \brief           Constructs a new graph traverser.

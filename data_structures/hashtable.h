@@ -8,7 +8,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
-#include "datatype.h"
+#include "core\datatype.h"
 
 #ifdef __cplusplus
 extern "C" {

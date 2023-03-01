@@ -4,9 +4,9 @@
  */
 
 #include <stdio.h>
-#include "memalloc.h"
+#include "core\memalloc.h"
 #include "trie.h"
-#include "exitcodes.h"
+#include "core\exitcodes.h"
 
 /**
  * \brief           create a new trie node.

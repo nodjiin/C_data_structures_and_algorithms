@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "exitcodes.h"
-#include "memalloc.h"
+#include "core\exitcodes.h"
+#include "core\memalloc.h"
 #include "queue.h"
 
 /**

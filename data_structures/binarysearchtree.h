@@ -7,7 +7,7 @@
 #define BINARYSEARCHTREE
 
 #include <stdbool.h>
-#include "datatype.h"
+#include "core\datatype.h"
 
 #ifdef __cplusplus
 extern "C" {

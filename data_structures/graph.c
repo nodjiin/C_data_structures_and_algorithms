@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "memalloc.h"
-#include "exitcodes.h"
+#include "core\memalloc.h"
+#include "core\exitcodes.h"
 #include "graph.h"
 
 /**

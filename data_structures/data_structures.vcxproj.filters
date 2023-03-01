@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="datatype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="linkedlist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="memalloc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="exitcodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dynamicarray.h">
@@ -57,9 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="linkedlist.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="memalloc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dynamicarray.c">

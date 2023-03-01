@@ -4,9 +4,9 @@
  */
 
 #include <stdio.h>
-#include "exitcodes.h"
+#include "core\exitcodes.h"
 #include "hashtable.h"
-#include "memalloc.h"
+#include "core\memalloc.h"
 #include "hashtable_primes.h"
 
 /**
