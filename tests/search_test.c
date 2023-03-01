@@ -4,6 +4,7 @@
 #include "testvalues.h"
 
 graph_t* graph;
+graph_traverser_t* trv;
 data_type sum;
 
 void
@@ -16,6 +17,14 @@ void
 pe(size_t x, edgenode_t* edge) {
     assert(edge->weight == edge->y - x); // slight violation of the AAA test pattern
     sum += edge->weight;
+}
+
+void
+pe_early_exit(size_t x, edgenode_t* edge) {
+    sum += edge->weight;
+    if (sum == 5) {
+        trv->terminate = true;
+    }
 }
 
 void
@@ -165,11 +174,32 @@ graph_depth_first_search_test(void) {
 }
 
 void
+graph_depth_first_search_early_exit_test(void) {
+    trv = graph_traverser_construct(graph, pv_early, pv_late, pe_early_exit, DEPTH_FIRST);
+
+    sum = 0;
+    graph_depth_first_search(graph, trv, 0);
+
+    assert(trv->discovered[0]);
+    assert(trv->parent[0] == GRAPH_PARENT_UNDEFINED);
+    assert(trv->parent[1] == 0);
+    assert(trv->parent[2] == 1);
+    assert(trv->parent[5] == 2);
+    assert(!trv->discovered[3]);
+    assert(!trv->discovered[4]);
+    assert(!trv->discovered[6]);
+    assert(sum == 5);
+
+    graph_traverser_clear(&trv);
+}
+
+void
 search_testall(void) {
     setup();
     graph_traverser_construct_test();
     graph_traverser_clear_test();
     graph_breadth_first_search_test();
     graph_depth_first_search_test();
+    graph_depth_first_search_early_exit_test();
     tear_down();
 }
