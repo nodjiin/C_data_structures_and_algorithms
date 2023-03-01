@@ -128,6 +128,26 @@ vqueue_free(vertices_queue_t* queue) {
 #define is_not_empty(queue)    (queue->end > queue->start)
 
 /**
+ * \brief           calls process_vertex_early if it has been defined.
+ * \param[in]       traverser: traverser object.
+ * \param[in]       vertex: vertex to process.
+ * \hideinitializer
+ */
+#define process_vertex_early(traverser, vertex)                                                                        \
+    if (traverser->process_vertex_early != NULL)                                                                       \
+        traverser->process_vertex_early(vertex);
+
+/**
+ * \brief           calls process_vertex_late if it has been defined.
+ * \param[in]       traverser: traverser object.
+ * \param[in]       vertex: vertex to process.
+ * \hideinitializer
+ */
+#define process_vertex_late(traverser, vertex)                                                                         \
+    if (traverser->process_vertex_late != NULL)                                                                        \
+        traverser->process_vertex_late(vertex);
+
+/**
  * \brief           calls process_edge if it has been defined.
  * \param[in]       traverser: traverser object.
  * \param[in]       source_vertex: source vertex of the edge to process.
@@ -180,10 +200,7 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
     while (is_not_empty(queue)) {
         source_vertex = dequeue(queue);
 
-        if (traverser->process_vertex_early != NULL) {
-            traverser->process_vertex_early(source_vertex);
-        }
-
+        process_vertex_early(traverser, source_vertex);
         traverser->processed[source_vertex] = true;
         edge = graph->edges[source_vertex];
 
@@ -203,9 +220,7 @@ graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser, size_t 
             edge = edge->next;
         }
 
-        if (traverser->process_vertex_late != NULL) {
-            traverser->process_vertex_late(source_vertex);
-        }
+        process_vertex_late(traverser, source_vertex);
     }
 
     vqueue_free(queue);
@@ -228,9 +243,7 @@ graph_depth_first_search_recursive(graph_t* graph, graph_traverser_t* traverser,
 
     traverser->discovered[source_vertex] = true;
     traverser->entry_time[source_vertex] = traverser->time++;
-    if (traverser->process_vertex_early != NULL) {
-        traverser->process_vertex_early(source_vertex);
-    }
+    process_vertex_early(traverser, source_vertex);
 
     edge = graph->edges[source_vertex];
     while (edge != NULL) { /* TODO refactor for readability */
@@ -255,10 +268,7 @@ graph_depth_first_search_recursive(graph_t* graph, graph_traverser_t* traverser,
         edge = edge->next;
     }
 
-    if (traverser->process_vertex_late != NULL) {
-        traverser->process_vertex_late(source_vertex);
-    }
-
+    process_vertex_late(traverser, source_vertex);
     traverser->exit_time[source_vertex] = traverser->time++;
     traverser->processed[source_vertex] = true;
 }
