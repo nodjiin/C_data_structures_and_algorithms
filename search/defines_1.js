@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['data_5fprint_5fformat_353',['DATA_PRINT_FORMAT',['../datatype_8h.html#a1dc977a74d53c99fbaf88c97212ba060',1,'datatype.h']]],
-  ['dequeue_354',['dequeue',['../search_8c.html#a0556b07c0cd278f87f45ec76b5e84d49',1,'search.c']]]
+  ['check_5fearly_5ftermination_355',['check_early_termination',['../search_8c.html#a883bb86b4f98d04b103a0268d60b9c8f',1,'search.c']]]
 ];

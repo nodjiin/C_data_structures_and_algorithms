@@ -93,6 +93,21 @@ Macros</h2></td></tr>
 <tr class="memitem:add5e91411b32e9ffa729ef51f689a71a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#add5e91411b32e9ffa729ef51f689a71a">is_not_empty</a>(queue)</td></tr>
 <tr class="memdesc:add5e91411b32e9ffa729ef51f689a71a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a vertices queue is not empty.  <a href="search_8c.html#add5e91411b32e9ffa729ef51f689a71a">More...</a><br /></td></tr>
 <tr class="separator:add5e91411b32e9ffa729ef51f689a71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106cccdc14d19571ca6c3485ff820aff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a106cccdc14d19571ca6c3485ff820aff">process_vertex_early</a>(traverser,  vertex)</td></tr>
+<tr class="memdesc:a106cccdc14d19571ca6c3485ff820aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">calls process_vertex_early if it has been defined.  <a href="search_8c.html#a106cccdc14d19571ca6c3485ff820aff">More...</a><br /></td></tr>
+<tr class="separator:a106cccdc14d19571ca6c3485ff820aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0354216b78841ffc9b66dbb37f0984fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a0354216b78841ffc9b66dbb37f0984fd">process_vertex_late</a>(traverser,  vertex)</td></tr>
+<tr class="memdesc:a0354216b78841ffc9b66dbb37f0984fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calls process_vertex_late if it has been defined.  <a href="search_8c.html#a0354216b78841ffc9b66dbb37f0984fd">More...</a><br /></td></tr>
+<tr class="separator:a0354216b78841ffc9b66dbb37f0984fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfa7ee9110e49afeadb54913bf44cde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a3bfa7ee9110e49afeadb54913bf44cde">process_edge</a>(traverser,  source_vertex,  edge)</td></tr>
+<tr class="memdesc:a3bfa7ee9110e49afeadb54913bf44cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">calls process_edge if it has been defined.  <a href="search_8c.html#a3bfa7ee9110e49afeadb54913bf44cde">More...</a><br /></td></tr>
+<tr class="separator:a3bfa7ee9110e49afeadb54913bf44cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883bb86b4f98d04b103a0268d60b9c8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#a883bb86b4f98d04b103a0268d60b9c8f">check_early_termination</a>(traverser)</td></tr>
+<tr class="memdesc:a883bb86b4f98d04b103a0268d60b9c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">check the early termination flag and return if it's true.  <a href="search_8c.html#a883bb86b4f98d04b103a0268d60b9c8f">More...</a><br /></td></tr>
+<tr class="separator:a883bb86b4f98d04b103a0268d60b9c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2065a753a7852275724fe9f717d30d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8c.html#abe2065a753a7852275724fe9f717d30d">is_edge_yet_to_process</a>(graph,  trv,  source,  destination)</td></tr>
+<tr class="memdesc:abe2065a753a7852275724fe9f717d30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the edge has not been processed yet.  <a href="search_8c.html#abe2065a753a7852275724fe9f717d30d">More...</a><br /></td></tr>
+<tr class="separator:abe2065a753a7852275724fe9f717d30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -106,6 +121,32 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>source file containing the definition of search algorithms implemented in this library. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a883bb86b4f98d04b103a0268d60b9c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883bb86b4f98d04b103a0268d60b9c8f">&#9670;&nbsp;</a></span>check_early_termination</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define check_early_termination</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">traverser</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check the early termination flag and return if it's true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">traverser</td><td>traverser object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0556b07c0cd278f87f45ec76b5e84d49"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0556b07c0cd278f87f45ec76b5e84d49">&#9670;&nbsp;</a></span>dequeue</h2>
 
@@ -125,7 +166,7 @@ Functions</h2></td></tr>
 <p>returns the first vertex of the queue and move its head to the next item in line. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">queue</td><td>pointer to the vertices queue where the vertex will be removed from. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">queue</td><td>pointer to the vertices queue where the vertex will be removed from. </td></tr>
   </table>
   </dd>
 </dl>
@@ -170,6 +211,58 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="abe2065a753a7852275724fe9f717d30d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2065a753a7852275724fe9f717d30d">&#9670;&nbsp;</a></span>is_edge_yet_to_process</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_edge_yet_to_process</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">graph, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">trv, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">source, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">destination&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if the edge has not been processed yet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>graph object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">trv</td><td>traverser object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">source</td><td>source vertex of the edge. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">destination</td><td>destination vertex of the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the edge has not been processed yet (e.g. this is the first time we &lt;re encountering it), false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="add5e91411b32e9ffa729ef51f689a71a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add5e91411b32e9ffa729ef51f689a71a">&#9670;&nbsp;</a></span>is_not_empty</h2>
 
@@ -189,11 +282,129 @@ Functions</h2></td></tr>
 <p>checks if a vertices queue is not empty. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">queue</td><td>pointer to the vertices queue to be checked. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">queue</td><td>pointer to the vertices queue to be checked. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there are still elements in the queue, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a3bfa7ee9110e49afeadb54913bf44cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bfa7ee9110e49afeadb54913bf44cde">&#9670;&nbsp;</a></span>process_edge</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define process_edge</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">traverser, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">source_vertex, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">edge&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calls process_edge if it has been defined. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">traverser</td><td>traverser object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">source_vertex</td><td>source vertex of the edge to process. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">edge</td><td>edge to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a106cccdc14d19571ca6c3485ff820aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a106cccdc14d19571ca6c3485ff820aff">&#9670;&nbsp;</a></span>process_vertex_early</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define process_vertex_early</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">traverser, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">vertex&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calls process_vertex_early if it has been defined. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">traverser</td><td>traverser object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertex</td><td>vertex to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0354216b78841ffc9b66dbb37f0984fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0354216b78841ffc9b66dbb37f0984fd">&#9670;&nbsp;</a></span>process_vertex_late</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define process_vertex_late</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">traverser, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">vertex&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calls process_vertex_late if it has been defined. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">traverser</td><td>traverser object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertex</td><td>vertex to process. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

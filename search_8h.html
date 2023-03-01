@@ -107,10 +107,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a651ded509f2f6449e60707f0f92a5891"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a>) (size_t vertex)</td></tr>
 <tr class="memdesc:a651ded509f2f6449e60707f0f92a5891"><td class="mdescLeft">&#160;</td><td class="mdescRight">function pointer type that defines a callback for processing a vertex.  <a href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">More...</a><br /></td></tr>
 <tr class="separator:a651ded509f2f6449e60707f0f92a5891"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d7b55df7ac31da223f922fbe00063e3"><td class="memItemLeft" align="right" valign="top"><a id="a6d7b55df7ac31da223f922fbe00063e3"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8h.html#a6d7b55df7ac31da223f922fbe00063e3">process_edge_fn</a>) (size_t vertex, <a class="el" href="structedgenode__t.html">edgenode_t</a> *edge)</td></tr>
-<tr class="memdesc:a6d7b55df7ac31da223f922fbe00063e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">function pointer type that defines a callback for processing an edge. this type is used to pass a function that performs some action on an edge during graph traversal. The function takes two parameters: a size_t parameter that represents the source vertex number, and an <a class="el" href="structedgenode__t.html" title="structure representing a single edge of the graph.">edgenode_t</a> pointer that represents the edge node. The function returns void. <br /></td></tr>
-<tr class="separator:a6d7b55df7ac31da223f922fbe00063e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f8d79784550ce30426ba0bf1fa4e3a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8h.html#a64f8d79784550ce30426ba0bf1fa4e3a">process_edge_fn</a>) (size_t vertex_x, <a class="el" href="structedgenode__t.html">edgenode_t</a> *edge)</td></tr>
+<tr class="memdesc:a64f8d79784550ce30426ba0bf1fa4e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">function pointer type that defines a callback for processing an edge.  <a href="search_8h.html#a64f8d79784550ce30426ba0bf1fa4e3a">More...</a><br /></td></tr>
+<tr class="separator:a64f8d79784550ce30426ba0bf1fa4e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2db3467dd0e94b621f2d35f541a5f6a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgraph__traverser__t.html">graph_traverser_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8h.html#ac2db3467dd0e94b621f2d35f541a5f6a">graph_traverser_t</a></td></tr>
 <tr class="memdesc:ac2db3467dd0e94b621f2d35f541a5f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure that represents a graph traverser object.  <a href="search_8h.html#ac2db3467dd0e94b621f2d35f541a5f6a">More...</a><br /></td></tr>
 <tr class="separator:ac2db3467dd0e94b621f2d35f541a5f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +136,7 @@ Variables</h2></td></tr>
 <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_vertex_late</b></td></tr>
 <tr class="separator:a0aed3da8ba75cb72ec7652cb4f2bbf57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae429a2b0f5a65bee26fd72bb13a91fb0"><td class="memItemLeft" align="right" valign="top"><a id="ae429a2b0f5a65bee26fd72bb13a91fb0"></a>
-<a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> <a class="el" href="search_8h.html#a6d7b55df7ac31da223f922fbe00063e3">process_edge_fn</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_edge</b></td></tr>
+<a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> <a class="el" href="search_8h.html#a651ded509f2f6449e60707f0f92a5891">process_vertex_fn</a> <a class="el" href="search_8h.html#a64f8d79784550ce30426ba0bf1fa4e3a">process_edge_fn</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_edge</b></td></tr>
 <tr class="separator:ae429a2b0f5a65bee26fd72bb13a91fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab016368661e5b7732ae75d7e0b19724f"><td class="memItemLeft" align="right" valign="top"><a id="ab016368661e5b7732ae75d7e0b19724f"></a>
 <a class="el" href="structgraph__traverser__t.html">graph_traverser_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>traverser</b></td></tr>
@@ -166,6 +165,30 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a64f8d79784550ce30426ba0bf1fa4e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f8d79784550ce30426ba0bf1fa4e3a">&#9670;&nbsp;</a></span>process_edge_fn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* process_edge_fn) (size_t vertex_x, <a class="el" href="structedgenode__t.html">edgenode_t</a> *edge)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>function pointer type that defines a callback for processing an edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertex_x</td><td>first vertex defining an edge. Source vertex in a directed graph. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">edge</td><td>data structure containing the edge data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>this type is used to pass a function that performs some action on an edge during graph traversal. </dd></dl>
+
+</div>
+</div>
 <a id="a651ded509f2f6449e60707f0f92a5891"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a651ded509f2f6449e60707f0f92a5891">&#9670;&nbsp;</a></span>process_vertex_fn</h2>
 
@@ -179,6 +202,12 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>function pointer type that defines a callback for processing a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertex</td><td>vertex to process. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>this type is used to pass a function that performs some action on a vertex during graph traversal. The function takes a size_t parameter that represents the vertex number, and returns void </dd></dl>
 
 </div>

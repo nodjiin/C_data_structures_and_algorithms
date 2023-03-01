@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['match_5fkeys_359',['match_keys',['../hashtable_8c.html#a4a9302a4a91d73d22a08d01e8763980d',1,'hashtable.c']]]
+  ['is_5fedge_5fyet_5fto_5fprocess_361',['is_edge_yet_to_process',['../search_8c.html#abe2065a753a7852275724fe9f717d30d',1,'search.c']]],
+  ['is_5fnot_5fempty_362',['is_not_empty',['../search_8c.html#add5e91411b32e9ffa729ef51f689a71a',1,'search.c']]]
 ];

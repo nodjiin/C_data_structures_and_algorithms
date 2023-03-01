@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['root_361',['ROOT',['../heap_8c.html#a77988da40e9a35da51ea0e8943ebbd4a',1,'heap.c']]]
+  ['null_5fdata_364',['NULL_DATA',['../datatype_8h.html#a106453894cef76da36e74f3cb446ae96',1,'datatype.h']]]
 ];
