@@ -64,7 +64,7 @@ enum search_type { BREADTH_FIRST, DEPTH_FIRST };
 __declspec(dllexport) graph_traverser_t* graph_traverser_construct(graph_t* graph,
                                                                    process_vertex_fn process_vertex_early,
                                                                    process_vertex_fn process_vertex_late,
-                                                                   process_edge_fn process_edge, enum search_type);
+                                                                   process_edge_fn process_edge, enum search_type type);
 __declspec(dllexport) void graph_traverser_clear(graph_traverser_t** traverser);
 __declspec(dllexport) void graph_breadth_first_search(graph_t* graph, graph_traverser_t* traverser,
                                                       size_t starting_vertex);
