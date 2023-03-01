@@ -337,7 +337,7 @@ binary_search(data_type array[], data_type key, data_type_compare_fn compare, in
     }
 
     middle = (low + high) / 2;
-    if (compare(array[middle], key)) {
+    if (compare(array[middle], key) == 0) {
         return (middle);
     }
 
