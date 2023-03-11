@@ -8,7 +8,7 @@ var searchData=
   ['hashing_2eh_83',['hashing.h',['../hashing_8h.html',1,'']]],
   ['hashtable_2ec_84',['hashtable.c',['../hashtable_8c.html',1,'']]],
   ['hashtable_2eh_85',['hashtable.h',['../hashtable_8h.html',1,'']]],
-  ['hashtable_5fbucket_5felement_5ft_86',['hashtable_bucket_element_t',['../structhashtable__bucket__element__t.html',1,'hashtable_bucket_element_t'],['../hashtable_8h.html#a69b878898a09ff5afc578ad6a95ba99d',1,'hashtable_bucket_element_t():&#160;hashtable.h']]],
+  ['hashtable_5fbucket_5felement_5ft_86',['hashtable_bucket_element_t',['../hashtable_8h.html#a69b878898a09ff5afc578ad6a95ba99d',1,'hashtable_bucket_element_t():&#160;hashtable.h'],['../structhashtable__bucket__element__t.html',1,'hashtable_bucket_element_t']]],
   ['hashtable_5fprimes_2eh_87',['hashtable_primes.h',['../hashtable__primes_8h.html',1,'']]],
   ['hashtable_5ft_88',['hashtable_t',['../structhashtable__t.html',1,'']]],
   ['heap_2ec_89',['heap.c',['../heap_8c.html',1,'']]],
@@ -20,10 +20,11 @@ var searchData=
   ['heap_5fextract_95',['heap_extract',['../structheap__t.html#a3c52e2bf3e3f50b43ce43b4bb39d1eb6',1,'heap_t']]],
   ['heap_5finsert_96',['heap_insert',['../structheap__t.html#acfea456c49092ac93bbd425e3133a343',1,'heap_t']]],
   ['heap_5fis_5fempty_97',['heap_is_empty',['../structheap__t.html#ac63773483377a0387caffeb106eca547',1,'heap_t']]],
-  ['heap_5ft_98',['heap_t',['../structheap__t.html',1,'']]],
-  ['htable_5fclear_99',['htable_clear',['../structhashtable__t.html#af6d1e8da6be212a5cf081d5ffb129817',1,'hashtable_t']]],
-  ['htable_5fconstruct_100',['htable_construct',['../structhashtable__t.html#a07b250e0415db2ad5ef0ba53a9eec3e5',1,'hashtable_t']]],
-  ['htable_5fdelete_101',['htable_delete',['../structhashtable__t.html#abb498ba56793b601551040f88b9308cc',1,'hashtable_t']]],
-  ['htable_5finsert_102',['htable_insert',['../structhashtable__t.html#aa97d426bfebce9ad12804903495e837d',1,'hashtable_t']]],
-  ['htable_5fsearch_103',['htable_search',['../structhashtable__t.html#a3ed259d951bc628d3bde628185ab1793',1,'hashtable_t']]]
+  ['heap_5fsort_98',['heap_sort',['../sort_8c.html#ac8b2123614d1d170a4b682b0845852b0',1,'sort.c']]],
+  ['heap_5ft_99',['heap_t',['../structheap__t.html',1,'']]],
+  ['htable_5fclear_100',['htable_clear',['../structhashtable__t.html#af6d1e8da6be212a5cf081d5ffb129817',1,'hashtable_t']]],
+  ['htable_5fconstruct_101',['htable_construct',['../structhashtable__t.html#a07b250e0415db2ad5ef0ba53a9eec3e5',1,'hashtable_t']]],
+  ['htable_5fdelete_102',['htable_delete',['../structhashtable__t.html#abb498ba56793b601551040f88b9308cc',1,'hashtable_t']]],
+  ['htable_5finsert_103',['htable_insert',['../structhashtable__t.html#aa97d426bfebce9ad12804903495e837d',1,'hashtable_t']]],
+  ['htable_5fsearch_104',['htable_search',['../structhashtable__t.html#a3ed259d951bc628d3bde628185ab1793',1,'hashtable_t']]]
 ];

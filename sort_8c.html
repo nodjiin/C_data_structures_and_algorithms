@@ -79,6 +79,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="sort_8h_source.html">sort.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="queue_8h_source.html">data_structures/queue.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="heap_8h_source.html">data_structures/heap.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -103,6 +104,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ae6319f3d5978a4edd2ff1981140cc319"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sort_8c.html#ae6319f3d5978a4edd2ff1981140cc319">merge_sort</a> (<a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a> array[], size_t low, size_t high, <a class="el" href="datatype_8h.html#adf2ebb0cd461a82643eb6d22a7c56220">data_type_compare_fn</a> compare)</td></tr>
 <tr class="memdesc:ae6319f3d5978a4edd2ff1981140cc319"><td class="mdescLeft">&#160;</td><td class="mdescRight">sorts an array using merge sort algorithm.  <a href="sort_8c.html#ae6319f3d5978a4edd2ff1981140cc319">More...</a><br /></td></tr>
 <tr class="separator:ae6319f3d5978a4edd2ff1981140cc319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b2123614d1d170a4b682b0845852b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sort_8c.html#ac8b2123614d1d170a4b682b0845852b0">heap_sort</a> (<a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a> array[], size_t array_size, <a class="el" href="datatype_8h.html#adf2ebb0cd461a82643eb6d22a7c56220">data_type_compare_fn</a> compare)</td></tr>
+<tr class="memdesc:ac8b2123614d1d170a4b682b0845852b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">sorts an array using heap sort algorithm.  <a href="sort_8c.html#ac8b2123614d1d170a4b682b0845852b0">More...</a><br /></td></tr>
+<tr class="separator:ac8b2123614d1d170a4b682b0845852b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866605664fea30dddc8c3070b0a54ba1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sort_8c.html#a866605664fea30dddc8c3070b0a54ba1">quick_sort</a> (<a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a> array[], size_t low, size_t high, <a class="el" href="datatype_8h.html#adf2ebb0cd461a82643eb6d22a7c56220">data_type_compare_fn</a> compare)</td></tr>
+<tr class="memdesc:a866605664fea30dddc8c3070b0a54ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">sorts an array of data using the quick sort algorithm.  <a href="sort_8c.html#a866605664fea30dddc8c3070b0a54ba1">More...</a><br /></td></tr>
+<tr class="separator:a866605664fea30dddc8c3070b0a54ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>header file containing the definition of sort algorithms implemented in this library. </p>
@@ -248,6 +255,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac8b2123614d1d170a4b682b0845852b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b2123614d1d170a4b682b0845852b0">&#9670;&nbsp;</a></span>heap_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void heap_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a>&#160;</td>
+          <td class="paramname"><em>array</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>array_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="datatype_8h.html#adf2ebb0cd461a82643eb6d22a7c56220">data_type_compare_fn</a>&#160;</td>
+          <td class="paramname"><em>compare</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sorts an array using heap sort algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">array</td><td>the array to be sorted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">array_size</td><td>the size of the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">compare</td><td>function used to compare two data_types values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>the heap sort algorithm constructs a heap from the given array and repeatedly extracts elements from it to form a sorted sequence. </dd></dl>
+
+</div>
+</div>
 <a id="a5ab0e9119d816e1cdb2ded6938e3a03b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ab0e9119d816e1cdb2ded6938e3a03b">&#9670;&nbsp;</a></span>insertion_sort()</h2>
 
@@ -342,6 +394,58 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>merge sort is a sorting algorithm that uses the divide-and-conquer approach. It works by dividing an unsorted list into n sublists, each containing one element (a list of one element is considered sorted), then repeatedly merging sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list. </dd></dl>
+
+</div>
+</div>
+<a id="a866605664fea30dddc8c3070b0a54ba1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866605664fea30dddc8c3070b0a54ba1">&#9670;&nbsp;</a></span>quick_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quick_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="datatype_8h.html#a3a4aad394acbc16c69c7c736f90f19b3">data_type</a>&#160;</td>
+          <td class="paramname"><em>array</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>low</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>high</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="datatype_8h.html#adf2ebb0cd461a82643eb6d22a7c56220">data_type_compare_fn</a>&#160;</td>
+          <td class="paramname"><em>compare</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sorts an array of data using the quick sort algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">array</td><td>the array to be sorted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">low</td><td>the starting index of the portion of the array to be sorted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">high</td><td>the ending index of the portion of the array to be sorted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">compare</td><td>function used to compare two data_types values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Quicksort is an efficient sorting algorithm that uses the divide-and-conquer approach. It works by selecting a ‘pivot’ element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The function then recursively sorts the sub-arrays. </dd></dl>
 
 </div>
 </div>
