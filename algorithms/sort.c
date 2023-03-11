@@ -5,6 +5,7 @@
 
 #include "sort.h"
 #include "data_structures/queue.h"
+#include "data_structures/heap.h"
 
 /**
  * \brief           swaps two data_type values.
@@ -169,5 +170,22 @@ merge_sort(data_type array[], size_t low, size_t high, data_type_compare_fn comp
         merge_sort(array, low, middle, compare);
         merge_sort(array, middle + 1, high, compare);
         merge(array, low, middle, high, compare);
+    }
+}
+
+/**
+ * \brief           sorts an array using heap sort algorithm.
+ * \param[in]       array: the array to be sorted.
+ * \param[in]       array_size: the size of the array.
+ * \param[in]       compare: function used to compare two data_types values.
+ * \note            the heap sort algorithm constructs a heap from the given array and repeatedly extracts elements from it to form a sorted sequence.
+ */
+void
+heap_sort(data_type array[], size_t array_size, data_type_compare_fn compare) {
+    heap_t* heap;
+
+    heap = heap_construct_from_array(array, array_size, compare);
+    for (size_t i = 0; i < array_size; i++) {
+        array[i] = heap_extract(heap);
     }
 }

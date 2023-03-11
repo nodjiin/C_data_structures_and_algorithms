@@ -59,9 +59,17 @@ merge_sort_test(void) {
 }
 
 void
+heap_sort_test(void) {
+    heap_sort(array_to_sort, ARRAY_SIZE, compare);
+
+    assert(is_sorted(array_to_sort));
+}
+
+void
 sort_testall(void) {
     setup_and_run(selection_sort_test);
     setup_and_run(insertion_sort_test);
     setup_and_run(bubble_sort_test);
     setup_and_run(merge_sort_test);
+    setup_and_run(heap_sort_test);
 }
