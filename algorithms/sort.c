@@ -189,3 +189,56 @@ heap_sort(data_type array[], size_t array_size, data_type_compare_fn compare) {
         array[i] = heap_extract(heap);
     }
 }
+
+/**
+ * \brief           partitions a subarray around a pivot element.
+ * \param[in]       array: the array to be partitioned.
+ * \param[in]       low: The starting index of the subarray.
+ * \param[in]       high: The ending index of the subarray.
+ * \param[in]       compare: function used to compare two data_types values.
+ * \return          the index of the pivot element after partitioning.
+ * \note            this function partitions a subarray [low..high] around a pivot element (selected as the last element of the subarray) such that all elements
+ *                  smaller than the pivot are placed before it and all elements greater than or equal to it are placed after it. It returns the index of the 
+ *                  pivot element after partitioning.
+ */
+static size_t
+partition(data_type array[], size_t low, size_t high, data_type_compare_fn compare) {
+    size_t pivot, high_subarray_start;
+
+    pivot = high;                                  /* select last element as pivot */
+    high_subarray_start = low;                     /* select first eleemnt as starting point for the high subarray*/
+    for (size_t i = low; i < high; i++) {          /* iterate on the given subarray */
+        if (compare(array[i], array[pivot]) < 0) { /* if an element smaller than the pivot is found... */
+            swap(&array[i], &array[high_subarray_start]); /* ... move it in the low part of the subarray... */
+            high_subarray_start++;                        /* ...and update the high subarray starting position */
+        }
+    }
+
+    swap(&array[pivot], &array[high_subarray_start]); /* finally make the pivot the first element of the high subarray*/
+    return high_subarray_start;
+}
+
+/**
+ * \brief           sorts an array of data using the quick sort algorithm.
+ * \param[in]       array: the array to be sorted.
+ * \param[in]       low: the starting index of the portion of the array to be sorted.
+ * \param[in]       high: the ending index of the portion of the array to be sorted.
+ * \param[in]       compare: function used to compare two data_types values.
+ * \note            Quicksort is an efficient sorting algorithm that uses the divide-and-conquer approach. It works by selecting a ‘pivot’ element from the 
+ *                  array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The 
+ *                  function then recursively sorts the sub-arrays.
+ */
+void
+quick_sort(data_type array[], size_t low, size_t high, data_type_compare_fn compare) {
+    size_t partition_index;
+
+    if (low < high) {
+        partition_index = partition(array, low, high, compare);
+
+        if (partition_index > 0) {
+            quick_sort(array, low, partition_index - 1, compare);
+        }
+
+        quick_sort(array, partition_index + 1, high, compare);
+    }
+}
