@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="hashing.h" />
     <ClInclude Include="search.h" />
+    <ClInclude Include="sort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hashing.c" />
