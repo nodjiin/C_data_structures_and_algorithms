@@ -23,12 +23,13 @@ swap(data_type* a, data_type* b) {
  * \brief           sorts an array of data_type values using selection sort algorithm.
  * \param[in]       array: pointer to the first element of the array to be sorted.
  * \param[in]       array_size: size of the array to be sorted.
+ * \param[in]       compare: function used to compare two data_types values.
  * \note            the selection sort algorithm works by repeatedly finding the minimum element from unsorted part and putting it at the beginning. 
  *                  The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. 
  *                  In every iteration of selection sort, the minimum element from the unsorted subarray is picked and moved to the sorted subarray.
  */
 void
-selection_sort(data_type array[], size_t array_size) {
+selection_sort(data_type array[], size_t array_size, data_type_compare_fn compare) {
     size_t i, j;      /* the sorted subarray lies between 0 and i, the unsorted between i + 1 and array_size */
     size_t min_index; /* index of the current minimum element in the right subarray */
 
@@ -36,7 +37,7 @@ selection_sort(data_type array[], size_t array_size) {
         min_index = i;
 
         for (j = i + 1; j < array_size; j++) {
-            if (array[j] < array[min_index]) {
+            if (compare(array[j], array[min_index]) < 0) {
                 min_index = j;
             }
         }
@@ -49,19 +50,20 @@ selection_sort(data_type array[], size_t array_size) {
  * \brief           sorts an array of data_type values using insertion sort algorithm.
  * \param[in]       array: pointer to the first element of the array to be sorted.
  * \param[in]       array_size: size of the array to be sorted.
+ * \param[in]       compare: function used to compare two data_types values.
  * \note            the insertion sort algorithm works by iterating through the array and moving each element to its correct position in the sorted subarray. 
  *                  The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. In 
  *                  every iteration of insertion sort, an element from the unsorted subarray is picked and inserted into its correct position in the sorted 
  *                  subarray.
  */
 void
-insertion_sort(data_type array[], size_t array_size) {
+insertion_sort(data_type array[], size_t array_size, data_type_compare_fn compare) {
     size_t i, j; /* the sorted subarray lies between 0 and i, the unsorted between i + 1 and array_size */
 
     for (i = 1; i < array_size; i++) {
         j = i; /* each iteration we include a new element (in position i) in the sorted subarray */
 
-        while ((j > 0) && (array[j] < array[j - 1])) { /* move the new element in the correct position */
+        while ((j > 0) && (compare(array[j], array[j - 1]) < 0)) { /* move the new element in the correct position */
             swap(&array[j], &array[j - 1]);
             j--;
         }
@@ -72,17 +74,18 @@ insertion_sort(data_type array[], size_t array_size) {
  * \brief           sorts an array of data_type values using bubble sort algorithm.
  * \param[in]       array: pointer to the first element of the array to be sorted.
  * \param[in]       array_size: size of the array to be sorted.
+ * \param[in]       compare: function used to compare two data_types values.
  * \note            the bubble sort algorithm works by repeatedly swapping adjacent elements if they are in the wrong order. The algorithm maintains two 
  *                  subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. In every iteration of bubble sort,
  *                  the largest element from the unsorted subarray is picked and moved to the end of the unsorted subarray.
  */
 void
-bubble_sort(data_type array[], size_t array_size) {
+bubble_sort(data_type array[], size_t array_size, data_type_compare_fn compare) {
     size_t i, j; /* the sorted subarray lies between i and array_size, the unsorted between 0 and i - 1 */
 
     for (i = array_size; i > 1; i--) {
         for (j = 0; j < i - 1; j++) {
-            if (array[j] > array[j + 1]) {
+            if (compare(array[j], array[j + 1]) > 0) {
                 swap(&array[j], &array[j + 1]);
             }
         }
@@ -122,11 +125,12 @@ bubble_sort(data_type array[], size_t array_size) {
  * \param[in]       low: the starting index of the first subarray.
  * \param[in]       middle: the ending index of the first subarray.
  * \param[in]       high: the ending index of the second subarray.
+ * \param[in]       compare: function used to compare two data_types values.
  * \note            this function merges two subarrays [low..middle] and [middle+1..high] into a single sorted subarray.
  *
  */
 static void
-merge(data_type array[], size_t low, size_t middle, size_t high) {
+merge(data_type array[], size_t low, size_t middle, size_t high, data_type_compare_fn compare) {
     size_t index;
     queue_t *buffer1, *buffer2; /* buffers to hold elements for merging */
 
@@ -135,7 +139,7 @@ merge(data_type array[], size_t low, size_t middle, size_t high) {
 
     index = low;
     while (!(queue_is_empty(buffer1) || queue_is_empty(buffer2))) {
-        if (queue_peek(buffer1) <= queue_peek(buffer2)) {
+        if (compare(queue_peek(buffer1), queue_peek(buffer2)) <= 0) {
             array[index++] = queue_dequeue(buffer1);
         } else {
             array[index++] = queue_dequeue(buffer2);
@@ -151,18 +155,19 @@ merge(data_type array[], size_t low, size_t middle, size_t high) {
  * \param[in]       array: the array to be sorted.
  * \param[in]       low: the starting index of the portion to be sorted.
  * \param[in]       high: the ending index of the portion to be sorted.
- * \note            Merge sort is a sorting algorithm that uses the divide-and-conquer approach. It works by dividing an unsorted list into n sublists, 
+ * \param[in]       compare: function used to compare two data_types values.
+ * \note            merge sort is a sorting algorithm that uses the divide-and-conquer approach. It works by dividing an unsorted list into n sublists, 
  *                  each containing one element (a list of one element is considered sorted), then repeatedly merging sublists to produce new sorted sublists 
  *                  until there is only one sublist remaining. This will be the sorted list.
  */
 void
-merge_sort(data_type array[], size_t low, size_t high) {
+merge_sort(data_type array[], size_t low, size_t high, data_type_compare_fn compare) {
     size_t middle; /* index of middle element */
 
     if (low < high) {
         middle = (low + high) / 2;
-        merge_sort(array, low, middle);
-        merge_sort(array, middle + 1, high);
-        merge(array, low, middle, high);
+        merge_sort(array, low, middle, compare);
+        merge_sort(array, middle + 1, high, compare);
+        merge(array, low, middle, high, compare);
     }
 }

@@ -32,28 +32,28 @@ setup_and_run(void (*test)(void)) {
 
 void
 selection_sort_test(void) {
-    selection_sort(array_to_sort, ARRAY_SIZE);
+    selection_sort(array_to_sort, ARRAY_SIZE, compare);
 
     assert(is_sorted(array_to_sort));
 }
 
 void
 insertion_sort_test(void) {
-    insertion_sort(array_to_sort, ARRAY_SIZE);
+    insertion_sort(array_to_sort, ARRAY_SIZE, compare);
 
     assert(is_sorted(array_to_sort));
 }
 
 void
 bubble_sort_test(void) {
-    bubble_sort(array_to_sort, ARRAY_SIZE);
+    bubble_sort(array_to_sort, ARRAY_SIZE, compare);
 
     assert(is_sorted(array_to_sort));
 }
 
 void
 merge_sort_test(void) {
-    merge_sort(array_to_sort, 0, ARRAY_SIZE - 1);
+    merge_sort(array_to_sort, 0, ARRAY_SIZE - 1, compare);
 
     assert(is_sorted(array_to_sort));
 }
