@@ -6,6 +6,8 @@
 #ifndef DATATYPE
 #define DATATYPE
 
+#include <limits.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -15,6 +17,12 @@ extern "C" {
  * \hideinitializer
  */
 #define NULL_DATA         0
+
+/**
+ * \brief           macro representing the minimum possible value of the chosen data type.
+ * \hideinitializer
+ */
+#define MIN_DATA          INT_MIN
 
 /**
  * \brief           macro representing the format to use while printing a data type.
