@@ -206,7 +206,7 @@ partition(data_type array[], size_t low, size_t high, data_type_compare_fn compa
     size_t pivot, high_subarray_start;
 
     pivot = high;                                  /* select last element as pivot */
-    high_subarray_start = low;                     /* select first eleemnt as starting point for the high subarray*/
+    high_subarray_start = low;                     /* select first eleemnt as starting point for the high subarray */
     for (size_t i = low; i < high; i++) {          /* iterate on the given subarray */
         if (compare(array[i], array[pivot]) < 0) { /* if an element smaller than the pivot is found... */
             swap(&array[i], &array[high_subarray_start]); /* ... move it in the low part of the subarray... */
@@ -214,7 +214,7 @@ partition(data_type array[], size_t low, size_t high, data_type_compare_fn compa
         }
     }
 
-    swap(&array[pivot], &array[high_subarray_start]); /* finally make the pivot the first element of the high subarray*/
+    swap(&array[pivot], &array[high_subarray_start]); /* move pivot to the first position of high subarray */
     return high_subarray_start;
 }
 
