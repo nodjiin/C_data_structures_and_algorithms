@@ -7,12 +7,10 @@
 #include "data_structures/queue.h"
 
 /**
- * \brief swaps two data_type values.
- *
- * this function swaps the values of two data_type variables using a temporary variable.
- *
- * \param[in] a: pointer to the first data_type variable.
- * \param[in] b: pointer to the second data_type variable.
+ * \brief           swaps two data_type values.
+ * \param[in]       a: pointer to the first data_type variable.
+ * \param[in]       b: pointer to the second data_type variable.
+ * \note            this function swaps the values of two data_type variables using a temporary variable.        
  */
 static void
 swap(data_type* a, data_type* b) {
@@ -22,15 +20,12 @@ swap(data_type* a, data_type* b) {
 }
 
 /**
- * \brief sorts an array of data_type values using selection sort algorithm.
- *
- * this function sorts an array of data_type values in ascending order using the selection sort algorithm. The selection sort algorithm works by repeatedly 
- * finding the minimum element from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array: one subarray which
- * is already sorted and another subarray which is unsorted. In every iteration of selection sort, the minimum element from the unsorted subarray is picked 
- * and moved to the sorted subarray.
- *
- * \param[in] array: pointer to the first element of the array to be sorted.
- * \param[in] array_size: size of the array to be sorted.
+ * \brief           sorts an array of data_type values using selection sort algorithm.
+ * \param[in]       array: pointer to the first element of the array to be sorted.
+ * \param[in]       array_size: size of the array to be sorted.
+ * \note            the selection sort algorithm works by repeatedly finding the minimum element from unsorted part and putting it at the beginning. 
+ *                  The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. 
+ *                  In every iteration of selection sort, the minimum element from the unsorted subarray is picked and moved to the sorted subarray.
  */
 void
 selection_sort(data_type array[], size_t array_size) {
@@ -51,15 +46,13 @@ selection_sort(data_type array[], size_t array_size) {
 }
 
 /**
- * \brief sorts an array of data_type values using insertion sort algorithm.
- *
- * this function sorts an array of data_type values in ascending order using the insertion sort algorithm. The insertion sort algorithm works by iterating 
- * through the array and moving each element to its correct position in the sorted subarray. The algorithm maintains two subarrays in a given array: one 
- * subarray which is already sorted and another subarray which is unsorted. In every iteration of insertion sort, an element from the unsorted subarray is 
- * picked and inserted into its correct position in the sorted subarray.
- *
- * \param[in] array: pointer to the first element of the array to be sorted.
- * \param[in] array_size: size of the array to be sorted.
+ * \brief           sorts an array of data_type values using insertion sort algorithm.
+ * \param[in]       array: pointer to the first element of the array to be sorted.
+ * \param[in]       array_size: size of the array to be sorted.
+ * \note            the insertion sort algorithm works by iterating through the array and moving each element to its correct position in the sorted subarray. 
+ *                  The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. In 
+ *                  every iteration of insertion sort, an element from the unsorted subarray is picked and inserted into its correct position in the sorted 
+ *                  subarray.
  */
 void
 insertion_sort(data_type array[], size_t array_size) {
@@ -76,15 +69,12 @@ insertion_sort(data_type array[], size_t array_size) {
 }
 
 /**
- * \brief sorts an array of data_type values using bubble sort algorithm.
- *
- * this function sorts an array of data_type values in ascending order using the bubble sort algorithm. The bubble sort algorithm works by repeatedly swapping 
- * adjacent elements if they are in the wrong order. The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another 
- * subarray which is unsorted. In every iteration of bubble sort, the largest element from the unsorted subarray is picked and moved to the end of the unsorted
- * subarray.
- *
- * \param[in] array: pointer to the first element of the array to be sorted.
- * \param[in] array_size: size of the array to be sorted.
+ * \brief           sorts an array of data_type values using bubble sort algorithm.
+ * \param[in]       array: pointer to the first element of the array to be sorted.
+ * \param[in]       array_size: size of the array to be sorted.
+ * \note            the bubble sort algorithm works by repeatedly swapping adjacent elements if they are in the wrong order. The algorithm maintains two 
+ *                  subarrays in a given array: one subarray which is already sorted and another subarray which is unsorted. In every iteration of bubble sort,
+ *                  the largest element from the unsorted subarray is picked and moved to the end of the unsorted subarray.
  */
 void
 bubble_sort(data_type array[], size_t array_size) {
@@ -100,12 +90,11 @@ bubble_sort(data_type array[], size_t array_size) {
 }
 
 /**
- * \brief enqueue the array content in the given range in a newly created queue.
- * 
- * \param[in] queue: queue that will be constructed and used.
- * \param[in] array: array containing the value to enqueue.
- * \param[in] start: the starting index of the range to enqueue.
- * \param[in] end: the ending index of the range to enqueue.
+ * \brief           enqueue the array content in the given range in a newly created queue.
+ * \param[in]       queue: queue that will be constructed and used.
+ * \param[in]       array: array containing the value to enqueue.
+ * \param[in]       start: the starting index of the range to enqueue.
+ * \param[in]       end: the ending index of the range to enqueue.
  * \hideinitializer
  */
 #define enqueue_interval(queue, array, start, end)                                                                     \
@@ -115,11 +104,10 @@ bubble_sort(data_type array[], size_t array_size) {
     }
 
 /**
- * \brief dequeue the queue content given array and free the queue.
- * 
- * \param[in] queue: tail that will be emptied and deconstructed.
- * \param[in] array: array that will contain the dequeued items.
- * \param[in] index: index used to keep track of the position at which queue items are being inserted in the array.
+ * \brief           dequeue the queue content given array and free the queue.
+ * \param[in]       queue: tail that will be emptied and deconstructed.
+ * \param[in]       array: array that will contain the dequeued items.
+ * \param[in]       index: index used to keep track of the position at which queue items are being inserted in the array.
  * \hideinitializer
  */
 #define dequeue_all_to_array(queue, array, index)                                                                      \
@@ -129,14 +117,12 @@ bubble_sort(data_type array[], size_t array_size) {
     queue_clear(&queue);
 
 /**
- * \brief merges two subarrays of array.
- * 
- * this function merges two subarrays [low..middle] and [middle+1..high] into a single sorted subarray.
- * 
- * \param[in] array: the array to be sorted
- * \param[in] low: the starting index of the first subarray.
- * \param[in] middle: the ending index of the first subarray.
- * \param[in] high: the ending index of the second subarray.
+ * \brief           merges two subarrays of array.
+ * \param[in]       array: the array to be sorted
+ * \param[in]       low: the starting index of the first subarray.
+ * \param[in]       middle: the ending index of the first subarray.
+ * \param[in]       high: the ending index of the second subarray.
+ * \note            this function merges two subarrays [low..middle] and [middle+1..high] into a single sorted subarray.
  *
  */
 static void
@@ -161,13 +147,13 @@ merge(data_type array[], size_t low, size_t middle, size_t high) {
 }
 
 /**
- * \brief sorts an array using merge sort algorithm.
- * 
- * this function sorts an array in ascending order using merge sort algorithm.
- *
- * \param[in] array: the array to be sorted.
- * \param[in] low: the starting index of the portion to be sorted.
- * \param[in] high: the ending index of the portion to be sorted.
+ * \brief           sorts an array using merge sort algorithm.
+ * \param[in]       array: the array to be sorted.
+ * \param[in]       low: the starting index of the portion to be sorted.
+ * \param[in]       high: the ending index of the portion to be sorted.
+ * \note            Merge sort is a sorting algorithm that uses the divide-and-conquer approach. It works by dividing an unsorted list into n sublists, 
+ *                  each containing one element (a list of one element is considered sorted), then repeatedly merging sublists to produce new sorted sublists 
+ *                  until there is only one sublist remaining. This will be the sorted list.
  */
 void
 merge_sort(data_type array[], size_t low, size_t high) {
