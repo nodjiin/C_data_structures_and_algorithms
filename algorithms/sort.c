@@ -15,9 +15,9 @@
  */
 static void
 swap(data_type* a, data_type* b) {
-    data_type* temp = a;
-    a = b;
-    b = temp;
+    data_type temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /**
@@ -33,7 +33,7 @@ swap(data_type* a, data_type* b) {
  */
 void
 selection_sort(data_type array[], size_t array_size) {
-    size_t min_index;
+    size_t min_index; /* index of the current minimum element in the right subarray */
 
     for (size_t i = 0; i < array_size; i++) {
         min_index = i;
