@@ -3,32 +3,32 @@
 #include "search_test.h"
 #include "testvalues.h"
 
-graph_t* graph; /* TODO test on undirected graph. */
-graph_traverser_t* trv;
-data_type sum;
+static graph_t* graph; /* TODO test on undirected graph. */
+static graph_traverser_t* trv;
+static data_type sum;
 
-size_t index_early;
-size_t v_early[6];
-size_t index_late;
-size_t v_late[6];
+static size_t index_early;
+static size_t v_early[6];
+static size_t index_late;
+static size_t v_late[6];
 
-void
+static void
 pv_early(size_t v) {
     v_early[index_early++] = v;
 }
 
-void
+static void
 pv_late(size_t v) {
     v_late[index_late++] = v;
 }
 
-void
+static void
 pe(size_t x, edgenode_t* edge) {
     assert(edge->weight == edge->y - x); // slight violation of the AAA test pattern
     sum += edge->weight;
 }
 
-void
+static void
 pe_early_exit(size_t x, edgenode_t* edge) {
     sum += edge->weight;
     if (sum == 5) {
@@ -36,7 +36,7 @@ pe_early_exit(size_t x, edgenode_t* edge) {
     }
 }
 
-void
+static void
 setup() {
     /**
     *  graph structure:
@@ -61,7 +61,7 @@ setup() {
     graph_insert_edge(graph, 5, 4, -1);
 }
 
-void
+static void
 tear_down() {
     graph_clear(&graph);
 }
