@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['discovered_312',['discovered',['../structgraph__traverser__t.html#af3c24b1531dbd0148a76170e6fa1e721',1,'graph_traverser_t']]]
+  ['discovered_316',['discovered',['../structgraph__traverser__t.html#af3c24b1531dbd0148a76170e6fa1e721',1,'graph_traverser_t']]]
 ];
