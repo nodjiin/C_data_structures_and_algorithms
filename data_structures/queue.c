@@ -78,6 +78,25 @@ queue_dequeue(queue_t* queue) {
 }
 
 /**
+ * \brief           peek the first value of the queue.
+ * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
+ * \return          the first value of the queue, or NULL_DATA if the queue is empty
+ * \relates         queue_t
+ */
+data_type
+queue_peek(queue_t* queue) {
+    data_type value;
+    doubly_linked_list_t* first;
+
+    if (queue == NULL) {
+        fprintf(stderr, "[queue_peek] Invalid input. Faulty peek request on NULL queue.\n");
+        exit(INVALID_INPUT);
+    }
+
+    return queue->first != NULL ? queue->first->value : NULL_DATA;
+}
+
+/**
  * \brief           get the number of elements currently in the queue.
  * \param[in]       queue: queue pointer. `NULL` is not considered a valid input and will cause an early exit with INVALID_INPUT status code.
  * \return          the number of elements in the queue.

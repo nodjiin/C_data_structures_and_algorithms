@@ -46,6 +46,23 @@ queue_dequeue_test(void) {
 }
 
 void
+queue_peek_test(void) {
+    queue_t* queue;
+    data_type null_data;
+    data_type head;
+
+    queue = queue_construct();
+
+    null_data = queue_peek(queue);
+    queue_enqueue(queue, TESTVAL1);
+    queue_enqueue(queue, TESTVAL2);
+    head = queue_peek(queue);
+
+    assert(null_data == NULL_DATA);
+    assert(head == TESTVAL1);
+}
+
+void
 queue_count_test(void) {
     queue_t* queue;
     size_t count;
@@ -92,6 +109,7 @@ queue_testall(void) {
     queue_construct_test();
     queue_enqueue_test();
     queue_dequeue_test();
+    queue_peek_test();
     queue_count_test();
     queue_is_empty_test();
     queue_clear_test();
