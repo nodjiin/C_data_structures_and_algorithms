@@ -32,5 +32,8 @@
     <ClCompile Include="search.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
