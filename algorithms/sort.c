@@ -99,41 +99,76 @@ bubble_sort(data_type array[], size_t array_size) {
     }
 }
 
+/**
+ * \brief enqueue the array content in the given range in a newly created queue.
+ * 
+ * \param[in] queue: queue that will be constructed and used.
+ * \param[in] array: array containing the value to enqueue.
+ * \param[in] start: the starting index of the range to enqueue.
+ * \param[in] end: the ending index of the range to enqueue.
+ * \hideinitializer
+ */
+#define enqueue_interval(queue, array, start, end)                                                                     \
+    queue = queue_construct();                                                                                         \
+    for (size_t i = start; i <= end; i++) {                                                                            \
+        queue_enqueue(queue, array[i]);                                                                                \
+    }
+
+/**
+ * \brief dequeue the queue content given array and free the queue.
+ * 
+ * \param[in] queue: tail that will be emptied and deconstructed.
+ * \param[in] array: array that will contain the dequeued items.
+ * \param[in] index: index used to keep track of the position at which queue items are being inserted in the array.
+ * \hideinitializer
+ */
+#define dequeue_all_to_array(queue, array, index)                                                                      \
+    while (!queue_is_empty(queue)) {                                                                                   \
+        array[index++] = queue_dequeue(queue);                                                                         \
+    }                                                                                                                  \
+    queue_clear(&queue);
+
+/**
+ * \brief merges two subarrays of array.
+ * 
+ * this function merges two subarrays [low..middle] and [middle+1..high] into a single sorted subarray.
+ * 
+ * \param[in] array: the array to be sorted
+ * \param[in] low: the starting index of the first subarray.
+ * \param[in] middle: the ending index of the first subarray.
+ * \param[in] high: the ending index of the second subarray.
+ *
+ */
 static void
 merge(data_type array[], size_t low, size_t middle, size_t high) {
-    size_t i;                   /* counter */
+    size_t index;
     queue_t *buffer1, *buffer2; /* buffers to hold elements for merging */
 
-    buffer1 = queue_construct();
-    buffer2 = queue_construct();
+    enqueue_interval(buffer1, array, low, middle);
+    enqueue_interval(buffer2, array, middle + 1, high);
 
-    for (i = low; i <= middle; i++) {
-        queue_enqueue(buffer1, array[i]);
-    }
-
-    for (i = middle + 1; i <= high; i++) {
-        queue_enqueue(buffer2, array[i]);
-    }
-
-    i = low;
+    index = low;
     while (!(queue_is_empty(buffer1) || queue_is_empty(buffer2))) {
         if (queue_peek(buffer1) <= queue_peek(buffer2)) {
-            array[i++] = queue_dequeue(buffer1);
+            array[index++] = queue_dequeue(buffer1);
         } else {
-            array[i++] = queue_dequeue(buffer2);
+            array[index++] = queue_dequeue(buffer2);
         }
     }
-    while (!queue_is_empty(buffer1)) {
-        array[i++] = queue_dequeue(buffer1);
-    }
-    while (!queue_is_empty(buffer2)) {
-        array[i++] = queue_dequeue(buffer2);
-    }
 
-    queue_clear(&buffer1);
-    queue_clear(&buffer2);
+    dequeue_all_to_array(buffer1, array, index);
+    dequeue_all_to_array(buffer2, array, index);
 }
 
+/**
+ * \brief sorts an array using merge sort algorithm.
+ * 
+ * this function sorts an array in ascending order using merge sort algorithm.
+ *
+ * \param[in] array: the array to be sorted.
+ * \param[in] low: the starting index of the portion to be sorted.
+ * \param[in] high: the ending index of the portion to be sorted.
+ */
 void
 merge_sort(data_type array[], size_t low, size_t high) {
     size_t middle; /* index of middle element */
