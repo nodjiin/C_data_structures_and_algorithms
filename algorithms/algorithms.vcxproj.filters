@@ -32,7 +32,7 @@
     <ClCompile Include="search.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source.c">
+    <ClCompile Include="sort.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,7 +142,7 @@
   <ItemGroup>
     <ClCompile Include="hashing.c" />
     <ClCompile Include="search.c" />
-    <ClCompile Include="source.c" />
+    <ClCompile Include="sort.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.vcxproj">
