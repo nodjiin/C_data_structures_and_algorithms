@@ -6,6 +6,8 @@ extern "C" {
 #endif /* __cplusplus */
 
 void selection_sort_test(void);
+void insertion_sort_test(void);
+void bubble_sort_test(void);
 
 void sort_testall(void);
 

@@ -38,6 +38,22 @@ selection_sort_test(void) {
 }
 
 void
+insertion_sort_test(void) {
+    insertion_sort(array_to_sort, ARRAY_SIZE);
+
+    assert(is_sorted(array_to_sort));
+}
+
+void
+bubble_sort_test(void) {
+    bubble_sort(array_to_sort, ARRAY_SIZE);
+
+    assert(is_sorted(array_to_sort));
+}
+
+void
 sort_testall(void) {
     setup_and_run(selection_sort_test);
+    setup_and_run(insertion_sort_test);
+    setup_and_run(bubble_sort_test);
 }

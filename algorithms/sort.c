@@ -33,17 +33,67 @@ swap(data_type* a, data_type* b) {
  */
 void
 selection_sort(data_type array[], size_t array_size) {
+    size_t i, j;      /* the sorted subarray lies between 0 and i, the unsorted between i + 1 and array_size */
     size_t min_index; /* index of the current minimum element in the right subarray */
 
-    for (size_t i = 0; i < array_size; i++) {
+    for (i = 0; i < array_size; i++) {
         min_index = i;
 
-        for (size_t j = i + 1; j < array_size; j++) {
+        for (j = i + 1; j < array_size; j++) {
             if (array[j] < array[min_index]) {
                 min_index = j;
             }
         }
 
         swap(&array[i], &array[min_index]);
+    }
+}
+
+/**
+ * \brief sorts an array of data_type values using insertion sort algorithm.
+ *
+ * this function sorts an array of data_type values in ascending order using the insertion sort algorithm. The insertion sort algorithm works by iterating 
+ * through the array and moving each element to its correct position in the sorted subarray. The algorithm maintains two subarrays in a given array: one 
+ * subarray which is already sorted and another subarray which is unsorted. In every iteration of insertion sort, an element from the unsorted subarray is 
+ * picked and inserted into its correct position in the sorted subarray.
+ *
+ * \param[in] array: pointer to the first element of the array to be sorted.
+ * \param[in] array_size: size of the array to be sorted.
+ */
+void
+insertion_sort(data_type array[], size_t array_size) {
+    size_t i, j; /* the sorted subarray lies between 0 and i, the unsorted between i + 1 and array_size */
+
+    for (i = 1; i < array_size; i++) {
+        j = i; /* each iteration we include a new element (in position i) in the sorted subarray */
+
+        while ((j > 0) && (array[j] < array[j - 1])) { /* move the new element in the correct position */
+            swap(&array[j], &array[j - 1]);
+            j--;
+        }
+    }
+}
+
+/**
+ * \brief sorts an array of data_type values using bubble sort algorithm.
+ *
+ * this function sorts an array of data_type values in ascending order using the bubble sort algorithm. The bubble sort algorithm works by repeatedly swapping 
+ * adjacent elements if they are in the wrong order. The algorithm maintains two subarrays in a given array: one subarray which is already sorted and another 
+ * subarray which is unsorted. In every iteration of bubble sort, the largest element from the unsorted subarray is picked and moved to the end of the unsorted
+ * subarray.
+ *
+ * \param[in] array: pointer to the first element of the array to be sorted.
+ * \param[in] array_size: size of the array to be sorted.
+ */
+void
+bubble_sort(data_type array[], size_t array_size) {
+    size_t i, j; /* the sorted subarray lies between i and array_size, the unsorted between 0 and i - 1 */
+
+    for (i = array_size; i > 1; i--) {
+        for (j = 0; j < i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                swap(&array[j], &array[j + 1]);
+            }
+        }
     }
 }

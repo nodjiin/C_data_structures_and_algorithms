@@ -14,6 +14,8 @@ extern "C" {
 #endif /* __cplusplus */
 
 __declspec(dllexport) void selection_sort(data_type array[], size_t array_size);
+__declspec(dllexport) void insertion_sort(data_type array[], size_t array_size);
+__declspec(dllexport) void bubble_sort(data_type array[], size_t array_size);
 
 #ifdef __cplusplus
 }
