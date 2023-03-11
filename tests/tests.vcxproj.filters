@@ -48,6 +48,9 @@
     <ClCompile Include="search_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sort_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedlist_test.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="search_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sort_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

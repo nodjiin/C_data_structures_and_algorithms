@@ -9,6 +9,7 @@
 #include "trie_test.h"
 #include "graph_test.h"
 #include "search_test.h"
+#include "sort_test.h"
 
 /* TODO
  *	Most test procedures currently allocate memory without releasing it. Given the fairly limited scope of data used this is not a problem,
@@ -28,6 +29,7 @@ main(void) {
     trie_testall();
     graph_testall();
     search_testall();
+    sort_testall();
 
     exit(0);
 }

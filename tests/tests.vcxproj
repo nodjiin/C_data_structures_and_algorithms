@@ -144,6 +144,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="queue_test.c" />
     <ClCompile Include="search_test.c" />
+    <ClCompile Include="sort_test.c" />
     <ClCompile Include="stack_test.c" />
     <ClCompile Include="trie_test.c" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="linkedlist_test.h" />
     <ClInclude Include="queue_test.h" />
     <ClInclude Include="search_test.h" />
+    <ClInclude Include="sort_test.h" />
     <ClInclude Include="stack_test.h" />
     <ClInclude Include="testvalues.h" />
     <ClInclude Include="trie_test.h" />
