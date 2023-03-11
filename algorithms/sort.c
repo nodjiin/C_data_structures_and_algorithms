@@ -4,6 +4,7 @@
  */
 
 #include "sort.h"
+#include "data_structures/queue.h"
 
 /**
  * \brief swaps two data_type values.
@@ -95,5 +96,52 @@ bubble_sort(data_type array[], size_t array_size) {
                 swap(&array[j], &array[j + 1]);
             }
         }
+    }
+}
+
+static void
+merge(data_type array[], size_t low, size_t middle, size_t high) {
+    size_t i;                   /* counter */
+    queue_t *buffer1, *buffer2; /* buffers to hold elements for merging */
+
+    buffer1 = queue_construct();
+    buffer2 = queue_construct();
+
+    for (i = low; i <= middle; i++) {
+        queue_enqueue(buffer1, array[i]);
+    }
+
+    for (i = middle + 1; i <= high; i++) {
+        queue_enqueue(buffer2, array[i]);
+    }
+
+    i = low;
+    while (!(queue_is_empty(buffer1) || queue_is_empty(buffer2))) {
+        if (queue_peek(buffer1) <= queue_peek(buffer2)) {
+            array[i++] = queue_dequeue(buffer1);
+        } else {
+            array[i++] = queue_dequeue(buffer2);
+        }
+    }
+    while (!queue_is_empty(buffer1)) {
+        array[i++] = queue_dequeue(buffer1);
+    }
+    while (!queue_is_empty(buffer2)) {
+        array[i++] = queue_dequeue(buffer2);
+    }
+
+    queue_clear(&buffer1);
+    queue_clear(&buffer2);
+}
+
+void
+merge_sort(data_type array[], size_t low, size_t high) {
+    size_t middle; /* index of middle element */
+
+    if (low < high) {
+        middle = (low + high) / 2;
+        merge_sort(array, low, middle);
+        merge_sort(array, middle + 1, high);
+        merge(array, low, middle, high);
     }
 }

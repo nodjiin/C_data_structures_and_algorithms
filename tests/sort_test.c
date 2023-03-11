@@ -52,8 +52,16 @@ bubble_sort_test(void) {
 }
 
 void
+merge_sort_test(void) {
+    merge_sort(array_to_sort, 0, ARRAY_SIZE - 1);
+
+    assert(is_sorted(array_to_sort));
+}
+
+void
 sort_testall(void) {
     setup_and_run(selection_sort_test);
     setup_and_run(insertion_sort_test);
     setup_and_run(bubble_sort_test);
+    setup_and_run(merge_sort_test);
 }
